@@ -1,5 +1,5 @@
 ---
-path: cesco
+path: escoquinho
 date: 2022-11-11T14:54:38.055Z
 name: sdfdsf
 job: sdfsdf
