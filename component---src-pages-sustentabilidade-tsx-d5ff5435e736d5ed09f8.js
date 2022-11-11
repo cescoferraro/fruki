@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfruki=self.webpackChunkfruki||[]).push([[799],{7952:function(e,u,a){a.r(u);var n=a(7294);u.default=()=>n.createElement("main",null,"SustentabilidadePage")}}]);
+//# sourceMappingURL=component---src-pages-sustentabilidade-tsx-d5ff5435e736d5ed09f8.js.map

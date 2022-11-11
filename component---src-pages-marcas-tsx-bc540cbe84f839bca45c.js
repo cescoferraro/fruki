@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfruki=self.webpackChunkfruki||[]).push([[825],{3883:function(e,u,a){a.r(u);var n=a(7294);u.default=()=>n.createElement("main",null,"BrandsPage")}}]);
+//# sourceMappingURL=component---src-pages-marcas-tsx-bc540cbe84f839bca45c.js.map
