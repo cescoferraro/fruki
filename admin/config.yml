@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: cescoferraro/fruki
+
+media_folder: static/assets
+public_folder: /assets
+collections:
+  - name: team
+    label: Team
+    folder: content/team
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: name, label: Nome }
+      - { name: job, label: Cargo }
+      - { name: about, label: Sobre }
+      - label: "Foto P&B"
+        name: "black_image"
+        widget: "image"
+      - label: "Foto colorida"
+        name: "image"
+        widget: "image"
