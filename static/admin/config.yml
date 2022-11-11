@@ -1,8 +1,6 @@
 backend:
   name: github
   repo: cescoferraro/fruki
-  base_url: https://cescoferraro.github.io/fruki
-#  auth_endpoint: api/auth
 
 media_folder: static/assets
 public_folder: /assets
