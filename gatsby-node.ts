@@ -2,6 +2,7 @@ import { CreateNodeArgs, CreatePagesArgs } from 'gatsby'
 import { createFilePath } from 'gatsby-source-filesystem'
 import path from 'path'
 
+// noinspection JSUnusedGlobalSymbols
 export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const { createPage } = actions
   // language=GraphQL
@@ -54,15 +55,15 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   }
 
   const brands = result.data?.brands?.nodes || []
-  brands.forEach((resultElement, index) => {
-    let slug = resultElement.fields.slug
+  brands.forEach((brand, index) => {
+    const slug = brand.fields.slug
     createPage({
       path: slug,
       component: path.resolve(`./src/templates/brand.tsx`),
       context: {
         nodes: brands,
-        brand: resultElement.frontmatter.path,
-        name: resultElement.frontmatter.name,
+        brand: brand.frontmatter.path,
+        name: brand.frontmatter.name,
         slug: slug,
         previous: index === brands.length - 1 ? null : brands[index + 1].node,
         next: index === 0 ? null : brands[index - 1].node,
@@ -70,17 +71,17 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
     })
   })
   const products = result.data?.products?.nodes || []
-  products.forEach((resultElement, index) => {
-    const slug = `${resultElement.fields.slug}`
+  products.forEach((product, index) => {
+    const slug = `${product.fields.slug}`
     createPage({
       path: slug,
       component: path.resolve(`./src/templates/produto.tsx`),
       context: {
         nodes: brands,
         slug: slug,
-        name: resultElement.frontmatter.name,
-        productName: resultElement.frontmatter.path,
-        brand: resultElement.frontmatter.brand,
+        name: product.frontmatter.name,
+        productName: product.frontmatter.path,
+        brand: product.frontmatter.brand,
         previous:
           index === products.length - 1 ? null : products[index + 1].node,
         next: index === 0 ? null : products[index - 1].node,
@@ -91,6 +92,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   return null
 }
 
+// noinspection JSUnusedGlobalSymbols
 export const onCreateNode = ({
   node,
   actions,
