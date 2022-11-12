@@ -6,5 +6,5 @@ name: Fruki Guarana
 description: O melhor guarani refri
 image: /assets/screen-shot-2022-11-05-at-15.41.40.png
 color: "#FFFFFF"
-brand: Fruki
+brand: fruki
 ---

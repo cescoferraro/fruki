@@ -38,10 +38,8 @@ collections:
         collection: "brand"
         multiple: false
         searchFields: [ "name" ]
-        valueField: "name"
+        valueField: "path"
         displayFields: [ "name" ]
-      - { name: author, label: Autor do post, required: false }
-      - { name: about, label: Sobre o autor, required: false }
   - name: blog
     label: Blog
     folder: content/blog
