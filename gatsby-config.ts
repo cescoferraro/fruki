@@ -30,6 +30,14 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
+      resolve: `gatsby-source-filesystem`,
+      options: { path: `${__dirname}/static/assets`, name: `assets` },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { path: `${__dirname}/content`, name: `content` },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
@@ -37,6 +45,13 @@ const config: GatsbyConfig = {
       },
       __key: 'images',
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: ['.mdx', '.md'],
+      },
+    },
+    'gatsby-plugin-extract-schema',
   ],
 }
 
