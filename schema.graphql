@@ -835,7 +835,6 @@ type Mdx implements Node {
 }
 
 type MdxFrontmatter {
-  tag: String
   path: String
   date(
     """
@@ -855,15 +854,16 @@ type MdxFrontmatter {
     locale: String
   ): Date
   name: String
-  description: String
-  image: String
-  color: String
-  brand: String
   title: String
+  description: String
+  logo: String
+  color: String
+  tag: String
+  image: String
   tags: [String]
   author: String
   about: String
-  logo: String
+  brand: String
 }
 
 type MdxFields {
@@ -1055,19 +1055,19 @@ input JSONQueryOperatorInput {
 }
 
 input MdxFrontmatterFilterInput {
-  tag: StringQueryOperatorInput
   path: StringQueryOperatorInput
   date: DateQueryOperatorInput
   name: StringQueryOperatorInput
-  description: StringQueryOperatorInput
-  image: StringQueryOperatorInput
-  color: StringQueryOperatorInput
-  brand: StringQueryOperatorInput
   title: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  logo: StringQueryOperatorInput
+  color: StringQueryOperatorInput
+  tag: StringQueryOperatorInput
+  image: StringQueryOperatorInput
   tags: StringQueryOperatorInput
   author: StringQueryOperatorInput
   about: StringQueryOperatorInput
-  logo: StringQueryOperatorInput
+  brand: StringQueryOperatorInput
 }
 
 input MdxFieldsFilterInput {
@@ -1238,19 +1238,19 @@ input MdxFieldSelector {
 }
 
 input MdxFrontmatterFieldSelector {
-  tag: FieldSelectorEnum
   path: FieldSelectorEnum
   date: FieldSelectorEnum
   name: FieldSelectorEnum
-  description: FieldSelectorEnum
-  image: FieldSelectorEnum
-  color: FieldSelectorEnum
-  brand: FieldSelectorEnum
   title: FieldSelectorEnum
+  description: FieldSelectorEnum
+  logo: FieldSelectorEnum
+  color: FieldSelectorEnum
+  tag: FieldSelectorEnum
+  image: FieldSelectorEnum
   tags: FieldSelectorEnum
   author: FieldSelectorEnum
   about: FieldSelectorEnum
-  logo: FieldSelectorEnum
+  brand: FieldSelectorEnum
 }
 
 input MdxFieldsFieldSelector {
@@ -1453,19 +1453,19 @@ input MdxSortInput {
 }
 
 input MdxFrontmatterSortInput {
-  tag: SortOrderEnum
   path: SortOrderEnum
   date: SortOrderEnum
   name: SortOrderEnum
-  description: SortOrderEnum
-  image: SortOrderEnum
-  color: SortOrderEnum
-  brand: SortOrderEnum
   title: SortOrderEnum
+  description: SortOrderEnum
+  logo: SortOrderEnum
+  color: SortOrderEnum
+  tag: SortOrderEnum
+  image: SortOrderEnum
   tags: SortOrderEnum
   author: SortOrderEnum
   about: SortOrderEnum
-  logo: SortOrderEnum
+  brand: SortOrderEnum
 }
 
 input MdxFieldsSortInput {

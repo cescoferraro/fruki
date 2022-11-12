@@ -1,44 +1,44 @@
+import { graphql, PageProps } from 'gatsby'
+import { Button } from 'gatsby-material-ui-components'
 import React from 'react'
 
-const ProdutoPage = (props: any): React.ReactElement => {
+const ProdutoPage: React.FC<PageProps<Queries.ProductPageQueryQuery>> = (
+  props
+): React.ReactElement => {
   console.log(props)
   return (
     <React.Fragment>
-      <h2>Produto</h2>
+      <h2>Produto {props.data.product?.frontmatter?.name}</h2>
+      <Button to={props.data.brand?.fields?.slug || ''}>
+        {`Marca ${props.data.brand?.frontmatter?.name || ''}`}
+      </Button>
     </React.Fragment>
   )
 }
 
 export default ProdutoPage
 
-// export const pageQuery = graphql`
-//   query NewsPostBySlug($slug: String!) {
-//     site {
-//       siteMetadata {
-//         title
-//         author
-//       }
-//     }
-//     mdx(fields: { slug: { eq: $slug } }) {
-//       id
-//       excerpt(pruneLength: 160)
-//       fields {
-//         slug
-//       }
-//       body
-//       frontmatter {
-//         title
-//         tags
-//         date(formatString: "DD/MM/YYYY")
-//         description
-//         text_1
-//         postType
-//         author
-//         about
-//         author_image
-//         text_2
-//         image
-//       }
-//     }
-//   }
-// `
+export const pageQuery = graphql`
+  query ProductPageQuery($productName: String, $brand: String) {
+    brand: mdx(frontmatter: { path: { eq: $brand } }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        path
+        name
+        brand
+      }
+    }
+    product: mdx(frontmatter: { path: { eq: $productName } }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        path
+        name
+        brand
+      }
+    }
+  }
+`

@@ -7,8 +7,7 @@ export function BrandsComponent(props: { brands: any[] }) {
     <Box>
       {props.brands.map((s) => (
         <Box key={s.slug}>
-          <Button to={s?.slug?.replace('brand', 'marca')}>{s.name}</Button>
-          <h2>{s.name}</h2>
+          <Button to={s?.slug}>{s.name}</Button>
         </Box>
       ))}
     </Box>

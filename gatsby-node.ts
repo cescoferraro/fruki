@@ -28,6 +28,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
           frontmatter {
             path
             name
+            brand
           }
         }
       }
@@ -52,31 +53,34 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
     throw result.errors
   }
 
-  const newsTemplate = path.resolve(`./src/templates/brand.tsx`)
-  const nodes = result.data?.brands?.nodes || []
-  nodes.forEach((resultElement, index) => {
-    let slug = resultElement.fields.slug.replace('marca', 'marca')
+  const brands = result.data?.brands?.nodes || []
+  brands.forEach((resultElement, index) => {
+    let slug = resultElement.fields.slug
     createPage({
       path: slug,
-      component: newsTemplate,
+      component: path.resolve(`./src/templates/brand.tsx`),
       context: {
-        nodes,
+        nodes: brands,
+        brand: resultElement.frontmatter.path,
+        name: resultElement.frontmatter.name,
         slug: slug,
-        previous: index === nodes.length - 1 ? null : nodes[index + 1].node,
-        next: index === 0 ? null : nodes[index - 1].node,
+        previous: index === brands.length - 1 ? null : brands[index + 1].node,
+        next: index === 0 ? null : brands[index - 1].node,
       },
     })
   })
   const products = result.data?.products?.nodes || []
   products.forEach((resultElement, index) => {
-    let slug = `${resultElement.fields.slug.replace('product', 'produto')}`
-    console.log(slug)
+    const slug = `${resultElement.fields.slug}`
     createPage({
       path: slug,
-      component: newsTemplate,
+      component: path.resolve(`./src/templates/produto.tsx`),
       context: {
-        nodes,
+        nodes: brands,
         slug: slug,
+        name: resultElement.frontmatter.name,
+        productName: resultElement.frontmatter.path,
+        brand: resultElement.frontmatter.brand,
         previous:
           index === products.length - 1 ? null : products[index + 1].node,
         next: index === 0 ? null : products[index - 1].node,
