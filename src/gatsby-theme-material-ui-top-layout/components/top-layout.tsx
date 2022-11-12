@@ -1,28 +1,26 @@
+import { Box, CssBaseline } from '@mui/material'
+import Typography from '@mui/material/Typography/Typography'
+// @ts-ignore
+import ThemeTopLayout from 'gatsby-theme-material-ui-top-layout/src/components/top-layout'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { FrukiAppBar } from '../../components/FrukiAppBar'
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#034638',
-      contrastText: '#FFFFFF',
-    },
-    secondary: {
-      main: '#41B02A',
-      contrastText: '#FFFFFF',
-    },
-  },
-})
-
-const TopLayout = ({ children }) => {
+export default function TopLayout({ children, theme }: any) {
   return (
-    <React.Fragment>
-      <Helmet>
-        <title>Agência Global</title>
-      </Helmet>
-      <ThemeProvider theme={theme}>
+    <ThemeTopLayout theme={theme}>
+      <React.Fragment>
+        <Helmet>
+          <title>Agência Global</title>
+          <link
+            rel="preload"
+            href="/fonts/Fontspring-DEMO-mangueira-regular.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
+            key="interFont"
+          />
+        </Helmet>
         <CssBaseline />
         <Box
           sx={{
@@ -47,8 +45,7 @@ const TopLayout = ({ children }) => {
             </Box>
           </Box>
         </Box>
-      </ThemeProvider>
-    </React.Fragment>
+      </React.Fragment>
+    </ThemeTopLayout>
   )
 }
-export default TopLayout
