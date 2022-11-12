@@ -37,9 +37,9 @@ collections:
         widget: "relation"
         collection: "brand"
         multiple: false
-        searchFields: [ "name" ]
-        valueField: "name"
-        displayFields: [ "name" ]
+        searchFields: [ "brand" ]
+        valueField: "brand"
+        displayFields: [ "brand" ]
       - { name: author, label: Autor do post, required: false }
       - { name: about, label: Sobre o autor, required: false }
   - name: blog
@@ -60,9 +60,9 @@ collections:
         widget: "relation"
         collection: "tag"
         multiple: true
-        searchFields: [ "tag" ]
-        valueField: "tag"
-        displayFields: [ "tag" ]
+        searchFields: [ "name" ]
+        valueField: "name"
+        displayFields: [ "name" ]
       - { name: author, label: Autor do post, required: false }
       - { name: about, label: Sobre o autor, required: false }
   - name: tag
