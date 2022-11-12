@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfruki=self.webpackChunkfruki||[]).push([[655],{6648:function(e,l,n){n.r(l);var u=n(7294);l.default=e=>(console.log(e),u.createElement(u.Fragment,null,u.createElement("h2",null,"Fruki Brand")))}}]);
-//# sourceMappingURL=component---src-templates-brand-tsx-79e6fa7bb30cdc87edd3.js.map
