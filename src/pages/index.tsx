@@ -2,7 +2,7 @@ import { Box, Button, Grid, Typography } from '@mui/material'
 import type { PageProps } from 'gatsby'
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import { BrandsComponent } from './brandsComponent'
+import { BrandsComponent } from '../components/brandsComponent'
 
 const IndexPage: React.FC<PageProps<Queries.HomeQueryQuery>> = (props) => {
   let brands = props.data.brands.edges.map((d) => ({
