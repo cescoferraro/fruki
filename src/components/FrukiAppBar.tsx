@@ -71,6 +71,7 @@ export function FrukiAppBar() {
               borderRadius: 20,
               ml: 2,
             }}
+            onClick={() => (window.location.href = '/admin')}
             variant="contained"
             color="secondary"
           >

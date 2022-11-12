@@ -1,15 +1,15 @@
 import React from 'react'
 
-const BrandPage = (props: any): React.ReactElement => {
+const ProdutoPage = (props: any): React.ReactElement => {
   console.log(props)
   return (
     <React.Fragment>
-      <h2>Brand</h2>
+      <h2>Produto</h2>
     </React.Fragment>
   )
 }
 
-export default BrandPage
+export default ProdutoPage
 
 // export const pageQuery = graphql`
 //   query NewsPostBySlug($slug: String!) {
