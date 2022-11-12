@@ -6,9 +6,9 @@ backend:
 media_folder: static/assets
 public_folder: /assets
 collections:
-  - name: brand
+  - name: marca
     label: Marca
-    folder: content/brand
+    folder: content/marca
     create: true
     fields:
       - { name: path, label: Path }
@@ -19,9 +19,9 @@ collections:
         label: "Logo da Marca"
         widget: "image"
       - { name: color , label: Color, required: true }
-  - name: product
+  - name: produto
     label: Produto
-    folder: content/product
+    folder: content/produto
     create: true
     fields:
       - { name: path, label: Path }
@@ -33,9 +33,9 @@ collections:
         widget: "image"
       - { name: color , label: Color, required: true }
       - label: "Marca"
-        name: "brand"
+        name: "marca"
         widget: "relation"
-        collection: "brand"
+        collection: "marca"
         multiple: false
         searchFields: [ "name" ]
         valueField: "path"

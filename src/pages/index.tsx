@@ -112,7 +112,7 @@ export const pageQuery = graphql`
       }
     }
     brands: allMdx(
-      filter: { internal: { contentFilePath: { regex: "/content/brand/" } } }
+      filter: { internal: { contentFilePath: { regex: "/content/marca/" } } }
       sort: [{ fields: { slug: ASC } }]
     ) {
       edges {

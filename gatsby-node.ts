@@ -16,7 +16,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
     query Brands {
       products: allMdx(
         filter: {
-          internal: { contentFilePath: { regex: "/content/product/" } }
+          internal: { contentFilePath: { regex: "/content/produto/" } }
         }
         sort: { frontmatter: { date: ASC } }
         limit: 1000
@@ -32,7 +32,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
         }
       }
       brands: allMdx(
-        filter: { internal: { contentFilePath: { regex: "/content/brand/" } } }
+        filter: { internal: { contentFilePath: { regex: "/content/marca/" } } }
         sort: { frontmatter: { date: ASC } }
         limit: 1000
       ) {
@@ -55,7 +55,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const newsTemplate = path.resolve(`./src/templates/brand.tsx`)
   const nodes = result.data?.brands?.nodes || []
   nodes.forEach((resultElement, index) => {
-    let slug = resultElement.fields.slug.replace('brand', 'marca')
+    let slug = resultElement.fields.slug.replace('marca', 'marca')
     createPage({
       path: slug,
       component: newsTemplate,
