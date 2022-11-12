@@ -6,19 +6,68 @@ backend:
 media_folder: static/assets
 public_folder: /assets
 collections:
-  - name: team
-    label: Team
-    folder: content/team
+  - name: brand
+    label: Marca
+    folder: content/brand
     create: true
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
-      - { name: name, label: Nome }
-      - { name: job, label: Cargo }
-      - { name: about, label: Sobre }
-      - label: "Foto P&B"
-        name: "black_image"
+      - { name: title, label: Título }
+      - { name: description, label: Descrição, required: false }
+      - name: "logo"
+        label: "Logo da Marca"
         widget: "image"
-      - label: "Foto colorida"
-        name: "image"
+      - { name: color , label: Color, required: true }
+  - name: product
+    label: Produto
+    folder: content/product
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: title, label: Título }
+      - { name: description, label: Descrição, required: false }
+      - name: "image"
+        label: "Image do Producto"
         widget: "image"
+      - { name: color , label: Color, required: true }
+      - label: "Marca"
+        name: "brand"
+        widget: "relation"
+        collection: "brand"
+        multiple: false
+        searchFields: [ "brand" ]
+        valueField: "brand"
+        displayFields: [ "brand" ]
+      - { name: author, label: Autor do post, required: false }
+      - { name: about, label: Sobre o autor, required: false }
+  - name: blog
+    label: Blog
+    folder: content/blog
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: title, label: Título }
+      - { name: description, label: Descrição, required: false }
+      - name: "image"
+        label: "Imagem de destaque"
+        widget: "image"
+      - { name: "body", label: "Conteúdo do blog post", widget: "markdown" }
+      - label: "Tags"
+        name: "tag"
+        widget: "relation"
+        collection: "tag"
+        multiple: true
+        searchFields: [ "tag" ]
+        valueField: "tag"
+        displayFields: [ "tag" ]
+      - { name: author, label: Autor do post, required: false }
+      - { name: about, label: Sobre o autor, required: false }
+  - name: tag
+    label: Tag
+    folder: content/tag
+    create: true
+    fields:
+      - { name: tag, label: tag, widget: string }
