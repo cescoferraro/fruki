@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfruki=self.webpackChunkfruki||[]).push([[410],{8645:function(e,t,l){l.r(t);var a=l(8720),n=l(7294),u=l(982);t.default=e=>n.createElement(a.Z,null,e.data.posts.edges.map((e=>({...e.node.fields,...e.node.frontmatter}))).map((e=>n.createElement(u.rU,{to:(null==e?void 0:e.slug)||""},e.title))))}}]);
+//# sourceMappingURL=component---src-pages-blog-tsx-422d8360bb9ced8e21a6.js.map
