@@ -13,7 +13,7 @@ collections:
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
-      - { name: title, label: Título }
+      - { name: name, label: Nome }
       - { name: description, label: Descrição, required: false }
       - name: "logo"
         label: "Logo da Marca"

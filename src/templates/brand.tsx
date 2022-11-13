@@ -8,6 +8,7 @@ const BrandPage: React.FC<PageProps<GatsbyTypes.BrandPageQueryQuery>> = (
   console.log(props)
   return (
     <React.Fragment>
+      <h2>{props.data.brand?.frontmatter?.name}</h2>
       {props.data?.products?.nodes
         .map((n) => ({
           ...n.fields,
