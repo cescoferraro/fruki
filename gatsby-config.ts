@@ -12,7 +12,13 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-plugin-material-ui`,
     `gatsby-theme-material-ui`,
-    'gatsby-plugin-netlify-cms',
+
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        options: { modulePath: `${__dirname}/src/cms.js` },
+      },
+    },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {

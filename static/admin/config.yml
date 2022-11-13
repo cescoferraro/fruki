@@ -18,7 +18,7 @@ collections:
       - name: "logo"
         label: "Logo da Marca"
         widget: "image"
-      - { name: color , label: Color, required: true }
+      - { name: color , label: Color, required: true, widget: color }
   - name: produto
     label: Produto
     folder: content/produto
@@ -31,9 +31,9 @@ collections:
       - name: "image"
         label: "Image do Producto"
         widget: "image"
-      - { name: color , label: Color, required: true }
+      - { name: color , label: Color, required: true, widget: color }
       - label: "Marca"
-        name: "marca"
+        name: "brand"
         widget: "relation"
         collection: "marca"
         multiple: false
