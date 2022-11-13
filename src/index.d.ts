@@ -1,4 +1,9 @@
 declare module '*.png'
 declare module '*.mp4'
 declare module '*.jpg'
-export { FrukiHelpSection } from 'src/components/FrukiHelpSection'
+
+interface Brand
+  extends GatsbyTypes.BlogsFrontMatterFragment,
+    GatsbyTypes.FieldsFragment {}
+
+export { useBrandsMemo } from './components/useBrandsMemo'

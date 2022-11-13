@@ -11,7 +11,7 @@ export default function TopLayout({ children, theme }: any) {
     <ThemeTopLayout theme={theme}>
       <React.Fragment>
         <Helmet>
-          <title>Agência Global</title>
+          <title>Fruki</title>
           <link
             rel="preload"
             href="/fonts/Fontspring-DEMO-mangueira-regular.otf"

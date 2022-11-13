@@ -1,38 +1,8 @@
 import CloseIcon from '@mui/icons-material/LocationOn'
-import { Button, AppBar, Box, LinkProps, Toolbar } from '@mui/material'
-import { Link } from 'gatsby-theme-material-ui'
+import { AppBar, Box, Button, Toolbar } from '@mui/material'
 import React from 'react'
+import { FrukiAppBarLink } from './FrukiAppBarLink'
 import { FrukiLogo } from './frukiLogo'
-
-interface IProps extends LinkProps {
-  to?: string
-}
-
-const FrukiLink = (props: IProps) => {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Link
-        {...props}
-        sx={{
-          ml: {
-            md: 4,
-            lg: 6,
-          },
-          ...props.sx,
-        }}
-        to={props.to}
-      >
-        {props.children}
-      </Link>
-    </Box>
-  )
-}
 
 export function FrukiAppBar() {
   return (
@@ -46,10 +16,12 @@ export function FrukiAppBar() {
               display: { xs: 'none', sm: 'none', md: 'flex' },
             }}
           >
-            <FrukiLink to="/">Início</FrukiLink>
-            <FrukiLink to="/sobre-nos">Sobre nós</FrukiLink>
-            <FrukiLink to="/marcas">Nossas Marcas</FrukiLink>
-            <FrukiLink to="/sustentabilidade">Sustentabilidade</FrukiLink>
+            <FrukiAppBarLink to="/">Início</FrukiAppBarLink>
+            <FrukiAppBarLink to="/sobre-nos">Sobre nós</FrukiAppBarLink>
+            <FrukiAppBarLink to="/marcas">Nossas Marcas</FrukiAppBarLink>
+            <FrukiAppBarLink to="/sustentabilidade">
+              Sustentabilidade
+            </FrukiAppBarLink>
           </Box>
         </Box>
         <Box>

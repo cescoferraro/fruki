@@ -2,7 +2,7 @@ import { graphql, PageProps } from 'gatsby'
 import { Button } from 'gatsby-theme-material-ui'
 import React from 'react'
 
-const BrandPage: React.FC<PageProps<Queries.BrandsPageQueryQuery>> = (
+const BrandPage: React.FC<PageProps<GatsbyTypes.BrandPageQueryQuery>> = (
   props
 ): React.ReactElement => {
   console.log(props)
@@ -22,24 +22,13 @@ const BrandPage: React.FC<PageProps<Queries.BrandsPageQueryQuery>> = (
 export default BrandPage
 
 export const pageQuery = graphql`
-  query BrandsPageQuery($brand: String) {
-    brand: mdx(frontmatter: { path: { eq: $brand } }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        path
-        name
-        brand
-      }
-    }
+  fragment ProductsByBrandQueryFragment on Query {
     products: allMdx(
       filter: {
         internal: { contentFilePath: { regex: "/content/produto/" } }
         frontmatter: { brand: { eq: $brand } }
       }
       sort: { frontmatter: { date: ASC } }
-      limit: 1000
     ) {
       nodes {
         fields {
@@ -52,5 +41,18 @@ export const pageQuery = graphql`
         }
       }
     }
+  }
+  query BrandPageQuery($brand: String) {
+    brand: mdx(frontmatter: { path: { eq: $brand } }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        path
+        name
+        brand
+      }
+    }
+    ...ProductsByBrandQueryFragment
   }
 `

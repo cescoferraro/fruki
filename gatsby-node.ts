@@ -7,14 +7,26 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const { createPage } = actions
   // language=GraphQL
   const result = await graphql<{
-    products: {
-      nodes: any[]
-    }
-    brands: {
-      nodes: any[]
-    }
+    products: { nodes: any[] }
+    brands: { nodes: any[] }
+    blogs: { nodes: any[] }
   }>(`
-    query Brands {
+    query GatsbyNode {
+      blogs: allMdx(
+        filter: { internal: { contentFilePath: { regex: "/content/blog/" } } }
+        sort: { frontmatter: { date: ASC } }
+        limit: 1000
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            path
+            title
+          }
+        }
+      }
       products: allMdx(
         filter: {
           internal: { contentFilePath: { regex: "/content/produto/" } }
@@ -89,6 +101,25 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
     })
   })
 
+  const blogs = result.data?.blogs?.nodes || []
+  blogs.forEach((blog, index) => {
+    const slug = `${blog.fields.slug}`
+    createPage({
+      path: slug,
+      component: path.resolve(`./src/templates/post.tsx`),
+      context: {
+        nodes: blogs,
+        slug: slug,
+        title: blog.frontmatter.title,
+        brand: blog.frontmatter.brand,
+        postPath: blog.frontmatter.path,
+        previous:
+          index === products.length - 1 ? null : products[index + 1].node,
+        next: index === 0 ? null : products[index - 1].node,
+      },
+    })
+  })
+
   return null
 }
 
@@ -99,7 +130,6 @@ export const onCreateNode = ({
   getNode,
 }: CreateNodeArgs<any>) => {
   const { createNodeField } = actions
-
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({ name: `slug`, node, value })

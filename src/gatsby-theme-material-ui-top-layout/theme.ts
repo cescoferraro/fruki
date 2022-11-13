@@ -34,7 +34,7 @@ const theme = createTheme({
           props: { variant: 'bodyExtraLarge' },
           style: {
             fontSize: 24,
-            fontWeight: 'regular',
+            fontWeight: 'normal',
             lineHeight: '140%',
             letterSpacing: 0,
           },
@@ -43,7 +43,7 @@ const theme = createTheme({
           props: { variant: 'bodyLarge' },
           style: {
             fontSize: 20,
-            fontWeight: 'regular',
+            fontWeight: 'normal',
             lineHeight: '140%',
             letterSpacing: 0,
           },
@@ -52,7 +52,7 @@ const theme = createTheme({
           props: { variant: 'bodyRegular' },
           style: {
             fontSize: 18,
-            fontWeight: 'regular',
+            fontWeight: 'normal',
             lineHeight: '140%',
             letterSpacing: 0,
           },
@@ -61,7 +61,7 @@ const theme = createTheme({
           props: { variant: 'bodySmall' },
           style: {
             fontSize: 16,
-            fontWeight: 'regular',
+            fontWeight: 'normal',
             lineHeight: '150%',
             letterSpacing: 0,
           },
