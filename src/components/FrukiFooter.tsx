@@ -7,6 +7,7 @@ import {
   SxProps,
   Typography,
 } from '@mui/material'
+import { navigate } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
 import * as React from 'react'
 import { FacebookIcon } from './FacebookIcon'
@@ -79,7 +80,9 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
             {brands.map((b) => (
-              <Link key={b.slug} to={b.slug || ''}>{b.name}</Link>
+              <Link key={b.slug} to={b.slug || ''}>
+                {b.name}
+              </Link>
             ))}
           </Box>
         </Grid>
@@ -89,22 +92,38 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ pt: 2, display: 'flex', flexDirection: 'row' }}>
             <Box sx={{ pr: 2 }}>
-              <IconButton sx={{ backgroundColor: 'secondary.main' }}>
+              <IconButton
+                onClick={() =>
+                  navigate('https://www.instagram.com/frukibebidas/')
+                }
+                sx={{ backgroundColor: 'secondary.main' }}
+              >
                 <InstagramIcon />
               </IconButton>
             </Box>
             <Box sx={{ pr: 2 }}>
-              <IconButton sx={{ backgroundColor: 'secondary.main' }}>
+              <IconButton
+                onClick={() =>
+                  navigate('https://www.linkedin.com/company/fruki-bebidas')
+                }
+                sx={{ backgroundColor: 'secondary.main' }}
+              >
                 <LinkedinIcon />
               </IconButton>
             </Box>
             <Box sx={{ pr: 2 }}>
-              <IconButton sx={{ backgroundColor: 'secondary.main' }}>
+              <IconButton
+                onClick={() => navigate('https://facebook.com/FrukiBebidas')}
+                sx={{ backgroundColor: 'secondary.main' }}
+              >
                 <FacebookIcon />
               </IconButton>
             </Box>
             <Box sx={{ pr: 2 }}>
-              <IconButton sx={{ backgroundColor: 'secondary.main' }}>
+              <IconButton
+                onClick={() => navigate('https://twitter.com/fruki_oficial')}
+                sx={{ backgroundColor: 'secondary.main' }}
+              >
                 <TwitterIcon />
               </IconButton>
             </Box>

@@ -27,6 +27,7 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
         {posts.map((p) => {
           return (
             <Paper
+              key={p.slug}
               sx={{
                 maxHeight: 384,
                 height: 384,

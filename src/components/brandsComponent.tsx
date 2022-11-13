@@ -21,10 +21,6 @@ export function BrandsComponent(props: { brands: Brand[] }) {
             borderRadius: '200px 0px 200px 0px',
             background: theme.palette.primary.main,
             height: 420,
-            // display: 'flex',
-            // flexDirection: 'column',
-            // justifyContent: 'space-around',
-            // alignItems: 'center',
             px: 4,
           }}
         >
@@ -79,13 +75,17 @@ export function BrandsComponent(props: { brands: Brand[] }) {
           }}
         >
           <Stacked
-            direction={'row'}
+            direction="row"
             justifyContent="space-between"
             alignItems="center"
             gap={4}
+            sx={{
+              '&::-webkit-scrollbar': { display: 'none' },
+            }}
           >
             {props.brands.map((s) => (
               <IconButton
+                key={s.slug}
                 sx={{
                   zIndex: 100,
                   background: 'white',
@@ -112,19 +112,19 @@ export function BrandsComponent(props: { brands: Brand[] }) {
               </IconButton>
             ))}
           </Stacked>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              pt: 0,
-              pb: 8,
-            }}
-          >
-            <Button to="/marcas" color="secondary" variant="contained">
-              Ver todas as marcas
-            </Button>
-          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            pt: 0,
+            pb: 8,
+          }}
+        >
+          <Button to="/marcas" color="secondary" variant="contained">
+            Ver todas as marcas
+          </Button>
         </Box>
       </Box>
     </Container>
