@@ -8,23 +8,24 @@ import { FrukiMainGrid } from '../components/FrukiMainGrid'
 import { FrukiTimelineSection } from '../components/FrukiTimelineSection'
 import { useBrandsMemo } from '../components/useBrandsMemo'
 
-const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = (props) => {
-  console.log(props)
+const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
+  data: { brands, home },
+}) => {
+  const allBrands = useBrandsMemo(brands)
   return (
     <>
-      <FrukiMainGrid />
-      <FrukiTimelineSection />
-      <BrandsComponent brands={useBrandsMemo(props.data.brands)} />
+      <FrukiMainGrid home={home} />
+      <FrukiTimelineSection home={home} />
+      <BrandsComponent brands={allBrands} />
       <FrukiHelpSection />
-      <FrukiFooter brands={useBrandsMemo(props.data.brands)} />
+      <FrukiFooter brands={allBrands} />
     </>
   )
 }
 
 export default IndexPage
 
-// noinspection JSUnusedGlobalSymbols
-export const pageQuery = graphql`
+export const ref = graphql`
   fragment SiteData on Query {
     site {
       siteMetadata {
@@ -35,15 +36,21 @@ export const pageQuery = graphql`
   fragment Fields on MdxFields {
     slug
   }
-  query HomeQuery {
-    home: mdx(internal: { contentFilePath: { eq: "/content/home.yml" } }) {
-      fields {
-        ...Fields
-      }
-      frontmatter {
-        title
-      }
+`
+
+export const pageQuery = graphql`
+  fragment HomeFragment on ContentYaml {
+    title
+    caption
+  }
+  fragment HomeQueryFragment on Query {
+    home: contentYaml(name: { regex: "/home/" }) {
+      ...HomeFragment
     }
+  }
+
+  query HomeQuery {
+    ...HomeQueryFragment
     ...SiteData
     ...BrandsFragmentQuery
     ...BlogsFragmentQuery

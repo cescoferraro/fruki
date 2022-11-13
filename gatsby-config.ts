@@ -39,6 +39,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: { path: `${__dirname}/static/assets`, name: `assets` },
     },
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: { path: `${__dirname}/content`, name: `content` },

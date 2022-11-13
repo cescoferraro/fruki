@@ -76,4 +76,6 @@ collections:
         name: "home"
         file: content/home.yml
         fields:
+          - {label: Name, name: name, widget: string}
           - {label: Title, name: title, widget: string}
+          - {label: Caption, name: caption, widget: string}

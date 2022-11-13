@@ -67,6 +67,82 @@ input BooleanQueryOperatorInput {
   nin: [Boolean]
 }
 
+type ContentYaml implements Node {
+  caption: String
+  children: [Node!]!
+  id: ID!
+  internal: Internal!
+  name: String
+  parent: Node
+  title: String
+}
+
+type ContentYamlConnection {
+  distinct(field: ContentYamlFieldSelector!): [String!]!
+  edges: [ContentYamlEdge!]!
+  group(field: ContentYamlFieldSelector!, limit: Int, skip: Int): [ContentYamlGroupConnection!]!
+  max(field: ContentYamlFieldSelector!): Float
+  min(field: ContentYamlFieldSelector!): Float
+  nodes: [ContentYaml!]!
+  pageInfo: PageInfo!
+  sum(field: ContentYamlFieldSelector!): Float
+  totalCount: Int!
+}
+
+type ContentYamlEdge {
+  next: ContentYaml
+  node: ContentYaml!
+  previous: ContentYaml
+}
+
+input ContentYamlFieldSelector {
+  caption: FieldSelectorEnum
+  children: NodeFieldSelector
+  id: FieldSelectorEnum
+  internal: InternalFieldSelector
+  name: FieldSelectorEnum
+  parent: NodeFieldSelector
+  title: FieldSelectorEnum
+}
+
+input ContentYamlFilterInput {
+  caption: StringQueryOperatorInput
+  children: NodeFilterListInput
+  id: StringQueryOperatorInput
+  internal: InternalFilterInput
+  name: StringQueryOperatorInput
+  parent: NodeFilterInput
+  title: StringQueryOperatorInput
+}
+
+input ContentYamlFilterListInput {
+  elemMatch: ContentYamlFilterInput
+}
+
+type ContentYamlGroupConnection {
+  distinct(field: ContentYamlFieldSelector!): [String!]!
+  edges: [ContentYamlEdge!]!
+  field: String!
+  fieldValue: String
+  group(field: ContentYamlFieldSelector!, limit: Int, skip: Int): [ContentYamlGroupConnection!]!
+  max(field: ContentYamlFieldSelector!): Float
+  min(field: ContentYamlFieldSelector!): Float
+  nodes: [ContentYaml!]!
+  pageInfo: PageInfo!
+  sum(field: ContentYamlFieldSelector!): Float
+  totalCount: Int!
+}
+
+input ContentYamlSortInput {
+  caption: SortOrderEnum
+  children: NodeSortInput
+  id: SortOrderEnum
+  internal: InternalSortInput
+  name: SortOrderEnum
+  parent: NodeSortInput
+  title: SortOrderEnum
+}
+
 """
 A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
@@ -467,6 +543,11 @@ type File implements Node {
   ): Date!
 
   """
+  Returns the first child node of type ContentYaml or null if there are no children of given type on this node
+  """
+  childContentYaml: ContentYaml
+
+  """
   Returns the first child node of type ImageSharp or null if there are no children of given type on this node
   """
   childImageSharp: ImageSharp
@@ -476,6 +557,9 @@ type File implements Node {
   """
   childMdx: Mdx
   children: [Node!]!
+
+  """Returns all children nodes filtered by type ContentYaml"""
+  childrenContentYaml: [ContentYaml]
 
   """Returns all children nodes filtered by type ImageSharp"""
   childrenImageSharp: [ImageSharp]
@@ -590,9 +674,11 @@ input FileFieldSelector {
   blksize: FieldSelectorEnum
   blocks: FieldSelectorEnum
   changeTime: FieldSelectorEnum
+  childContentYaml: ContentYamlFieldSelector
   childImageSharp: ImageSharpFieldSelector
   childMdx: MdxFieldSelector
   children: NodeFieldSelector
+  childrenContentYaml: ContentYamlFieldSelector
   childrenImageSharp: ImageSharpFieldSelector
   childrenMdx: MdxFieldSelector
   ctime: FieldSelectorEnum
@@ -635,9 +721,11 @@ input FileFilterInput {
   blksize: IntQueryOperatorInput
   blocks: IntQueryOperatorInput
   changeTime: DateQueryOperatorInput
+  childContentYaml: ContentYamlFilterInput
   childImageSharp: ImageSharpFilterInput
   childMdx: MdxFilterInput
   children: NodeFilterListInput
+  childrenContentYaml: ContentYamlFilterListInput
   childrenImageSharp: ImageSharpFilterListInput
   childrenMdx: MdxFilterListInput
   ctime: DateQueryOperatorInput
@@ -694,9 +782,11 @@ input FileSortInput {
   blksize: SortOrderEnum
   blocks: SortOrderEnum
   changeTime: SortOrderEnum
+  childContentYaml: ContentYamlSortInput
   childImageSharp: ImageSharpSortInput
   childMdx: MdxSortInput
   children: NodeSortInput
+  childrenContentYaml: ContentYamlSortInput
   childrenImageSharp: ImageSharpSortInput
   childrenMdx: MdxSortInput
   ctime: SortOrderEnum
@@ -1524,6 +1614,7 @@ enum PotraceTurnPolicy {
 }
 
 type Query {
+  allContentYaml(filter: ContentYamlFilterInput, limit: Int, skip: Int, sort: [ContentYamlSortInput]): ContentYamlConnection!
   allDirectory(filter: DirectoryFilterInput, limit: Int, skip: Int, sort: [DirectorySortInput]): DirectoryConnection!
   allFile(filter: FileFilterInput, limit: Int, skip: Int, sort: [FileSortInput]): FileConnection!
   allImageSharp(filter: ImageSharpFilterInput, limit: Int, skip: Int, sort: [ImageSharpSortInput]): ImageSharpConnection!
@@ -1532,8 +1623,9 @@ type Query {
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, limit: Int, skip: Int, sort: [SiteBuildMetadataSortInput]): SiteBuildMetadataConnection!
   allSiteFunction(filter: SiteFunctionFilterInput, limit: Int, skip: Int, sort: [SiteFunctionSortInput]): SiteFunctionConnection!
   allSitePage(filter: SitePageFilterInput, limit: Int, skip: Int, sort: [SitePageSortInput]): SitePageConnection!
+  contentYaml(caption: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, parent: NodeFilterInput, title: StringQueryOperatorInput): ContentYaml
   directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
-  file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, childMdx: MdxFilterInput, children: NodeFilterListInput, childrenImageSharp: ImageSharpFilterListInput, childrenMdx: MdxFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
+  file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childContentYaml: ContentYamlFilterInput, childImageSharp: ImageSharpFilterInput, childMdx: MdxFilterInput, children: NodeFilterListInput, childrenContentYaml: ContentYamlFilterListInput, childrenImageSharp: ImageSharpFilterListInput, childrenMdx: MdxFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
   imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: GatsbyImageDataQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput): ImageSharp
   mdx(body: StringQueryOperatorInput, children: NodeFilterListInput, excerpt: StringQueryOperatorInput, fields: MdxFieldsFilterInput, frontmatter: MdxFrontmatterFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, tableOfContents: JSONQueryOperatorInput): Mdx
   site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, graphqlTypegen: BooleanQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, jsxRuntime: StringQueryOperatorInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, trailingSlash: StringQueryOperatorInput): Site
