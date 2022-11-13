@@ -4,5 +4,10 @@ declare module '*.jpg'
 declare module '*.yml'
 
 interface Brand
+  extends GatsbyTypes.BrandsFrontMatterFragment,
+    GatsbyTypes.FieldsFragment {}
+
+interface Post
   extends GatsbyTypes.BlogsFrontMatterFragment,
     GatsbyTypes.FieldsFragment {}
+// export { usePostMemo } from './components/usePostMemo'

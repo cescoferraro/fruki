@@ -1,68 +1,61 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
 import * as React from 'react'
+import main from '../../static/assets/main_background.png'
 
 interface IProps {
   home: GatsbyTypes.HomeFragmentFragment | null
 }
 
-export const FrukiMainGrid: React.FC<IProps> = ({ home }) => (
-  <Grid
-    container
-    sx={{
-      background: 'red',
-      height: 800,
-    }}
-  >
-    <Grid item xs={12} sm={12} md={8}>
-      <Box
-        sx={{
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          pl: 3,
-        }}
-      >
-        <Box>
-          <Typography variant="h1" color="primary.contrastText">
-            {home?.title}
-          </Typography>
-        </Box>
-      </Box>
-    </Grid>
-    <Grid item xs={12} sm={12} md={4}>
-      <Box
-        sx={{
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          pr: 3,
-        }}
-      >
-        <Box>
-          <Typography
-            display="flex"
-            variant="bodyRegular"
-            color="primary.contrastText"
-            sx={{ textAlign: 'center' }}
-          >
-            Cadastre-se para ser um revendedor dos produtos Fruki. Vem
-            compartilhar com a gente essa paixão por oferecer o melhor sabor!
-          </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Button variant="contained" color="secondary" sx={{ mt: 4 }}>
-              Quero Revender Fruki
-            </Button>
+export const FrukiMainGrid: React.FC<IProps> = ({ home }) => {
+  return (
+    <Box
+      sx={{
+        background: `url(${main}) `,
+      }}
+    >
+      <Container>
+        <Box sx={{ display: 'flex', minHeight: 800 }}>
+          <Box>
+            <Box
+              sx={{
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                pl: 3,
+              }}
+            >
+              <Box>
+                <Typography variant="h1" color="primary.contrastText">
+                  {home?.title}
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+          <Box>
+            <Box
+              sx={{
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                pr: 3,
+              }}
+            >
+              <Box sx={{ ml: 10 }}>
+                <Typography display="flex" variant="bodyLarge" color="primary">
+                  Cadastre-se para ser um revendedor dos produtos Fruki. Vem
+                  compartilhar com a gente essa paixão por oferecer o melhor
+                  sabor!
+                </Typography>
+                <Button variant="contained" color="secondary" sx={{ mt: 4 }}>
+                  Quero Revender Fruki
+                </Button>
+              </Box>
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </Grid>
-  </Grid>
-)
+      </Container>
+    </Box>
+  )
+}

@@ -7,7 +7,7 @@ export function useBrandsMemo(
     () =>
       brands.edges.map((d) => ({
         ...(d.node.fields as GatsbyTypes.FieldsFragment),
-        ...(d.node.frontmatter as GatsbyTypes.BlogsFrontMatterFragment),
+        ...(d.node.frontmatter as GatsbyTypes.BrandsFrontMatterFragment),
       })),
     [brands]
   )

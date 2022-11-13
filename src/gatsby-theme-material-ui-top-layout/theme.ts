@@ -29,12 +29,17 @@ const theme = createTheme({
       },
     },
     MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontWeight: 400,
+        },
+      },
       variants: [
         {
           props: { variant: 'bodyExtraLarge' },
           style: {
             fontSize: 24,
-            fontWeight: 'normal',
+            fontWeight: 400,
             lineHeight: '140%',
             letterSpacing: 0,
           },
@@ -43,7 +48,7 @@ const theme = createTheme({
           props: { variant: 'bodyLarge' },
           style: {
             fontSize: 20,
-            fontWeight: 'normal',
+            fontWeight: 400,
             lineHeight: '140%',
             letterSpacing: 0,
           },
@@ -52,7 +57,7 @@ const theme = createTheme({
           props: { variant: 'bodyRegular' },
           style: {
             fontSize: 18,
-            fontWeight: 'normal',
+            fontWeight: 400,
             lineHeight: '140%',
             letterSpacing: 0,
           },
@@ -61,7 +66,7 @@ const theme = createTheme({
           props: { variant: 'bodySmall' },
           style: {
             fontSize: 16,
-            fontWeight: 'normal',
+            fontWeight: 400,
             lineHeight: '150%',
             letterSpacing: 0,
           },
@@ -77,6 +82,18 @@ const theme = createTheme({
     secondary: {
       main: '#41B02A',
       contrastText: '#FFFFFF',
+    },
+    grey: {
+      '50': '#F8FAFC',
+      '100': '#E0EAF2',
+      '200': '#C9D7E3',
+      '300': '#91AABB',
+      '400': '#627B8D',
+      '500': '#475B69',
+      '600': '#344954',
+      '700': '#20333C',
+      '800': '#1B262C',
+      '900': '#101619',
     },
   },
   typography: {
