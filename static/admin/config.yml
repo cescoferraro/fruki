@@ -69,3 +69,11 @@ collections:
     create: true
     fields:
       - { name: tag, label: tag, widget: string }
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: content/home.yml
+        fields:
+          - {label: Title, name: title, widget: string}

@@ -5,5 +5,3 @@ declare module '*.jpg'
 interface Brand
   extends GatsbyTypes.BlogsFrontMatterFragment,
     GatsbyTypes.FieldsFragment {}
-
-export { useBrandsMemo } from './components/useBrandsMemo'

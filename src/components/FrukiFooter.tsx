@@ -79,7 +79,7 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
             {brands.map((b) => (
-              <Link to={b.slug || ''}>{b.name}</Link>
+              <Link key={b.slug} to={b.slug || ''}>{b.name}</Link>
             ))}
           </Box>
         </Grid>

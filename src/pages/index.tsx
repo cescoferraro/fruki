@@ -9,6 +9,7 @@ import { FrukiTimelineSection } from '../components/FrukiTimelineSection'
 import { useBrandsMemo } from '../components/useBrandsMemo'
 
 const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = (props) => {
+  console.log(props)
   return (
     <>
       <FrukiMainGrid />
@@ -35,6 +36,14 @@ export const pageQuery = graphql`
     slug
   }
   query HomeQuery {
+    home: mdx(internal: { contentFilePath: { eq: "/content/home.yml" } }) {
+      fields {
+        ...Fields
+      }
+      frontmatter {
+        title
+      }
+    }
     ...SiteData
     ...BrandsFragmentQuery
     ...BlogsFragmentQuery

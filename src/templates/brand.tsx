@@ -5,7 +5,6 @@ import React from 'react'
 const BrandPage: React.FC<PageProps<GatsbyTypes.BrandPageQueryQuery>> = (
   props
 ): React.ReactElement => {
-  console.log(props)
   return (
     <React.Fragment>
       <h2>{props.data.brand?.frontmatter?.name}</h2>
@@ -15,7 +14,11 @@ const BrandPage: React.FC<PageProps<GatsbyTypes.BrandPageQueryQuery>> = (
           ...n.frontmatter,
         }))
         .map((s) => {
-          return <Button to={s.slug || ''}>{s.name}</Button>
+          return (
+            <Button key={s.slug} to={s.slug || ''}>
+              {s.name}
+            </Button>
+          )
         })}
     </React.Fragment>
   )
