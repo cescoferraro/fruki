@@ -34,6 +34,9 @@ const theme = createTheme({
           fontWeight: 400,
         },
       },
+      defaultProps: {
+        variant: 'bodyRegular',
+      },
       variants: [
         {
           props: { variant: 'bodyExtraLarge' },
@@ -97,7 +100,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Mangueira',
+    // fontFamily: 'Mangueira',
     h1: {
       fontSize: 64,
       fontWeight: 'bold',

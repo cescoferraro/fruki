@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",
@@ -12,7 +12,7 @@
     "esModuleInterop": true,
     "noUnusedLocals": false,
     "types": ["googlemaps"],
-    "allowJs": true
+    "allowJs": true,
   },
   "include": ["src", "static", "content"],
   "exclude": ["node_modules", "public", ".cache"]

@@ -1,10 +1,12 @@
 import CloseIcon from '@mui/icons-material/LocationOn'
 import { AppBar, Box, Button, Toolbar } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
+import { FrukiModal } from './FrukiModal'
 import { FrukiAppBarLink } from './FrukiAppBarLink'
 import { FrukiLogo } from './frukiLogo'
 
 export function FrukiAppBar() {
+  const [open, setOpen] = useState(false)
   return (
     <AppBar position="sticky" color="transparent">
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -34,16 +36,17 @@ export function FrukiAppBar() {
                 lg: 'unset',
               },
             }}
+            onClick={() => (window.location.href = '/admin')}
             startIcon={<CloseIcon color="secondary" />}
           >
             Onde encontrar
           </Button>
           <Button
+            onClick={() => setOpen((st) => !st)}
             sx={{
               borderRadius: 20,
               ml: 2,
             }}
-            onClick={() => (window.location.href = '/admin')}
             variant="contained"
             color="secondary"
           >
@@ -51,6 +54,7 @@ export function FrukiAppBar() {
           </Button>
         </Box>
       </Toolbar>
+      <FrukiModal open={open} onClose={() => setOpen((s) => !s)} />
     </AppBar>
   )
 }
