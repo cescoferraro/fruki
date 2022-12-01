@@ -8,33 +8,15 @@ import {
 } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { Lead } from 'components/useRevendedorFormik'
+import { FrukiCheckIcon } from './FrukiCheckIcon'
+import { Lead } from '../components/useRevendedorFormik'
 import React from 'react'
 import { center } from '../components/center'
 import { FrukiForm } from '../components/FrukiForm'
 import { LoveIcon } from '../components/LoveIcon'
 import { MedalIcon } from '../components/MedalIcon'
 
-const SvgComponent = (props) => (
-  <svg
-    width={80}
-    height={80}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <rect width={80} height={80} rx={40} fill="#5F99AF" />
-    <path
-      d="m30 40.8 6.207 7.2L50 32"
-      stroke="#fff"
-      strokeWidth={3}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-)
-
-type IProps = {
+interface IProps {
   onClose: () => void
   open: boolean
 }
@@ -51,10 +33,12 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
     flexDirection: 'row',
     justifyContent: 'space-between',
   }
-
+  const host = window.location.host.includes('localhost')
+    ? `http://localhost:3333`
+    : 'https://api.fruki.cescoferraro.com'
   const mutation = useMutation<Lead, Error, Lead>({
     mutationFn: (lead) => {
-      return axios.post('http://localhost:3333/graphql', {
+      return axios.post(`${host}/graphql`, {
         operationName: 'Heelo',
         query: `query Heelo($name: String!, $cnpj: String!, $email: String!, $phone: String!) { createLead(name: $name, cnpj: $cnpj, email: $email, phone: $phone) { name cnpj email phone } } `,
         variables: lead,
@@ -66,7 +50,7 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
       {mutation.isSuccess ? (
         <Paper sx={paper}>
           <Box sx={{ ...center, py: 4 }}>
-            <SvgComponent />
+            <FrukiCheckIcon />
           </Box>
           <Typography align="center" color="secondary" variant="h4">
             Cadastro Concluído!
@@ -82,7 +66,10 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => onClose()}
+              onClick={() => {
+                onClose()
+                mutation.reset()
+              }}
             >
               Voltar para a página inicial
             </Button>
