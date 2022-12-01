@@ -1,14 +1,20 @@
 import { Box, Button } from '@mui/material'
+import { UseMutationResult } from '@tanstack/react-query'
 import React from 'react'
 import { center } from '../components/center'
 import { FrukiTextField } from '../components/FrukiTextField'
 import {
+  Lead,
   stripMaskFromValue,
   useRevendedorFormik,
 } from '../components/useRevendedorFormik'
 
-export function FrukiForm() {
-  const formik = useRevendedorFormik()
+interface IProps {
+  mutation: UseMutationResult<Lead, Error, Lead>
+}
+
+export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
+  const formik = useRevendedorFormik(mutation)
   const stripped = stripMaskFromValue(formik.values.phone)
   const sx = { flexBasis: '50%', flexDirection: 'column' }
   const container = { flexDirection: 'row', justifyContent: 'space-between' }

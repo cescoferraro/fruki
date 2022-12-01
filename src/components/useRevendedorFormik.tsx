@@ -1,17 +1,21 @@
 import * as cnpj from '@fnando/cnpj'
+import { UseMutationResult } from '@tanstack/react-query'
 import { FormikProps, useFormik } from 'formik'
 import * as Yup from 'yup'
 
-interface InitialValues {
+export interface Lead {
   phone: string
   name: string
   cnpj: string
   email: string
 }
+
 const requiredMsg = 'Campo obrigatório'
 
-export function useRevendedorFormik(): FormikProps<InitialValues> {
-  return useFormik<InitialValues>({
+export function useRevendedorFormik(
+  mutation: UseMutationResult<Lead, Error, Lead>
+): FormikProps<Lead> {
+  return useFormik<Lead>({
     validateOnBlur: false,
     validateOnChange: false,
     validationSchema: Yup.object().shape({
@@ -31,14 +35,9 @@ export function useRevendedorFormik(): FormikProps<InitialValues> {
           stripMaskFromValue(value).length <= 11
       ),
     }),
-    initialValues: {
-      cnpj: '',
-      name: '',
-      email: '',
-      phone: '',
-    },
-    onSubmit: (s) => {
-      console.log(s)
+    initialValues: { cnpj: '', name: '', email: '', phone: '' },
+    onSubmit: async (s) => {
+      await mutation.mutate(s)
     },
   })
 }
