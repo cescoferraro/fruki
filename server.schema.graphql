@@ -1,0 +1,16 @@
+type Lead {
+  id: Int!
+  name: String!
+  cnpj: String!
+  email: String!
+  phone: String!
+}
+
+type Query {
+  listLeads(page: Int!): [Lead!]!
+}
+
+type Mutation {
+  createLead(name: String!, cnpj: String!,email: String!, phone: String!): Lead!
+  deleteLead(id: Int!): Lead!
+}

@@ -39,8 +39,8 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
   const mutation = useMutation<Lead, Error, Lead>({
     mutationFn: (lead) => {
       return axios.post(`${host}/graphql`, {
-        operationName: 'Heelo',
-        query: `query Heelo($name: String!, $cnpj: String!, $email: String!, $phone: String!) { createLead(name: $name, cnpj: $cnpj, email: $email, phone: $phone) { name cnpj email phone } } `,
+        operationName: 'CreateLead',
+        query: `query CreateLead($name: String!, $cnpj: String!, $email: String!, $phone: String!) { createLead(name: $name, cnpj: $cnpj, email: $email, phone: $phone) { name cnpj email phone } } `,
         variables: lead,
       })
     },

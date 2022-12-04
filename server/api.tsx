@@ -1,0 +1,108 @@
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { SchemaLink } from '@apollo/client/link/schema'
+import { getDataFromTree } from '@apollo/client/react/ssr'
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
+import { loadSchemaSync } from '@graphql-tools/load'
+import cors from 'cors'
+import express from 'express'
+import { graphqlHTTP } from 'express-graphql'
+import { buildSchema, printSchema } from 'graphql'
+import path from 'path'
+import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { DataTypes, Sequelize } from 'sequelize'
+import { App } from './app'
+
+const app = express()
+
+const sequelize = new Sequelize({
+  database: process.env.DB_NAME || 'fruki',
+  username: process.env.DB_USERNAME || 'postgres',
+  password: process.env.DB_PASSWORD || 'docker',
+  host: process.env.DB_HOST || '127.0.0.1',
+  dialect: 'postgres',
+})
+
+const Lead = sequelize.define('lead', {
+  id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+  name: DataTypes.TEXT,
+  email: DataTypes.TEXT,
+  cnpj: DataTypes.TEXT,
+  phone: DataTypes.TEXT,
+})
+
+void sequelize.sync()
+
+app.use(cors())
+
+const source = loadSchemaSync('./server.schema.graphql', {
+  loaders: [new GraphQLFileLoader()],
+})
+
+const schema = buildSchema(printSchema(source))
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    rootValue: {
+      listLeads: async () => {
+        const leads = await Lead.findAll()
+        await sequelize.authenticate()
+        return leads
+      },
+      createLead: async ({ name, email, cnpj, phone }: any) => {
+        return await Lead.create({ name, email, cnpj, phone })
+      },
+      deleteLead: async ({ id }: any) => {
+        let model = await Lead.findByPk(id)
+        await model?.destroy()
+        return model
+      },
+    },
+    graphiql: true,
+  })
+)
+
+export function Html({ content, state }: any) {
+  return (
+    <html>
+      <body>
+        <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(
+              /</g,
+              '\\u003c'
+            )};`,
+          }}
+        />
+        <script src="public/bundle.js" />
+      </body>
+    </html>
+  )
+}
+
+app.route('/leads').get(async (req, res) => {
+  getDataFromTree(<App />).then((content) => {
+    console.log(content)
+    const html = (
+      <Html
+        content={content}
+        state={new ApolloClient({
+          ssrMode: true,
+          link: new SchemaLink({ schema }),
+          cache: new InMemoryCache(),
+        }).extract()}
+      />
+    )
+    res.status(200)
+    res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`)
+    res.end()
+  })
+})
+app.use('/public', express.static(path.join(__dirname, 'public')))
+
+app.listen(process.env.PORT || 3333, () =>
+  console.info('Express GraphQL Server Now Running On :3333/graphql')
+)

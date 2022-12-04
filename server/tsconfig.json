@@ -6,14 +6,11 @@
     "jsx": "react-jsx",
     "lib": ["es2017", "dom", "esnext"],
     "strict": true,
-    "noEmit": true,
+    "noEmit": false,
     "isolatedModules": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noUnusedLocals": false,
-    "types": ["googlemaps"],
     "allowJs": true,
   },
-  "include": ["src", "static", "content","server"],
-  "exclude": ["node_modules", "public", ".cache"]
 }
