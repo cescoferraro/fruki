@@ -92,37 +92,24 @@ const useIsSsr = () => {
 }
 
 export const App: React.FC<{ client?: any }> = ({ client }) => {
-  const host = useIsSsr()
-    ? `http://localhost:3333`
-    : window?.location?.host?.includes('localhost')
-    ? `http://localhost:3333`
-    : 'https://api.fruki.cescoferraro.com'
   return (
-    <ApolloProvider
-      client={
-        new ApolloClient({
-          uri: `${host}/graphql`,
-          cache: new InMemoryCache(),
-        })
-      }
-    >
-      <Box sx={{ display: 'flex' }}>
-        <AppBar component="nav" sx={{ background: '#41B02A' }}>
-          <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            >
-              Fruki Leads
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Box component="main" sx={{ p: 3 }}>
-          <Toolbar />
-          <NewComponent />
-        </Box>
+    <Box sx={{ display: 'flex' }}>
+      <AppBar component="nav" sx={{ background: '#41B02A' }}>
+        <Toolbar>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          >
+            Fruki Leads
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box component="main" sx={{ p: 3, width: '100%' }}>
+        <Toolbar />
+        <NewComponent />
       </Box>
-    </ApolloProvider>
+    </Box>
+    // </ApolloProvider>
   )
 }

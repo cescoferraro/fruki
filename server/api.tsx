@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { SchemaLink } from '@apollo/client/link/schema'
 import { getDataFromTree } from '@apollo/client/react/ssr'
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
@@ -82,22 +82,24 @@ export function Html({ content, state }: any) {
     </html>
   )
 }
+const apolloClient = new ApolloClient({
+  ssrMode: true,
+  link: new SchemaLink({ schema }),
+  cache: new InMemoryCache(),
+})
 
 app.route('/leads').get(async (req, res) => {
-  getDataFromTree(<App />).then((content) => {
-    console.log(content)
-    const html = (
-      <Html
-        content={content}
-        state={new ApolloClient({
-          ssrMode: true,
-          link: new SchemaLink({ schema }),
-          cache: new InMemoryCache(),
-        }).extract()}
-      />
-    )
+  getDataFromTree(
+    <ApolloProvider client={apolloClient}>
+      <App />
+    </ApolloProvider>
+  ).then((content) => {
     res.status(200)
-    res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`)
+    res.send(
+      `<!doctype html>\n${renderToStaticMarkup(
+        <Html content={content} state={apolloClient.extract()} />
+      )}`
+    )
     res.end()
   })
 })
