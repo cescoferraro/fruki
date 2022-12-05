@@ -39,3 +39,14 @@ jobs:
         with:
           push: true
           tags: cescoferraro/fruki-api:latest
+      - name: Run Docker CMD
+        uses: appleboy/ssh-action@master
+        with:
+          host: 170.187.155.62
+          username: root
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: |
+            docker stop fruki-api && docker rm fruki-api
+            docker pull cescoferraro/fruki-api:latest
+            docker run -itd --name fruki-api --env "VIRTUAL_HOST=api.fruki.cescoferraro.com" --env "VIRTUAL_PORT=3333" --env "LETSENCRYPT_HOST=api.fruki.cescoferraro.com" --env "LETSENCRYPT_EMAIL=francescoaferraro@gmail.com" --env DB_HOST="172.17.0.1" cescoferraro/fruki-api
