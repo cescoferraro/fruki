@@ -6,6 +6,7 @@ import { loadSchemaSync } from '@graphql-tools/load'
 import cors from 'cors'
 import express from 'express'
 import { graphqlHTTP } from 'express-graphql'
+import expressStaticGzip from 'express-static-gzip'
 import { buildSchema, printSchema } from 'graphql'
 import path from 'path'
 import React from 'react'
@@ -103,7 +104,16 @@ app.route('/leads').get(async (req, res) => {
     res.end()
   })
 })
-app.use('/public', express.static(path.join(__dirname, 'public')))
+
+app.use(
+  '/public',
+  expressStaticGzip(path.join(__dirname, 'public'), {
+    index: false,
+    enableBrotli: true,
+    orderPreference: ['br'],
+  })
+)
+// app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.listen(process.env.PORT || 3333, () =>
   console.info('Express GraphQL Server Now Running On :3333/graphql')

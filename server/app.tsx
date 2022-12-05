@@ -1,11 +1,4 @@
-import {
-  ApolloClient,
-  ApolloProvider,
-  gql,
-  InMemoryCache,
-  useMutation,
-  useQuery,
-} from '@apollo/client'
+import { gql, useMutation, useQuery } from '@apollo/client'
 import {
   AppBar,
   Button,
@@ -17,7 +10,7 @@ import {
   Typography,
 } from '@mui/material'
 import Box from '@mui/material/Box/Box'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { DeleteLeadMutation, GetDogsQuery } from './types/graphql'
 
 function NewComponent() {
@@ -83,15 +76,8 @@ function NewComponent() {
     </Grid>
   )
 }
-const useIsSsr = () => {
-  const [isSsr, setIsSsr] = useState(true)
-  useEffect(() => {
-    setIsSsr(false)
-  }, [])
-  return isSsr
-}
 
-export const App: React.FC<{ client?: any }> = ({ client }) => {
+export const App: React.FC = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar component="nav" sx={{ background: '#41B02A' }}>
@@ -110,6 +96,5 @@ export const App: React.FC<{ client?: any }> = ({ client }) => {
         <NewComponent />
       </Box>
     </Box>
-    // </ApolloProvider>
   )
 }
