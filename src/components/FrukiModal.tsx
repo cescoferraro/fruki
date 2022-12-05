@@ -33,9 +33,12 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
     flexDirection: 'row',
     justifyContent: 'space-between',
   }
-  const host = window.location.host.includes('localhost')
-    ? `http://localhost:3333`
-    : 'https://api.fruki.cescoferraro.com'
+  const host =
+    typeof window !== 'undefined'
+      ? window?.location?.host?.includes('localhost')
+        ? `http://localhost:3333`
+        : 'https://api.fruki.cescoferraro.com'
+      : 'https://api.fruki.cescoferraro.com'
   const mutation = useMutation<Lead, Error, Lead>({
     mutationFn: (lead) => {
       return axios.post(`${host}/graphql`, {
