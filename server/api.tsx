@@ -67,7 +67,10 @@ app.use(
 
 export function Html({ content, state }: any) {
   return (
-    <html>
+    <html lang="pt">
+      <head>
+        <title>Fruki Leads</title>
+      </head>
       <body>
         <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
         <script

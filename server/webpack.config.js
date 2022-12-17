@@ -1,8 +1,19 @@
 const path = require('path')
 const BrotliPlugin = require('brotli-webpack-plugin')
+const PLUGIN_NAME = 'TimeLoggerPlugin'
+
+class TimeLoggerPlugin {
+  apply(compiler) {
+    compiler.hooks.watchRun.tap(PLUGIN_NAME, (compiler) => {
+      const logger = compiler.getInfrastructureLogger(PLUGIN_NAME)
+      logger.info(
+        `[Message from ${PLUGIN_NAME}] Compilation Done ${new Date().toLocaleString()}`
+      )
+    })
+  }
+}
 
 module.exports = {
-  mode: 'production',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -22,15 +33,7 @@ module.exports = {
       threshold: 10240,
       minRatio: 0.8,
     }),
+    new TimeLoggerPlugin(),
   ],
-  devServer: {
-    stats: {
-      assets: false,
-      hash: false,
-      chunks: false,
-      errors: true,
-      errorDetails: true,
-    },
-    overlay: true,
-  },
+  devServer: {},
 }

@@ -21,8 +21,9 @@
     "deploy:ci": "gatsby build --prefix-paths && echo 'fruki.cescoferraro.com' > ./public/CNAME && gh-pages -d public -r https://$GH_TOKEN@github.com/cescoferraro/fruki.git",
     "api-dev": "nodemon -w server/**/* --exec 'npm run api'",
     "api": "tsx server/api.tsx",
+    "both": "concurrently 'npm run api-dev' 'npm run client'",
     "codegen": "graphql-codegen --config codegen.ts",
-    "client": "webpack --mode production -c ./server/webpack.config.js"
+    "client": "webpack --mode production -c ./server/webpack.config.js --watch"
   },
   "dependencies": {
     "@apollo/client": "3.7.1",
@@ -97,10 +98,12 @@
     "@typescript-eslint/eslint-plugin": "5.42.1",
     "@typescript-eslint/parser": "5.42.1",
     "brotli-webpack-plugin": "1.1.0",
+    "concurrently": "7.6.0",
     "eslint": "8.27.0",
     "eslint-plugin-react": "7.31.10",
     "prettier": "2.7.1",
     "webpack-bundle-analyzer": "4.7.0",
-    "webpack-cli": "5.0.0"
+    "webpack-cli": "5.0.0",
+    "webpack-dev-server": "4.11.1"
   }
 }
