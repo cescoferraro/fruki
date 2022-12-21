@@ -48,6 +48,7 @@ collections:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: title, label: Título }
+      - { name: url, label: Url}
       - { name: description, label: Descrição, required: false }
       - name: "image"
         label: "Imagem de destaque"
