@@ -1,8 +1,8 @@
 ---
-path: /cd-canoas
+path: /cd-canoas-fruki-bebidas
 date: 2022-12-20T16:31:30.662Z
 title: Centro de Distribuição Canoas
-description: Centro de Distribuição Canoas é top
+description: Rua Antônio Frederico Ozanan, 3030 Canoas / RS - Brasil
 image: /assets/img.png
 tag:
   - LANCAMENTO
