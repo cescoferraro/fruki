@@ -19,6 +19,7 @@ const AboutUsPage: React.FC<
       <FrukiAppBar />
       <FrukiContainer>
         <AboutMain />
+
         <FrukiPourpose />
         <FrukiWorkForceHistory />
         <LocationsSlider locations={locations} />
