@@ -82,6 +82,16 @@ collections:
       - { name: date, label: Data, widget: date }
       - { name: question, label: Pergunta }
       - { name: answer, label: Resposta }
+  - name: timeline
+    label: Timeline
+    folder: content/timeline
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: year, label: Ano }
+      - { name: description, label: Descrição, required: false }
+      - { name: image, label: Imagem de destaque, widget: image }
   - name: initiative
     label: Initiatives
     folder: content/iniciativas
