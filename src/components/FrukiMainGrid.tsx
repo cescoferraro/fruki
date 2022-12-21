@@ -96,7 +96,7 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
       onMouseLeave={() => setVisible(false)}
     >
       <Carousel
-        // sx={{ height: 250 }}
+        swipe={false}
         autoPlay={false}
         animation={undefined}
         duration={0}
