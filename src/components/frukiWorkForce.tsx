@@ -1,4 +1,5 @@
-import { Box, Button, Typography, useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
+import { Button } from 'gatsby-material-ui-components'
 import image7 from 'assets/home/img_7.png'
 import { SeloTopBig } from 'components/SeloTopBig'
 import { useIsBigScreen } from 'components/useIsBigScreen'
@@ -32,7 +33,12 @@ export function FrukiWorkForce() {
               pelo que fazem: oferecer o melhor sabor.{' '}
             </Typography>
             <Box>
-              <Button variant="contained" color="secondary" size="large">
+              <Button
+                to="https://vagasfruki.gupy.io/"
+                variant="contained"
+                color="secondary"
+                size="large"
+              >
                 Ver Oportunidades{' '}
               </Button>
             </Box>

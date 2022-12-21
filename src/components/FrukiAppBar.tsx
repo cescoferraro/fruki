@@ -29,9 +29,6 @@ function NewComponent(props: {
           <FrukiAppBarLink sx={sx} to="/sobre-nos">
             Sobre nós
           </FrukiAppBarLink>
-          <FrukiAppBarLink sx={sx} to="/marcas">
-            Nossas Marcas
-          </FrukiAppBarLink>
           <FrukiAppBarLink sx={sx} to="/planetas-e-pessoas">
             Planetas e Pessoas
           </FrukiAppBarLink>

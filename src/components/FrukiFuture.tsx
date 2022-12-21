@@ -1,5 +1,6 @@
-import { Box, Button, Typography, useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
+import { Button } from 'gatsby-material-ui-components'
 import image6 from 'assets/home/img_6.png'
 import { NewGeneric } from 'components/newGeneric'
 import { useIsBigScreen } from 'components/useIsBigScreen'
@@ -44,7 +45,12 @@ export function FrukiFuture({
             </Typography>
             {action && (
               <Box sx={{ pl: defaultPl }}>
-                <Button variant="contained" color="primary" size="large">
+                <Button
+                  to="/planetas-e-pessoas"
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                >
                   {action}
                 </Button>
               </Box>

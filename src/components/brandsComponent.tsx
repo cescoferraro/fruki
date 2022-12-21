@@ -7,7 +7,6 @@ import {
   useTheme,
 } from '@mui/material'
 import img66 from 'assets/home/img_8.png'
-import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 import { Stacked } from './Stacked'
@@ -67,7 +66,7 @@ export function BrandsComponent(props: { brands: any[] }) {
             variant={isSmall ? 'h5' : 'h4'}
             color="primary.contrastText"
           >
-            Conheça todos os produtos Fruki
+            Conheça Nossas Marcas
           </Typography>
           <Typography
             variant="body1"
@@ -125,7 +124,7 @@ export function BrandsComponent(props: { brands: any[] }) {
                 p: 5,
                 m: index === 0 ? 2 : 2,
               }}
-              onClick={() => navigate(s?.slug || '')}
+              // onClick={() => navigate(s?.slug || '')}
             >
               <Box
                 style={{
@@ -150,7 +149,13 @@ export function BrandsComponent(props: { brands: any[] }) {
             pb: 8,
           }}
         >
-          <Button to="/marcas" color="secondary" variant="contained">
+          <Button
+            to="/assets/Fruki_LGPD.pdf"
+            // @ts-ignore
+            target="_blank"
+            color="secondary"
+            variant="contained"
+          >
             Ver todas as marcas
           </Button>
         </Box>

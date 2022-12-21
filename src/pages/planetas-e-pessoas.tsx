@@ -148,7 +148,7 @@ Ser gentil com o planeta já faz parte do nosso dia a dia, mas ainda há muito a
             Conheça os últimos prêmios conquistados pela Fruki Bebidas.{' '}
           </Typography>
         </Box>
-        <FrukiSlider translate={342 / 2}>
+        <FrukiSlider translate={250 / 2}>
           {data.certificates.edges
             .map((e) => e.node.frontmatter)
             .map((p, idx) => (

@@ -84,7 +84,7 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
             <Link to={'/blog'}>Blog</Link>
-            <Link to={'/marcas'}>Nossas Marcas</Link>
+            {/*<Link to={'/marcas'}>Nossas Marcas</Link>*/}
             <Link>Seja um Parceiro</Link>
             <Link>Sobre a Fruki</Link>
             <Link>Onde Encontrar</Link>
