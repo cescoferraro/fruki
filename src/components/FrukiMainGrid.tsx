@@ -108,12 +108,6 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
         activeIndicatorIconButtonProps={{ style: { color: 'black' } }}
         indicatorContainerProps={{
           style: { marginTop: '-34px', position: 'absolute', zIndex: 2 },
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          onClick: (e) => {
-            e.preventDefault()
-            e.stopPropagation()
-          },
         }}
       >
         <NewComponent />
