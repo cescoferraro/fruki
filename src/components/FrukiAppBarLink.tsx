@@ -23,7 +23,7 @@ export const FrukiAppBarLink = (props: IProps) => {
         sx={{
           whiteSpace: 'nowrap',
           minWidth: 'auto',
-          ml: { md: 4, lg: 6 },
+          ml: { md: 1.5, lg: 2 },
           textDecoration: 'none',
           fontWeight: url.includes(props?.to || 'kdsjfn') ? 700 : 400,
           ...props.sx,
