@@ -1440,6 +1440,7 @@ input MdxFilterListInput {
 
 type MdxFrontmatter {
   about: String
+  answer: String
   author: String
   brand: String
   color: String
@@ -1465,13 +1466,16 @@ type MdxFrontmatter {
   logo: String
   name: String
   path: String
-  tag: String
+  question: String
+  tag: [String]
+  tag_name: String
   tags: [String]
   title: String
 }
 
 input MdxFrontmatterFieldSelector {
   about: FieldSelectorEnum
+  answer: FieldSelectorEnum
   author: FieldSelectorEnum
   brand: FieldSelectorEnum
   color: FieldSelectorEnum
@@ -1481,13 +1485,16 @@ input MdxFrontmatterFieldSelector {
   logo: FieldSelectorEnum
   name: FieldSelectorEnum
   path: FieldSelectorEnum
+  question: FieldSelectorEnum
   tag: FieldSelectorEnum
+  tag_name: FieldSelectorEnum
   tags: FieldSelectorEnum
   title: FieldSelectorEnum
 }
 
 input MdxFrontmatterFilterInput {
   about: StringQueryOperatorInput
+  answer: StringQueryOperatorInput
   author: StringQueryOperatorInput
   brand: StringQueryOperatorInput
   color: StringQueryOperatorInput
@@ -1497,13 +1504,16 @@ input MdxFrontmatterFilterInput {
   logo: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
+  question: StringQueryOperatorInput
   tag: StringQueryOperatorInput
+  tag_name: StringQueryOperatorInput
   tags: StringQueryOperatorInput
   title: StringQueryOperatorInput
 }
 
 input MdxFrontmatterSortInput {
   about: SortOrderEnum
+  answer: SortOrderEnum
   author: SortOrderEnum
   brand: SortOrderEnum
   color: SortOrderEnum
@@ -1513,7 +1523,9 @@ input MdxFrontmatterSortInput {
   logo: SortOrderEnum
   name: SortOrderEnum
   path: SortOrderEnum
+  question: SortOrderEnum
   tag: SortOrderEnum
+  tag_name: SortOrderEnum
   tags: SortOrderEnum
   title: SortOrderEnum
 }

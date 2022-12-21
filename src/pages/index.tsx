@@ -1,20 +1,18 @@
+import { BrandsComponent } from 'components/brandsComponent'
+import { FrukiAppBar } from 'components/FrukiAppBar'
+import { FrukiBlogSection } from 'components/FrukiBlogSection'
+import { FrukiContact } from 'components/frukiContact'
+import { FrukiContainer } from 'components/FrukiContainer'
+import { FrukiFooter } from 'components/FrukiFooter'
+import { FrukiFuture } from 'components/FrukiFuture'
+import { FrukiHistory } from 'components/FrukiHistory'
+import { FrukiMainGrid } from 'components/FrukiMainGrid'
+import { FrukiWorkForce } from 'components/frukiWorkForce'
+import { useBrandsMemo } from 'components/useBrandsMemo'
+import { usePostMemo } from 'components/usePostMemo'
 import type { PageProps } from 'gatsby'
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import { BrandsComponent } from '../components/brandsComponent'
-import { FrukiBlogSection } from '../components/FrukiBlogSection'
-import { FrukiFooter } from '../components/FrukiFooter'
-import { FrukiHelpSection } from '../components/FrukiHelpSection'
-import { FrukiMainGrid } from '../components/FrukiMainGrid'
-import { FrukiTimelineSection } from '../components/FrukiTimelineSection'
-import { useBrandsMemo } from '../components/useBrandsMemo'
-import { usePostMemo } from '../components/usePostMemo'
-
-const center: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
 
 const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   data: { brands, home, posts },
@@ -23,20 +21,24 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   const allPosts = usePostMemo(posts)
   return (
     <>
-      <FrukiMainGrid home={home} />
-      <FrukiTimelineSection home={home} />
-      <BrandsComponent brands={allBrands} />
-      <FrukiHelpSection />
-      <FrukiBlogSection posts={allPosts} />
-      <FrukiHelpSection />
-      <FrukiFooter brands={allBrands} />
+      <FrukiAppBar />
+      <FrukiContainer>
+        <FrukiMainGrid home={home} />
+        <FrukiHistory />
+        <BrandsComponent brands={allBrands} />
+        <FrukiFuture action={'Saiba mais'} />
+        <FrukiBlogSection posts={allPosts} />
+        <FrukiContact />
+        <FrukiWorkForce />
+        <FrukiFooter brands={allBrands} />
+      </FrukiContainer>
     </>
   )
 }
 
 export default IndexPage
 
-export const ref = graphql`
+export const pageQuery = graphql`
   fragment SiteData on Query {
     site {
       siteMetadata {
@@ -47,9 +49,6 @@ export const ref = graphql`
   fragment Fields on MdxFields {
     slug
   }
-`
-
-export const pageQuery = graphql`
   fragment HomeFragment on ContentYaml {
     title
     caption
@@ -59,7 +58,6 @@ export const pageQuery = graphql`
       ...HomeFragment
     }
   }
-
   query HomeQuery {
     ...HomeQueryFragment
     ...SiteData

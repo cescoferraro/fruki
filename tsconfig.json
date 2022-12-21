@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "module": "commonjs",
     "target": "esnext",
     "jsx": "react-jsx",
@@ -13,6 +12,13 @@
     "noUnusedLocals": false,
     "types": ["googlemaps"],
     "allowJs": true,
+    "typeRoots": ["src/index.d.ts"],
+    "paths": {
+      "pages/*": ["src/pages/*"],
+      "index": ["src/index.d.ts"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["static/assets/*"]
+    }
   },
   "include": ["src", "static", "content","server"],
   "exclude": ["node_modules", "public", ".cache"]

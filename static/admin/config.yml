@@ -26,7 +26,7 @@ collections:
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
-      - { name: name, label: Nome}
+      - { name: name, label: Nome }
       - { name: description, label: Descrição, required: false }
       - name: "image"
         label: "Image do Producto"
@@ -53,22 +53,67 @@ collections:
         label: "Imagem de destaque"
         widget: "image"
       - { name: "body", label: "Conteúdo do blog post", widget: "markdown" }
+      - { name: author, label: Autor do post, required: false }
+      - { name: about, label: Sobre o autor, required: false }
       - label: "Tags"
-        name: "tag"
+        name: "tags"
         widget: "relation"
         collection: "tag"
         multiple: true
-        searchFields: [ "tag" ]
-        valueField: "tag"
-        displayFields: [ "tag" ]
-      - { name: author, label: Autor do post, required: false }
-      - { name: about, label: Sobre o autor, required: false }
+        searchFields: [ "tag_name" ]
+        valueField: "tag_name"
+        displayFields: [ "tag_name" ]
+  - name: certificate
+    label: Certificados
+    folder: content/certificate
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: name, label: Nome }
+      - { name: color , label: Color, required: true, widget: color }
+      - { name: image, label: Imagem de destaque, widget: image }
+  - name: faq
+    label: FAQS
+    folder: content/faq
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: question, label: Pergunta }
+      - { name: answer, label: Resposta }
+  - name: initiative
+    label: Initiatives
+    folder: content/iniciativas
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: title, label: Título }
+      - { name: description, label: Descrição, required: false }
+      - { name: "body", label: "Conteúdo da Iniciativa", widget: "markdown" }
+      - { name: color , label: Color, required: true, widget: color }
+      - name: "image"
+        label: "Imagem de destaque"
+        widget: "image"
+  - name: location
+    label: Locations
+    folder: content/location
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: title, label: Título }
+      - { name: description, label: Descrição, required: false }
+      - name: "image"
+        label: "Imagem de destaque"
+        widget: "image"
   - name: tag
     label: Tag
     folder: content/tag
     create: true
     fields:
-      - { name: tag, label: tag, widget: string }
+      - { name: tag_name, label: Tag, widget: string }
   - label: "Pages"
     name: "pages"
     files:
@@ -76,6 +121,6 @@ collections:
         name: "home"
         file: content/home.yml
         fields:
-          - {label: Name, name: name, widget: string}
-          - {label: Title, name: title, widget: string}
-          - {label: Caption, name: caption, widget: string}
+          - { label: Name, name: name, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Caption, name: caption, widget: string }

@@ -1,5 +1,5 @@
-import { Box, LinkProps } from '@mui/material'
-import { Link } from 'gatsby-theme-material-ui'
+import { Box, LinkProps, Link } from '@mui/material'
+import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
 import React from 'react'
 
 interface IProps extends LinkProps {
@@ -7,6 +7,7 @@ interface IProps extends LinkProps {
 }
 
 export const FrukiAppBarLink = (props: IProps) => {
+  const url = typeof window !== 'undefined' ? window.location.href : ''
   return (
     <Box
       sx={{
@@ -16,12 +17,15 @@ export const FrukiAppBarLink = (props: IProps) => {
       }}
     >
       <Link
-        {...(props as any)}
+        variant="button"
+        component={GatsbyLink}
+        {...(props as LinkProps)}
         sx={{
-          ml: {
-            md: 4,
-            lg: 6,
-          },
+          whiteSpace: 'nowrap',
+          minWidth: 'auto',
+          ml: { md: 4, lg: 6 },
+          textDecoration: 'none',
+          fontWeight: url.includes(props?.to || 'kdsjfn') ? 700 : 400,
           ...props.sx,
         }}
         to={props.to}

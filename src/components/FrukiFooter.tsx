@@ -7,6 +7,8 @@ import {
   SxProps,
   Typography,
 } from '@mui/material'
+import { center } from 'components/center'
+import { SeloTop } from 'components/SeloTop'
 import { navigate } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
 import * as React from 'react'
@@ -32,23 +34,43 @@ interface IProps {
 export function FrukiFooter({ brands }: IProps) {
   return (
     <Container>
-      <Grid container sx={{ py: 8 }} spacing={2}>
-        <Grid item xs={12} sm={6} md={3} lg={3}>
+      <Grid
+        container
+        sx={{
+          py: 8,
+          '& > div:nth-child(n+2):nth-last-child(n+2)': {
+            pl: {
+              md: 4,
+            },
+          },
+        }}
+      >
+        <Grid item xs={12} sm={6} md={3} lg={3} sx={{ py: 2 }}>
           <FrukiLogo />
-          <Box sx={{ py: 2, display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="bodyLarge" color="primary">
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography variant="bodyRegular" fontWeight={700} color="primary">
               Telefone
             </Typography>
             <Typography sx={sx1} variant="bodyRegular" color="secondary">
               0800.703.9910
             </Typography>
-            <Typography sx={{ mt: 2 }} variant="bodyLarge" color="primary">
+            <Typography
+              sx={{ mt: 2 }}
+              variant="bodyRegular"
+              fontWeight={700}
+              color="primary"
+            >
               Atendimento E-mail
             </Typography>
             <Typography sx={sx1} variant="bodyRegular" color="secondary">
               contato@fruki.com.br
             </Typography>
-            <Typography sx={{ mt: 2 }} variant="bodyLarge" color="primary">
+            <Typography
+              sx={{ mt: 2 }}
+              variant="bodyRegular"
+              fontWeight={700}
+              color="primary"
+            >
               Horário de Atendimento
             </Typography>
             <Typography sx={sx1} variant="bodyRegular" color="secondary">
@@ -56,8 +78,8 @@ export function FrukiFooter({ brands }: IProps) {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} md={3} lg={3}>
-          <Typography sx={{ pt: 2 }} variant="bodyLarge" color="primary">
+        <Grid item xs={12} sm={6} md={3} lg={3} sx={{ pt: 2 }}>
+          <Typography variant="bodyRegular" fontWeight={700} color="primary">
             Informações
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
@@ -66,7 +88,7 @@ export function FrukiFooter({ brands }: IProps) {
             <Link>Seja um Parceiro</Link>
             <Link>Sobre a Fruki</Link>
             <Link>Onde Encontrar</Link>
-            <Link>Trabalhe Conosco</Link>
+            <Link to={'https://vagasfruki.gupy.io/'}>Trabalhe Conosco</Link>
             <Link>Patrocínio</Link>
             <Link>Dúvidas Frequentes</Link>
             <Link>Notícias</Link>
@@ -74,8 +96,8 @@ export function FrukiFooter({ brands }: IProps) {
             <Link>Relatório de Sustentabilidade</Link>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} md={3} lg={3}>
-          <Typography sx={{ pt: 2 }} variant="bodyLarge" color="primary">
+        <Grid item xs={12} sm={6} md={3} lg={3} sx={{ pt: 2 }}>
+          <Typography variant="bodyRegular" fontWeight={700} color="primary">
             Marcas
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
@@ -86,11 +108,18 @@ export function FrukiFooter({ brands }: IProps) {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6} md={3} lg={3}>
-          <Typography sx={{ pt: 2 }} variant="bodyLarge" color="primary">
+        <Grid item xs={12} sm={6} md={3} lg={3} sx={{ pt: 2 }}>
+          <Typography variant="bodyRegular" fontWeight={700} color="primary">
             Redes Sociais
           </Typography>
-          <Box sx={{ pt: 2, display: 'flex', flexDirection: 'row' }}>
+          <Box
+            sx={{
+              pt: 2,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+            }}
+          >
             <Box sx={{ pr: 2 }}>
               <IconButton
                 onClick={() =>
@@ -119,7 +148,7 @@ export function FrukiFooter({ brands }: IProps) {
                 <FacebookIcon />
               </IconButton>
             </Box>
-            <Box sx={{ pr: 2 }}>
+            <Box sx={{}}>
               <IconButton
                 onClick={() => navigate('https://twitter.com/fruki_oficial')}
                 sx={{ backgroundColor: 'secondary.main' }}
@@ -127,6 +156,9 @@ export function FrukiFooter({ brands }: IProps) {
                 <TwitterIcon />
               </IconButton>
             </Box>
+          </Box>
+          <Box sx={{ ...center, pt: 4 }}>
+            <SeloTop />
           </Box>
         </Grid>
       </Grid>

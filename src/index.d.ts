@@ -10,4 +10,3 @@ interface Brand
 interface Post
   extends GatsbyTypes.BlogsFrontMatterFragment,
     GatsbyTypes.FieldsFragment {}
-// export { usePostMemo } from './components/usePostMemo'

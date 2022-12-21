@@ -1,124 +1,152 @@
 import {
   Box,
   Container,
-  Icon,
   IconButton,
   Typography,
+  useMediaQuery,
   useTheme,
 } from '@mui/material'
+import img66 from 'assets/home/img_8.png'
 import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 import { Stacked } from './Stacked'
 
-export function BrandsComponent(props: { brands: Brand[] }) {
+export function BrandsComponent(props: { brands: any[] }) {
   const theme = useTheme()
+  let margin = { xs: 0, sm: 0, md: 13 }
+  const isSmall = useMediaQuery(useTheme().breakpoints.down('md'))
   return (
-    <Container sx={{ pt: 8 }}>
-      <Box>
+    <>
+      <Box
+        sx={{
+          backgroundImage: `url(${img66})`,
+          height: { xs: 400, sm: 400, md: 700 },
+          backgroundSize: 'cover',
+          backgroundPositino: 'center',
+          display: 'flex',
+        }}
+      >
         <Box
           sx={{
-            borderRadius: '200px 0px 200px 0px',
-            background: theme.palette.primary.main,
-            height: 420,
-            px: 4,
+            flexBasis: {
+              xs: '100%',
+              sm: '100%',
+              md: '60%',
+            },
+            mt: margin,
+            ml: margin,
+            m: {
+              xs: 4,
+              sm: 4,
+            },
+            maxWidth: {
+              sm: 'unset',
+              md: 710,
+            },
+
+            height: 'min-content',
+            background: '#5F99AF',
+            p: {
+              xs: 4,
+              sm: 6,
+              md: 10,
+            },
+            borderTopLeftRadius: 120,
+            borderBottomRightRadius: 120,
+            transform: {
+              xs: 'translateY(170px)',
+              sm: 'translateY(250px)',
+              md: 'translateY(0px)',
+            },
           }}
         >
-          <Box
-            sx={{
-              pt: 8,
-              pb: 3,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
+          <Typography
+            align="center"
+            sx={{ mb: 3 }}
+            variant={isSmall ? 'h5' : 'h4'}
+            color="primary.contrastText"
           >
-            <Box sx={{ width: 500 }}>
-              <Typography
-                color="secondary.contrastText"
-                variant="h3"
-                align="center"
-              >
-                Descubra o{' '}
-                <span style={{ color: theme.palette.secondary.main }}>
-                  sabor{' '}
-                </span>{' '}
-                de estar junto
-              </Typography>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              px: 16,
-            }}
+            Conheça todos os produtos Fruki
+          </Typography>
+          <Typography
+            variant="body1"
+            align="center"
+            color="primary.contrastText"
           >
-            <Typography
-              color="secondary.contrastText"
-              align="center"
-              variant="bodyLarge"
-            >
-              Queremos fazer parte da sua vida em todos os momentos. Conheça as
-              marcas que fazem parte da Fruki Bebidas.{' '}
-            </Typography>
-          </Box>
+            Queremos fazer parte da sua vida em todos os momentos. Conheça as
+            marcas que fazem parte da Fruki Bebidas e descubra o sabor de estar
+            junto!
+          </Typography>
         </Box>
-        <Box
+      </Box>
+      <Container
+        sx={{
+          transform: {
+            md: 'translateY(-120px)',
+          },
+          mb: {
+            md: -120 / 8,
+          },
+          pr: '0px !important',
+          position: {
+            md: 'relative',
+          },
+          // minWidth: {
+          //   md: '100%',
+          // },
+          mt: {
+            xs: 20,
+            sm: 20,
+            md: 0,
+          },
+        }}
+      >
+        <Stacked
+          gap={4}
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{
-            overflowX: 'auto',
-            overflowY: 'hidden',
-            pt: 8,
-            position: 'relative',
-            marginTop: '-220px',
+            overflowX: 'scroll',
+            '&::-webkit-scrollbar': { display: 'none' },
           }}
         >
-          <Stacked
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            gap={4}
-            sx={{
-              '&::-webkit-scrollbar': { display: 'none' },
-            }}
-          >
-            {props.brands.map((s) => (
-              <IconButton
-                key={s.slug}
-                sx={{
-                  zIndex: 100,
+          {props.brands.map((s, index) => (
+            <IconButton
+              key={s.slug}
+              sx={{
+                zIndex: 100,
+                background: 'white',
+                boxShadow: `${theme.shadows[12]}`,
+                ':hover': {
                   background: 'white',
-                  boxShadow: `${theme.shadows[12]}`,
-                  ':hover': {
-                    background: 'white',
-                  },
-                  p: 5,
-                  m: 5,
+                },
+                p: 5,
+                m: index === 0 ? 2 : 2,
+              }}
+              onClick={() => navigate(s?.slug || '')}
+            >
+              <Box
+                style={{
+                  width: 150,
+                  height: 150,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
-                onClick={() => navigate(s?.slug || '')}
               >
-                <Box
-                  style={{
-                    width: 150,
-                    height: 150,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <img style={{ maxWidth: 150 }} src={s?.logo || ''} />
-                </Box>
-              </IconButton>
-            ))}
-          </Stacked>
-        </Box>
+                <img alt="logo" style={{ maxWidth: 150 }} src={s?.logo || ''} />
+              </Box>
+            </IconButton>
+          ))}
+        </Stacked>
         <Box
           sx={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            pt: 0,
+            pt: 2,
             pb: 8,
           }}
         >
@@ -126,7 +154,7 @@ export function BrandsComponent(props: { brands: Brand[] }) {
             Ver todas as marcas
           </Button>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </>
   )
 }

@@ -31,7 +31,7 @@ const theme = createTheme({
     MuiTypography: {
       styleOverrides: {
         root: {
-          fontWeight: 400,
+          // fontWeight: 400,
         },
       },
       defaultProps: {
@@ -86,6 +86,11 @@ const theme = createTheme({
       main: '#41B02A',
       contrastText: '#FFFFFF',
     },
+    action: {
+      active: '#5F99AF',
+      // main: '#41B02A',
+      // contrastText: '#FFFFFF',
+    },
     grey: {
       '50': '#F8FAFC',
       '100': '#E0EAF2',
@@ -100,40 +105,40 @@ const theme = createTheme({
     },
   },
   typography: {
-    // fontFamily: 'Mangueira',
+    fontFamily: 'Mangueira',
     h1: {
       fontSize: 64,
-      fontWeight: 'bold',
+      fontWeight: 700,
       lineHeight: '115%',
       letterSpacing: 0,
     },
     h2: {
       fontSize: 56,
-      fontWeight: 'bold',
+      fontWeight: 700,
       lineHeight: '115%',
       letterSpacing: 0,
     },
     h3: {
       fontSize: 48,
-      fontWeight: 'bold',
+      fontWeight: 700,
       lineHeight: '110%',
       letterSpacing: 0,
     },
     h4: {
       fontSize: 40,
-      fontWeight: 'bold',
+      fontWeight: 700,
       lineHeight: '120%',
       letterSpacing: 0,
     },
     h5: {
       fontSize: 32,
-      fontWeight: 'bold',
+      fontWeight: 400,
       lineHeight: '130%',
       letterSpacing: 0,
     },
     h6: {
       fontSize: 24,
-      fontWeight: 'bold',
+      fontWeight: 400,
       lineHeight: '130%',
       letterSpacing: 0,
     },

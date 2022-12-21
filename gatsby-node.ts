@@ -8,6 +8,7 @@ interface BlogPostPages {
 }
 
 interface Result {
+  initiatives: { nodes: any[] }
   products: { nodes: any[] }
   brands: { nodes: any[] }
   blogs: { nodes: any[] }
@@ -74,12 +75,53 @@ function createBrandPages(result: BlogPostPages, createPage: any) {
   })
 }
 
+function createInitiativePages(result: BlogPostPages, createPage: any) {
+  const initiatives = result.data?.initiatives?.nodes || []
+  initiatives.forEach((brand, index) => {
+    const slug = brand.fields.slug
+    console.log(slug)
+    createPage({
+      path: slug,
+      component: path.resolve(`./src/templates/initiative.tsx`),
+      context: {
+        nodes: initiatives,
+        brand: brand.frontmatter.path,
+        name: brand.frontmatter.name,
+        slug: slug,
+        previous:
+          index === initiatives.length - 1 ? null : initiatives[index + 1].node,
+        next: index === 0 ? null : initiatives[index - 1].node,
+      },
+    })
+  })
+}
+
 // noinspection JSUnusedGlobalSymbols
 export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const { createPage } = actions
   // language=GraphQL
   const result = await graphql<Result>(`
     query GatsbyNode {
+      initiatives: allMdx(
+        filter: {
+          internal: { contentFilePath: { regex: "/content/iniciativas/" } }
+        }
+        sort: { frontmatter: { date: ASC } }
+        limit: 1000
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            path
+            title
+            description
+            image
+            tags
+          }
+        }
+      }
       blogs: allMdx(
         filter: { internal: { contentFilePath: { regex: "/content/blog/" } } }
         sort: { frontmatter: { date: ASC } }
@@ -136,6 +178,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   createBrandPages(result, createPage)
   createProductPages(result, createPage)
   createBlogPostPages(result, createPage)
+  createInitiativePages(result, createPage)
 
   return null
 }
@@ -149,6 +192,20 @@ export const onCreateNode = ({
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
+    console.log(value)
     createNodeField({ name: `slug`, node, value })
   }
+}
+
+// gatsby-node.js: copy code to clipboard
+export const onCreateWebpackConfig = ({ actions }: any) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [
+        path.resolve(__dirname, 'static'),
+        path.resolve(__dirname, 'src'),
+        'node_modules',
+      ],
+    },
+  })
 }

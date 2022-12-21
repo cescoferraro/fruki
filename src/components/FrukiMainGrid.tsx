@@ -1,61 +1,60 @@
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 import * as React from 'react'
-import main from '../../static/assets/main_background.png'
+import homeImg from '../../static/assets/home/img.png'
+import smallHomeImg from '../../static/assets/home/img_2.png'
 
 interface IProps {
   home: GatsbyTypes.HomeFragmentFragment | null
 }
 
-export const FrukiMainGrid: React.FC<IProps> = ({ home }) => {
+function useMainHeight() {
+  return { height: '100%' }
+}
+
+export const FrukiMainGrid: React.FC<IProps> = ({}) => {
+  var items = [
+    {
+      name: 'Random Name #1',
+      description: 'Probably the most random thing you have ever seen!',
+      background: homeImg,
+      mobile: smallHomeImg,
+    },
+    {
+      name: 'Random Name #2',
+      description: 'Hello World!',
+      background: homeImg,
+      mobile: smallHomeImg,
+    },
+  ]
+  return <Item item={items[0]} />
+}
+
+function Item(props: any) {
+  const isSmall = useMediaQuery(useTheme().breakpoints.down('sm'))
+  const src = isSmall ? props.item.mobile : props.item.background
   return (
     <Box
       sx={{
-        background: `url(${main}) `,
+        display: 'flex',
+        width: '100%',
+        // backgroundImage: {
+        //   xs: `url(${src})`,
+        //   sm: 'unset',
+        // },
+        // backgroundSize: 'cover',
+        // height: {
+        //   xs: '716px',
+        //   sm: 'unset',
+        // },
       }}
     >
-      <Container>
-        <Box sx={{ display: 'flex', minHeight: 800 }}>
-          <Box>
-            <Box
-              sx={{
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                pl: 3,
-              }}
-            >
-              <Box>
-                <Typography variant="h1" color="primary.contrastText">
-                  {home?.title}
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-          <Box>
-            <Box
-              sx={{
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                pr: 3,
-              }}
-            >
-              <Box sx={{ ml: 10 }}>
-                <Typography display="flex" variant="bodyLarge" color="primary">
-                  Cadastre-se para ser um revendedor dos produtos Fruki. Vem
-                  compartilhar com a gente essa paixão por oferecer o melhor
-                  sabor!
-                </Typography>
-                <Button variant="contained" color="secondary" sx={{ mt: 4 }}>
-                  Quero Revender Fruki
-                </Button>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-      </Container>
+      {/*{!isSmall && (*/}
+      <img
+        src={src}
+        alt=""
+        style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+      />
+      {/*)}*/}
     </Box>
   )
 }

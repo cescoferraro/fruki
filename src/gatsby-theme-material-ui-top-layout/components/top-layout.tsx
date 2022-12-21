@@ -1,10 +1,10 @@
-import { Box, CssBaseline } from '@mui/material'
+import { CssBaseline } from '@mui/material'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // @ts-ignore
 import ThemeTopLayout from 'gatsby-theme-material-ui-top-layout/src/components/top-layout'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { FrukiAppBar } from '../../components/FrukiAppBar'
+import './global.css'
 
 const queryClient = new QueryClient()
 export default function TopLayout({ children, theme }: any) {
@@ -22,31 +22,10 @@ export default function TopLayout({ children, theme }: any) {
               crossOrigin="anonymous"
               key="interFont"
             />
+            <style />
           </Helmet>
           <CssBaseline />
-          <Box
-            sx={{
-              height: '100vh',
-              width: '100vw',
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-          >
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100vh',
-                width: '100vw',
-              }}
-            >
-              <FrukiAppBar />
-              <Box sx={{ flexGrow: 1, overflowY: 'auto', overflowX: 'hidden' }}>
-                {children}
-              </Box>
-            </Box>
-          </Box>
+          {children}
         </React.Fragment>
       </ThemeTopLayout>
     </QueryClientProvider>
