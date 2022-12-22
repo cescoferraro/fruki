@@ -8,15 +8,6 @@ import {
   VisibilityContext,
 } from 'react-horizontal-scrolling-menu'
 
-const HH = styled(ScrollMenu)`
-  .teto {
-    transform: translateY(-272px);
-  }
-  .react-horizontal-scrolling-menu--wrapper {
-    transform: translateY(-272px);
-  }
-`
-
 export const FrukiSlider = ({
   children,
   translate,
@@ -27,13 +18,12 @@ export const FrukiSlider = ({
   return (
     <Container
       sx={{
-        py: 4,
         transform: `translateY( -${translate || 0}px)`,
         marginBottom: -(translate || 0) / 8,
         px: '0px !important',
       }}
     >
-      <HH
+      <ScrollMenu
         scrollContainerClassName={'bannerContainer'}
         LeftArrow={() => {
           const ctx = React.useContext(VisibilityContext)
@@ -59,7 +49,7 @@ export const FrukiSlider = ({
         }}
       >
         {children}
-      </HH>
+      </ScrollMenu>
     </Container>
   )
 }

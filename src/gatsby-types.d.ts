@@ -2862,6 +2862,11 @@ type PostBySlugPageQueryQueryVariables = Exact<{
 
 type PostBySlugPageQueryQuery = { readonly post: { readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null, readonly image: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly author: string | null, readonly about: string | null } | null } | null };
 
+type PrivacyPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PrivacyPageQuery = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null } | null } }> } };
+
 type ProductByBrandPageQueryQueryVariables = Exact<{
   productName: InputMaybe<Scalars['String']>;
   brand: InputMaybe<Scalars['String']>;

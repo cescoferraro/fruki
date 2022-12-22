@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import image9 from 'assets/planetas-e-pessoas/img.png'
+import image9 from 'assets/img_12.png'
 import { defaultPl } from 'components/defaultPl'
 import { NewGeneric } from 'components/newGeneric'
 import { useIsBigScreen } from 'components/useIsBigScreen'

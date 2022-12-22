@@ -29,7 +29,11 @@ export const FrukiIniciativas = ({
               key={p?.title}
               itemId={p?.title || `${idx}`}
               title={p?.title || ''}
-              description={p?.description || ''}
+              description={
+                <Typography color="primary.contrastText">
+                  {p?.description || ''}
+                </Typography>
+              }
               image={p?.image || ''}
             />
           ))}

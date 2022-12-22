@@ -16,7 +16,14 @@ export const sx1: SxProps = {
 export function FrukiCNPJComponent() {
   const isSmall = useMediaQuery(useTheme().breakpoints.down('sm'))
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', py: isSmall ? 3 : 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        pb: isSmall ? 3 : 0,
+        pt: 4,
+      }}
+    >
       <Typography sx={sx1} variant="bodyRegular" color="grey.700">
         BEBIDAS FRUKI S.A.
       </Typography>

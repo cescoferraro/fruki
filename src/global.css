@@ -10,3 +10,7 @@
     font-weight: 400;
     src: url("/fonts/MangueiraAlt-Regular.otf") format("opentype");
 }
+
+* {
+    font-family: Mangueira, serif;
+}
