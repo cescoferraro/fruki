@@ -52,7 +52,7 @@ export const pageQuery = graphql`
   fragment BrandsFragmentQuery on Query {
     brands: allMdx(
       filter: { internal: { contentFilePath: { regex: "/content/marca/" } } }
-      sort: [{ fields: { slug: ASC } }]
+      sort: [{ frontmatter: { date: ASC } }]
     ) {
       ...BrandsFragment
     }

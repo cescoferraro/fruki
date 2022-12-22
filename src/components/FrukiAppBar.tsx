@@ -1,5 +1,12 @@
 import CloseIcon from '@mui/icons-material/LocationOn'
-import { AppBar, Box, Button, Toolbar, useScrollTrigger } from '@mui/material'
+import {
+  AppBar,
+  Box,
+  Button,
+  Toolbar,
+  useScrollTrigger,
+  useTheme,
+} from '@mui/material'
 import React, { useState } from 'react'
 import { FrukiAppBarLink } from './FrukiAppBarLink'
 import { FrukiLogo } from './frukiLogo'
@@ -12,14 +19,18 @@ function NewComponent(props: {
   open: boolean
   onClose: () => void
 }): JSX.Element {
-  let sx = {
+  const theme = useTheme()
+  const sx = {
     color: props.background ? 'white' : 'unset',
     textDecorationColor: 'transparent',
+    ':hover': {
+      color: theme.palette.secondary.main,
+    },
   }
   return (
     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box sx={{ flexGrow: 1, display: 'flex' }}>
-        <FrukiLogo />
+        <FrukiLogo background={props.background} />
         <Box
           sx={{
             flexGrow: 1,
@@ -35,12 +46,9 @@ function NewComponent(props: {
           <FrukiAppBarLink sx={sx} to="/denuncias">
             Canal de Denúncias
           </FrukiAppBarLink>
-          <FrukiAppBarLink sx={sx} to="/faq">
-            FAQ
-          </FrukiAppBarLink>
         </Box>
       </Box>
-      <Box>
+      <Box display={{ width: 'max-content' }}>
         <Button
           sx={{
             color: props.background ? 'white' : 'unset',
@@ -69,7 +77,7 @@ function NewComponent(props: {
           variant="contained"
           color="secondary"
         >
-          Seja Cliente
+          Quero ser Cliente
         </Button>
       </Box>
     </Toolbar>
@@ -84,7 +92,8 @@ export function FrukiAppBar() {
     disableHysteresis: true,
     threshold: 0,
   })
-  const background = trigger ? 'green' : undefined
+  const theme = useTheme()
+  const background = trigger ? theme.palette.primary.main : undefined
   return (
     <>
       <FrukiModal open={open} onClose={onClose} />

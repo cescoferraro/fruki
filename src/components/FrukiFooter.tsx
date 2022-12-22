@@ -4,10 +4,12 @@ import {
   Grid,
   IconButton,
   styled,
-  SxProps,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material'
 import { center } from 'components/center'
+import { FrukiCNPJComponent, sx1 } from 'components/FrukiCNPJComponent'
 import { SeloTop } from 'components/SeloTop'
 import { navigate } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
@@ -21,17 +23,13 @@ import { TwitterIcon } from './TwitterIcon'
 export const Link = styled(GatsbyLink)`
   padding-top: 8px;
 `
-const sx1: SxProps = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-}
 
 interface IProps {
   brands: Brand[]
 }
 
 export function FrukiFooter({ brands }: IProps) {
+  const isNotMobile = useMediaQuery(useTheme().breakpoints.up('sm'))
   return (
     <Container>
       <Grid
@@ -47,35 +45,48 @@ export function FrukiFooter({ brands }: IProps) {
       >
         <Grid item xs={12} sm={6} md={3} lg={3} sx={{ py: 2 }}>
           <FrukiLogo />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="bodyRegular" fontWeight={700} color="primary">
-              Telefone
-            </Typography>
-            <Typography sx={sx1} variant="bodyRegular" color="secondary">
-              0800.703.9910
-            </Typography>
-            <Typography
-              sx={{ mt: 2 }}
-              variant="bodyRegular"
-              fontWeight={700}
-              color="primary"
-            >
-              Atendimento E-mail
-            </Typography>
-            <Typography sx={sx1} variant="bodyRegular" color="secondary">
-              contato@fruki.com.br
-            </Typography>
-            <Typography
-              sx={{ mt: 2 }}
-              variant="bodyRegular"
-              fontWeight={700}
-              color="primary"
-            >
-              Horário de Atendimento
-            </Typography>
-            <Typography sx={sx1} variant="bodyRegular" color="secondary">
-              Seg a Sex das 10h às 20h
-            </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography
+                variant="bodyRegular"
+                fontWeight={700}
+                color="primary"
+              >
+                Telefone
+              </Typography>
+              <Typography sx={sx1} variant="bodyRegular" color="secondary">
+                0800.703.9910
+              </Typography>
+              <Typography
+                sx={{ mt: 2 }}
+                variant="bodyRegular"
+                fontWeight={700}
+                color="primary"
+              >
+                Atendimento E-mail
+              </Typography>
+              <Typography sx={sx1} variant="bodyRegular" color="secondary">
+                contato@fruki.com.br
+              </Typography>
+              <Typography
+                sx={{ mt: 2 }}
+                variant="bodyRegular"
+                fontWeight={700}
+                color="primary"
+              >
+                Horário de Atendimento
+              </Typography>
+              <Typography sx={sx1} variant="bodyRegular" color="secondary">
+                Seg a Sex das 10h às 20h
+              </Typography>
+            </Box>
+            {isNotMobile && <FrukiCNPJComponent />}
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={3} sx={{ pt: 2 }}>
@@ -87,11 +98,11 @@ export function FrukiFooter({ brands }: IProps) {
             {/*<Link to={'/marcas'}>Nossas Marcas</Link>*/}
             <Link>Seja um Parceiro</Link>
             <Link>Sobre a Fruki</Link>
-            <Link>Onde Encontrar</Link>
+            {/*<Link>Onde Encontrar</Link>*/}
             <Link to={'https://vagasfruki.gupy.io/'}>Trabalhe Conosco</Link>
-            <Link>Patrocínio</Link>
+            {/*<Link>Patrocínio</Link>*/}
             <Link>Dúvidas Frequentes</Link>
-            <Link>Notícias</Link>
+            {/*<Link>Notícias</Link>*/}
             <Link>Política de Privacidade</Link>
             <Link>Relatório de Sustentabilidade</Link>
           </Box>
@@ -102,7 +113,7 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
             {brands.map((b) => (
-              <Link key={b.slug} to={b.slug || ''}>
+              <Link key={b.slug} to={'/assets/portfolio-bebidas-2022.pdf'}>
                 {b.name}
               </Link>
             ))}
@@ -162,6 +173,7 @@ export function FrukiFooter({ brands }: IProps) {
           </Box>
         </Grid>
       </Grid>
+      {!isNotMobile && <FrukiCNPJComponent />}
     </Container>
   )
 }

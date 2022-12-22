@@ -82,7 +82,7 @@ collections:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: question, label: Pergunta }
-      - { name: answer, label: Resposta }
+      - { name: "body", label: "Conteúdo da Iniciativa", widget: "markdown" }
   - name: timeline
     label: Timeline
     folder: content/timeline

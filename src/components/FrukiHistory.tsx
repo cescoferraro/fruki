@@ -22,7 +22,7 @@ export function FrukiHistory() {
               Temos muita história pra contar
             </Typography>
             <Typography sx={{ pl: defaultPl }} variant="body1" fontSize={20}>
-              Da inauguração da primeira fábrica ao lançamento dos últimos
+              A inauguração da primeira fábrica ao lançamento dos últimos
               produtos, saiba tudo sobre nosso propósito e nossa história.
             </Typography>
             <Box sx={{ pl: defaultPl }}>

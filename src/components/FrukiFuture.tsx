@@ -14,7 +14,7 @@ export function FrukiFuture({
   height,
 }: {
   title?: string
-  text?: string
+  text?: string | React.ReactNode
   action: string
   height?: ResponsiveStyleValue<number>
 }) {

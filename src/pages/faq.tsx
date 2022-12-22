@@ -19,13 +19,17 @@ import { useBrandsMemo } from 'components/useBrandsMemo'
 import { graphql, PageProps } from 'gatsby'
 import * as React from 'react'
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
   data,
 }) => {
   const [expanded, setExpanded] = React.useState<string | false>(false)
   const [input, setInput] = React.useState<string>('')
-  const faqs = data.faqs.edges.map((a) => a.node.frontmatter)
+  const faqs = data.faqs.edges.map((a) => ({
+    body: a.node.body,
+    ...a.node.frontmatter,
+  }))
   const theme = useTheme()
   const borderValue = `${40}px !important`
   // const borderValue =
@@ -35,7 +39,8 @@ const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
       ? true
       : f?.question?.toLocaleLowerCase().includes(input.toLocaleLowerCase())
   )
-  let count = Math.ceil(filteredFaqs?.length / 3)
+  const number = 10
+  const count = Math.ceil(filteredFaqs?.length / number)
   return (
     <>
       <FrukiAppBar />
@@ -109,7 +114,7 @@ const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
             Dúvidas Frequentes
           </Typography>
           <div>
-            {filteredFaqs.slice((page - 1) * 3, page * 3).map((d) => {
+            {filteredFaqs.slice((page - 1) * number, page * number).map((d) => {
               const isExpanded = expanded === d?.question
               return (
                 <Accordion
@@ -148,7 +153,7 @@ const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
                     <Typography fontWeight={700}>{d?.question}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography>{d?.answer}</Typography>
+                    <ReactMarkdown>{d?.body || ''}</ReactMarkdown>
                   </AccordionDetails>
                 </Accordion>
               )
@@ -188,6 +193,7 @@ export const pageQuery = graphql`
         fields {
           ...Fields
         }
+        body
         frontmatter {
           ...FAQFrontMatter
         }

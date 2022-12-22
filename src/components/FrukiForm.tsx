@@ -24,7 +24,7 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
         <Box sx={sx} display="flex">
           <FrukiTextField
             value={formik.values.name}
-            error={formik.errors.name}
+            errorText={formik.errors.name}
             title="Razão Social"
             placeholder="Indústrias Ltda"
             onBlur={() => formik.validateField('name')}
@@ -35,7 +35,7 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
           <FrukiTextField
             value={formik.values.email}
             title="E-mail"
-            error={formik.errors.email}
+            errorText={formik.errors.email}
             placeholder="contato@industriasltda.com"
             onBlur={() => formik.validateField('email')}
             onChange={(event) => {
@@ -48,7 +48,7 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
         <Box sx={sx} display="flex">
           <FrukiTextField
             value={formik.values.cnpj}
-            error={formik.errors.cnpj}
+            errorText={formik.errors.cnpj}
             title="CNPJ"
             mask={''}
             format={'##.###.###/####-##'}
@@ -61,7 +61,7 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
           />
           <FrukiTextField
             value={formik.values.phone}
-            error={formik.errors.phone}
+            errorText={formik.errors.phone}
             format={
               stripped.length === 10
                 ? '(##) ####-#####'

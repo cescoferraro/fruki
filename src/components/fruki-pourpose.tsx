@@ -45,11 +45,16 @@ export function FrukiPourpose() {
           variant="h5"
           sx={{ py: 4 }}
           align="center"
+          fontWeight={700}
           color="secondary.contrastText"
         >
-          Propósito{' '}
+          Propósito
         </Typography>
-        <Typography color="secondary.contrastText">
+        <Typography
+          variant="h6"
+          align={'center'}
+          color="secondary.contrastText"
+        >
           Paixão por oferecer o melhor sabor, construindo conexões verdadeiras e
           fazendo a diferença na vida das pessoas e do planeta.
         </Typography>
@@ -80,11 +85,11 @@ export function FrukiPourpose() {
               />
             </svg>
           </Box>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5" align="center" fontWeight={700}>
             Visão
           </Typography>
           <Box sx={{ my: 4 }}>
-            <Typography align="center">
+            <Typography align="center" component="p">
               Queremos fazer parte da sua vida em todos os momentos.
             </Typography>
           </Box>
@@ -105,11 +110,11 @@ export function FrukiPourpose() {
               />
             </svg>
           </Box>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5" align="center" fontWeight={700}>
             Missão
           </Typography>
           <Box sx={{ my: 4 }}>
-            <Typography align="center">
+            <Typography align="center" component="p">
               Oferecer o melhor sabor à sua vida.
             </Typography>
           </Box>
@@ -142,11 +147,11 @@ export function FrukiPourpose() {
               />
             </svg>
           </Box>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5" align="center" fontWeight={700}>
             Valores
           </Typography>
           <Box sx={{ my: 4 }}>
-            <Typography align="center">
+            <Typography align="center" component="p">
               Responsabilidade socioambiental, inovação, paixão, diversidade e
               reconhecimento.{' '}
             </Typography>

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Container,
   IconButton,
@@ -7,6 +8,7 @@ import {
   useTheme,
 } from '@mui/material'
 import img66 from 'assets/home/img_8.png'
+import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 import { Stacked } from './Stacked'
@@ -66,80 +68,57 @@ export function BrandsComponent(props: { brands: any[] }) {
             variant={isSmall ? 'h5' : 'h4'}
             color="primary.contrastText"
           >
-            Conheça Nossas Marcas
+            Nossas Marcas
           </Typography>
           <Typography
             variant="body1"
             align="center"
             color="primary.contrastText"
           >
-            Queremos fazer parte da sua vida em todos os momentos. Conheça as
-            marcas que fazem parte da Fruki Bebidas e descubra o sabor de estar
-            junto!
+            Sua rotina com mais sabor. Conheça as marcas que fazem parte da
+            Fruki Bebidas.
           </Typography>
         </Box>
       </Box>
-      <Container
-        sx={{
-          transform: {
-            md: 'translateY(-120px)',
-          },
-          mb: {
-            md: -120 / 8,
-          },
-          pr: '0px !important',
-          position: {
-            md: 'relative',
-          },
-          // minWidth: {
-          //   md: '100%',
-          // },
-          mt: {
-            xs: 20,
-            sm: 20,
-            md: 0,
-          },
-        }}
-      >
-        <Stacked
-          gap={4}
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          sx={{
-            overflowX: 'scroll',
-            '&::-webkit-scrollbar': { display: 'none' },
-          }}
-        >
+      <Container sx={{ py: 0 }}>
+        {/*<Stacked*/}
+        {/*  gap={4}*/}
+        {/*  direction="row"*/}
+        {/*  justifyContent="space-between"*/}
+        {/*  alignItems="center"*/}
+        {/*  sx={{*/}
+        {/*    overflowX: 'scroll',*/}
+        {/*    '&::-webkit-scrollbar': { display: 'none' },*/}
+        {/*  }}*/}
+        {/*>*/}
+
+        <FrukiSlider translate={130}>
           {props.brands.map((s, index) => (
-            <IconButton
+            <Box
               key={s.slug}
               sx={{
                 zIndex: 100,
                 background: 'white',
+                borderRadius: 100,
+                backgroundRepeat: 'no-repeat',
                 boxShadow: `${theme.shadows[12]}`,
                 ':hover': {
-                  background: 'white',
+                  backgroundPosition: 'center',
+                  backgroundImage: `url(${s?.logo || ''})`,
+                  backgroundSize: 'contain',
                 },
-                p: 5,
+                // p: 5,
                 m: index === 0 ? 2 : 2,
+                backgroundImage: `url(${s?.logo || ''})`,
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                width: 200,
+                height: 200,
               }}
               // onClick={() => navigate(s?.slug || '')}
-            >
-              <Box
-                style={{
-                  width: 150,
-                  height: 150,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <img alt="logo" style={{ maxWidth: 150 }} src={s?.logo || ''} />
-              </Box>
-            </IconButton>
+            ></Box>
           ))}
-        </Stacked>
+        </FrukiSlider>
         <Box
           sx={{
             display: 'flex',
@@ -150,7 +129,7 @@ export function BrandsComponent(props: { brands: any[] }) {
           }}
         >
           <Button
-            to="/assets/Fruki_LGPD.pdf"
+            to="/assets/portfolio-bebidas-2022.pdf"
             // @ts-ignore
             target="_blank"
             color="secondary"

@@ -25,6 +25,7 @@ export function FrukiWorkForceHistory() {
             <Typography
               color="secondary.contrastText"
               variant="body1"
+              component={'p'}
               fontSize={20}
             >
               Em 1924, quando entrou oficialmente em funcionamento a fábrica de

@@ -2776,9 +2776,9 @@ type BrandsFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: {
 
 type BrandsFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null };
 
-type FAQFragmentQueryFragment = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> } };
+type FAQFragmentQueryFragment = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> } };
 
-type FAQFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> };
+type FAQFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> };
 
 type FAQFrontMatterFragment = { readonly date: string | null, readonly question: string | null, readonly answer: string | null };
 
@@ -2831,7 +2831,7 @@ type DenunciasPageListQueryQuery = { readonly brands: { readonly edges: Readonly
 type FAQPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type FAQPageListQueryQuery = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null } | null } }> } };
+type FAQPageListQueryQuery = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null } | null } }> } };
 
 type HomeQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

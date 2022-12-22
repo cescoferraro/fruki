@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
+import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { BlogPaper } from 'components/BlogPaper'
 import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
@@ -37,18 +38,18 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
         >
           Novidades sobre a Fruki
         </Typography>
-        <Typography color="grey.600" align="center">
+        <Typography
+          sx={{ py: 2 }}
+          color="grey.600"
+          variant="h6"
+          fontSize={18}
+          align="center"
+        >
           Acompanhe as nossas últimas notícias.
         </Typography>
       </Box>
       <Container>
-        <Stacked
-          sx={{ overflowX: 'auto', overflowY: 'hidden', pt: 8 }}
-          direction={'row'}
-          justifyContent="space-between"
-          alignItems="center"
-          gap={4}
-        >
+        <FrukiSlider>
           {posts.map((post) => {
             return (
               <BlogPaper
@@ -58,20 +59,20 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
               />
             )
           })}
-        </Stacked>
+        </FrukiSlider>
       </Container>
-      <Box
-        sx={{
-          py: 5,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Button to="/blog" color="secondary" variant="contained">
-          Ver todas as notícias{' '}
-        </Button>
-      </Box>
+      {/*<Box*/}
+      {/*  sx={{*/}
+      {/*    py: 5,*/}
+      {/*    display: 'flex',*/}
+      {/*    justifyContent: 'center',*/}
+      {/*    alignItems: 'center',*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <Button to="/blog" color="secondary" variant="contained">*/}
+      {/*    Ver todas as notícias{' '}*/}
+      {/*  </Button>*/}
+      {/*</Box>*/}
     </Box>
   )
 }

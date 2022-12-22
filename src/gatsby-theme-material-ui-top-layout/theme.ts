@@ -105,6 +105,9 @@ const theme = createTheme({
     },
   },
   typography: {
+    button: {
+      textTransform: 'none',
+    },
     fontFamily: 'Mangueira',
     h1: {
       fontSize: 64,

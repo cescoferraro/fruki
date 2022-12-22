@@ -34,7 +34,7 @@ function NewComponent() {
               sx={{ pr: defaultPl, fontWeight: 700, zIndex: 2 }}
               color="primary.contrastText"
             >
-              Tudo o que fazemos juntos, fazemos melhor{' '}
+              Paixão por oferecer o melhor sabor
             </Typography>
             <Typography
               color="primary.contrastText"
@@ -42,7 +42,7 @@ function NewComponent() {
               fontWeight={700}
               variant="h6"
             >
-              Quer ser um cliente Fruki Bebidas?{' '}
+              Quer ser um cliente Fruki Bebidas?
             </Typography>
             <Typography
               color="primary.contrastText"
@@ -50,11 +50,11 @@ function NewComponent() {
               variant="body1"
               fontSize={20}
             >
-              Faça o pré-cadastro! Em breve vamos entrar em contato com você.{' '}
+              Faça o pré-cadastro! Em breve vamos entrar em contato com você.
             </Typography>
             <Box sx={{ ...center, justifyContent: 'flex-start', py: 2 }}>
               <Button color="primary" variant="contained">
-                Quero Revender Fruki{' '}
+                Quero ser Cliente
               </Button>
             </Box>
           </Box>

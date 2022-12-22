@@ -32,7 +32,7 @@ export function FrukiHelpSection() {
         >
           <Box>
             <Typography display="flex" variant="h1" color="secondary">
-              Precisa de ajuda?
+              Quer falar com a gente?
             </Typography>
             <Typography
               display="flex"
@@ -40,8 +40,8 @@ export function FrukiHelpSection() {
               color="primary.main"
               sx={{ pt: 3 }}
             >
-              Se você está com alguma dúvida, estamos aqui para ajudar! Escolha
-              seu canal preferido para podermos atender você da melhor forma.
+              É só nos chamar no seu canal preferido que estamos prontos para
+              atender você.
             </Typography>
             <Box
               sx={{

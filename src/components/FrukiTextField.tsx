@@ -8,9 +8,21 @@ import {
 import { InputProps as StandardInputProps } from '@mui/material/Input/Input'
 import React from 'react'
 import { PatternFormat } from 'react-number-format'
+import { PatternFormatProps } from 'react-number-format/types/types'
+
+interface Created extends StandardInputProps {
+  title: string
+  value: string
+  errorText?: string
+  placeholder: string
+  format?: string
+  mask?: string
+  // onBlur?: StandardInputProps["onBlur"];
+  // onChange?: StandardInputProps["onChange"];
+}
 
 export function FrukiTextField({
-  error,
+  errorText,
   format,
   placeholder,
   title,
@@ -18,20 +30,10 @@ export function FrukiTextField({
   onChange,
   mask,
   onBlur,
-}: {
-  title: string
-  value: string
-  error?: string
-
-  placeholder: string
-
-  onBlur?: (e: React.FocusEvent<any>) => void
-  format?: string
-  mask?: string
-  onChange?: StandardInputProps['onChange']
-}) {
+}: Created) {
   const theme = useTheme()
-  const props = {
+  const props: PatternFormatProps<Partial<TextFieldProps>> = {
+    format: format || '',
     placeholder: placeholder,
     value,
     onChange,
@@ -45,8 +47,8 @@ export function FrukiTextField({
     },
     fullWidth: true,
     variant: 'outlined' as TextFieldProps['variant'],
-    error: Boolean(error),
-    helperText: error || ' ',
+    error: Boolean(errorText),
+    helperText: errorText || ' ',
     onBlur,
   }
   return (
@@ -54,7 +56,7 @@ export function FrukiTextField({
       <Typography color="grey.700">{title}</Typography>
       {format ? (
         <PatternFormat
-          format={format}
+          // format={format}
           mask={mask}
           customInput={TextField}
           {...props}

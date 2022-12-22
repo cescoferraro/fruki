@@ -4,11 +4,17 @@ import { SmallFrukiLogo } from 'components/SmallFrukiLogo'
 import { navigate } from 'gatsby'
 import * as React from 'react'
 
-export const FrukiLogo: React.FC = () => {
+export const FrukiLogo: React.FC<{
+  background?: string
+}> = ({ background }) => {
   const isSmall = useMediaQuery(useTheme().breakpoints.down('sm'))
   return (
     <Button onClick={() => navigate('/')}>
-      {isSmall ? <SmallFrukiLogo /> : <BigFrukiLogo />}
+      {isSmall ? (
+        <SmallFrukiLogo background={background} />
+      ) : (
+        <BigFrukiLogo background={background} />
+      )}
     </Button>
   )
 }

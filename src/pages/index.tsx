@@ -1,8 +1,4 @@
-import { Box, Button, Typography } from '@mui/material'
-import image9 from 'assets/home/img_10.png'
 import { BrandsComponent } from 'components/brandsComponent'
-import { center } from 'components/center'
-import { defaultPl } from 'components/defaultPl'
 import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiBlogSection } from 'components/FrukiBlogSection'
 import { FrukiContact } from 'components/frukiContact'
@@ -12,9 +8,7 @@ import { FrukiFuture } from 'components/FrukiFuture'
 import { FrukiHistory } from 'components/FrukiHistory'
 import { FrukiMainGrid } from 'components/FrukiMainGrid'
 import { FrukiWorkForce } from 'components/frukiWorkForce'
-import { NewGeneric } from 'components/newGeneric'
 import { useBrandsMemo } from 'components/useBrandsMemo'
-import { useIsBigScreen } from 'components/useIsBigScreen'
 import { usePostMemo } from 'components/usePostMemo'
 import type { PageProps } from 'gatsby'
 import { graphql } from 'gatsby'
@@ -32,7 +26,19 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
         <FrukiMainGrid home={home} />
         <FrukiHistory />
         <BrandsComponent brands={allBrands} />
-        <FrukiFuture action={'Saiba mais'} />
+        <FrukiFuture
+          title={`Um mundo mais gentil tem outro sabor`}
+          text={
+            <>
+              O nosso compromisso com as questões socioambientais se refletem em
+              ações de verdade.
+              <br />
+              Para isso, transformamos nossa maneira de pensar o futuro das
+              pessoas e do planeta.
+            </>
+          }
+          action={'Saiba mais'}
+        />
         <FrukiBlogSection posts={allPosts} />
         <FrukiContact />
         <FrukiWorkForce />
