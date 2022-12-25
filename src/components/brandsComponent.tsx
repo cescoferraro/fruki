@@ -1,28 +1,20 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  IconButton,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material'
+import { Box, Container, Typography, useTheme } from '@mui/material'
 import img66 from 'assets/home/img_8.png'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
+import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
-import { Stacked } from './Stacked'
 
 export function BrandsComponent(props: { brands: any[] }) {
   const theme = useTheme()
   let margin = { xs: 0, sm: 0, md: 13 }
-  const isSmall = useMediaQuery(useTheme().breakpoints.down('md'))
+  const isBig = useIsBigScreen()
   return (
     <>
       <Box
         sx={{
           backgroundImage: `url(${img66})`,
-          height: { xs: 400, sm: 400, md: 700 },
+          height: { xs: 400, sm: 400, md: 600 },
           backgroundSize: 'cover',
           backgroundPositino: 'center',
           display: 'flex',
@@ -33,7 +25,7 @@ export function BrandsComponent(props: { brands: any[] }) {
             flexBasis: {
               xs: '100%',
               sm: '100%',
-              md: '60%',
+              md: '50%',
             },
             mt: margin,
             ml: margin,
@@ -65,7 +57,7 @@ export function BrandsComponent(props: { brands: any[] }) {
           <Typography
             align="center"
             sx={{ mb: 3 }}
-            variant={isSmall ? 'h5' : 'h4'}
+            variant={isBig ? 'h4' : 'h5'}
             color="primary.contrastText"
           >
             Nossas Marcas
@@ -81,18 +73,7 @@ export function BrandsComponent(props: { brands: any[] }) {
         </Box>
       </Box>
       <Container sx={{ py: 0 }}>
-        {/*<Stacked*/}
-        {/*  gap={4}*/}
-        {/*  direction="row"*/}
-        {/*  justifyContent="space-between"*/}
-        {/*  alignItems="center"*/}
-        {/*  sx={{*/}
-        {/*    overflowX: 'scroll',*/}
-        {/*    '&::-webkit-scrollbar': { display: 'none' },*/}
-        {/*  }}*/}
-        {/*>*/}
-
-        <FrukiSlider translate={130}>
+        <FrukiSlider translate={isBig ? -232 / 2 : 232 / 2}>
           {props.brands.map((s, index) => (
             <Box
               key={s.slug}
@@ -101,13 +82,12 @@ export function BrandsComponent(props: { brands: any[] }) {
                 background: 'white',
                 borderRadius: 100,
                 backgroundRepeat: 'no-repeat',
-                boxShadow: `${theme.shadows[12]}`,
+                boxShadow: `${theme.shadows[4]}`,
                 ':hover': {
                   backgroundPosition: 'center',
                   backgroundImage: `url(${s?.logo || ''})`,
                   backgroundSize: 'contain',
                 },
-                // p: 5,
                 m: index === 0 ? 2 : 2,
                 backgroundImage: `url(${s?.logo || ''})`,
                 backgroundSize: 'contain',
@@ -115,7 +95,6 @@ export function BrandsComponent(props: { brands: any[] }) {
                 width: 200,
                 height: 200,
               }}
-              // onClick={() => navigate(s?.slug || '')}
             ></Box>
           ))}
         </FrukiSlider>

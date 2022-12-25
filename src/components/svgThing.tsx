@@ -1,19 +1,18 @@
+import { SVGProps } from 'react'
 import * as React from 'react'
 
-export function SvgThing() {
-  return (
-    <svg
-      style={{ position: 'absolute', bottom: 0 }}
-      width="49"
-      height="218"
-      viewBox="0 260 49 218"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M-268.371 209.097L-0.384019 477.084L6.89079 469.809C62.4436 414.257 61.4694 324.001 5.45707 267.989L-262.53 0.00192266L-269.805 7.27673C-325.362 62.1634 -324.719 152.749 -268.371 209.097Z"
-        fill="#41B02A"
-      />
-    </svg>
-  )
-}
+export const SvgThing = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={48}
+    height={215}
+    viewBox="0 0 48 215"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M-268.371 -52.9028L-0.384019 215.084L6.89079 207.809C62.4436 152.257 61.4694 62.0013 5.45707 5.98898L-262.53 -261.998L-269.805 -254.723C-325.362 -199.837 -324.719 -109.251 -268.371 -52.9028Z"
+      fill="#41B02A"
+    />
+  </svg>
+)

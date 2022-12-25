@@ -1,135 +1,128 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import { Button } from 'gatsby-material-ui-components'
+import image14 from 'assets/home/img_14.png'
 import image7 from 'assets/home/img_7.png'
+import { BlueSvg } from 'components/blueSvg'
+import { GridContainer, GridItem } from 'components/FrukiContainer'
+import { GreenSvg } from 'components/greenSvg'
+import { SeloTop } from 'components/SeloTop'
 import { SeloTopBig } from 'components/SeloTopBig'
 import { useIsBigScreen } from 'components/useIsBigScreen'
-import { NewGeneric } from 'components/newGeneric'
+import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
+
+function MobileWorkForceRight(props: { big: boolean }) {
+  const isBig = useIsBigScreen()
+  return isBig ? (
+    <>
+      <Box
+        sx={{
+          flexGrow: 1,
+          flexBasis: !props.big ? '95%' : '40%',
+          backgroundImage: `url(${image7})`,
+          backgroundSize: 'cover',
+          height: '100%',
+          backgroundPosition: !props.big ? 'top' : 'center',
+          borderTopLeftRadius: 300,
+          marginLeft: '5%',
+          zIndex: 2,
+        }}
+      />
+      <Box sx={{ flexBasis: '60%', height: '100%' }}>
+        <BlueSvg />
+        <SeloTopBig
+          style={{
+            position: 'absolute',
+            right: 100,
+            top: 'calc(50% - 100px)',
+          }}
+        />
+        <GreenSvg />
+      </Box>
+    </>
+  ) : null
+}
 
 export function FrukiWorkForce() {
   const isBig = useIsBigScreen()
+  const theme = useTheme()
+  const background = theme.palette.primary.main
   return (
-    <NewGeneric
-      sx={{
-        background: useTheme().palette.primary.main,
-      }}
-      height={{ xs: 550, sm: 550, md: 800 }}
-      left={{
-        element: (
-          <>
-            <Typography
-              variant={isBig ? 'h1' : 'h5'}
-              sx={{ fontWeight: 700 }}
-              color="secondary.contrastText"
-            >
-              Construa sua história junto com a nossa{' '}
-            </Typography>
-            <Typography
-              color="secondary.contrastText"
-              variant="body1"
-              fontSize={20}
-            >
-              A Fruki Bebidas é impulsionada por 900 profissionais apaixonados
-              pelo que fazem: oferecer o melhor sabor.{' '}
-            </Typography>
-            <Box>
-              <Button
-                to="https://vagasfruki.gupy.io/"
-                variant="contained"
-                color="secondary"
-                size="large"
-              >
-                Ver Oportunidades{' '}
-              </Button>
-            </Box>
-          </>
-        ),
-        sx: {
+    <GridContainer sx={{ background }}>
+      <GridItem
+        padding="only-left"
+        sx={{
           flexBasis: '40%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-evenly',
-          background: useTheme().palette.primary.main,
-          p: 2,
-          pl: {
-            xs: 2,
-            sm: 2,
-            md: 8,
-            lg: 10,
-          },
-        },
-      }}
-      right={{
-        sx: {
-          flexBasis: '60%',
-          display: 'flex',
-          background: useTheme().palette.primary.main,
-        },
-        element: (
-          <>
-            <Box
-              sx={{
-                width: !isBig ? '95%' : '40%',
-                backgroundImage: `url(${image7})`,
-                backgroundSize: 'cover',
-                backgroundPosition: !isBig ? 'top' : 'center',
-                borderTopLeftRadius: 300,
-                marginTop: !isBig ? 3 : 5,
-                marginLeft: '5%',
-              }}
-            />
-            {isBig && (
-              <Box sx={{ width: '60%', height: '100%' }}>
-                <Box sx={{ height: 40 }} />
-                <Box
-                  sx={{
-                    height: '100%',
-                  }}
-                >
-                  <SeloTopBig />
-                  <svg
-                    style={{
-                      position: 'absolute',
-                      top: 40,
-                      right: 0,
-                    }}
-                    width="224"
-                    height="349"
-                    viewBox="0 0 224 349"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M285.896 0H0.815918V348.021H285.896C380.923 348.021 458 269.85 458 173.475C458 78.1709 380.923 0 285.896 0Z"
-                      fill="#41B02A"
-                    />
-                  </svg>
-
-                  <svg
-                    style={{
-                      marginTop: 40,
-                      position: 'absolute',
-                      bottom: 0,
-                      right: 0,
-                    }}
-                    width="224"
-                    height="97"
-                    viewBox="0 0 224 97"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M285.896 0.762695H0.815918V348.783H285.896C380.923 348.783 458 270.613 458 174.238C458 78.9336 380.923 0.762695 285.896 0.762695Z"
-                      fill="#5F99AF"
-                    />
-                  </svg>
-                </Box>
-              </Box>
-            )}
-          </>
-        ),
-      }}
-    />
+          background,
+        }}
+      >
+        <Typography
+          variant={isBig ? 'h1' : 'h5'}
+          sx={{ fontWeight: 700 }}
+          color="secondary.contrastText"
+        >
+          Construa sua história junto com a nossa
+        </Typography>
+        <Typography
+          color="secondary.contrastText"
+          variant="body1"
+          fontSize={20}
+        >
+          A Fruki Bebidas é impulsionada por 900 profissionais apaixonados pelo
+          que fazem: oferecer o melhor sabor.{' '}
+        </Typography>
+        <Box>
+          <Button
+            to="https://vagasfruki.gupy.io/"
+            variant="contained"
+            color="secondary"
+            size="large"
+          >
+            Ver Oportunidades{' '}
+          </Button>
+        </Box>
+      </GridItem>
+      <GridItem sx={{ flexBasis: '60%', py: 0, background }} padding="none">
+        <Box height={40} />
+        <Box
+          sx={{
+            backgroundImage: !isBig ? `url(${image14})` : '',
+            backgroundSize: 'cover',
+            minHeight: isBig ? 'unset' : '550px',
+            ml: !isBig ? 2 : 0,
+            flexGrow: 1,
+            display: 'flex',
+            zIndex: 2,
+          }}
+        >
+          <SeloTop
+            id={'test'}
+            style={{
+              display: !isBig ? 'block' : 'none',
+              position: 'absolute',
+              top: 40,
+              zIndex: 10,
+            }}
+          />
+          <MobileWorkForceRight big={isBig} />
+        </Box>
+        <SVGComponent
+          style={{
+            display: isBig ? 'none' : 'block',
+            position: 'absolute',
+            bottom: 0,
+            zIndex: 0,
+          }}
+        />
+      </GridItem>
+    </GridContainer>
   )
 }
+const SVGComponent = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg width={375} height={307} viewBox="0 0 375 307" fill="none" {...props}>
+    <rect width={375} height={307} fill="#41B02A" />
+  </svg>
+)

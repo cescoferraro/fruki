@@ -1,12 +1,13 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, List, Typography } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { BlogPaper } from 'components/BlogPaper'
+import { useIsBigScreen } from 'components/useIsBigScreen'
 import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
-import { Stacked } from './Stacked'
 
 export function FrukiBlogSection({ posts }: { posts: Post[] }) {
+  const isBig = useIsBigScreen()
   return (
     <Box
       sx={{
@@ -29,11 +30,11 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
           fill="#5F99AF"
         />
       </svg>
-      <Box sx={{ pl: 2 }}>
+      <Box>
         <Typography
           color="secondary"
           variant="h5"
-          sx={{ fontWeight: 700 }}
+          fontWeight={700}
           align="center"
         >
           Novidades sobre a Fruki
@@ -48,31 +49,55 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
           Acompanhe as nossas últimas notícias.
         </Typography>
       </Box>
-      <Container>
-        <FrukiSlider>
-          {posts.map((post) => {
-            return (
-              <BlogPaper
-                key={post.slug}
-                post={post}
-                onClick={() => navigate(post?.slug || '')}
-              />
-            )
-          })}
-        </FrukiSlider>
-      </Container>
-      {/*<Box*/}
-      {/*  sx={{*/}
-      {/*    py: 5,*/}
-      {/*    display: 'flex',*/}
-      {/*    justifyContent: 'center',*/}
-      {/*    alignItems: 'center',*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <Button to="/blog" color="secondary" variant="contained">*/}
-      {/*    Ver todas as notícias{' '}*/}
-      {/*  </Button>*/}
-      {/*</Box>*/}
+      {isBig ? (
+        <Container>
+          <FrukiSlider>
+            {posts.map((post) => {
+              return (
+                <BlogPaper
+                  key={post.slug}
+                  post={post}
+                  onClick={() => navigate(post?.slug || '')}
+                />
+              )
+            })}
+          </FrukiSlider>
+        </Container>
+      ) : (
+        <Container>
+          <List
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+            }}
+          >
+            {posts
+              .filter((_, idx) => idx < 3)
+              .map((post) => {
+                return (
+                  <BlogPaper
+                    key={post.slug}
+                    post={post}
+                    onClick={() => navigate(post?.url || '')}
+                  />
+                )
+              })}
+          </List>
+        </Container>
+      )}
+      <Box
+        sx={{
+          py: 5,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Button to="/blog" color="secondary" variant="contained">
+          Ver todas as notícias{' '}
+        </Button>
+      </Box>
     </Box>
   )
 }

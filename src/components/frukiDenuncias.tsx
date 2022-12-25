@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material'
-import image9 from 'assets/home/img_9.png'
+import image9 from 'assets/img_14.png'
 import { defaultPl } from 'components/defaultPl'
 import { NewGeneric } from 'components/newGeneric'
 import { useIsBigScreen } from 'components/useIsBigScreen'
@@ -45,7 +45,7 @@ export function FrukiDenuncias() {
               sx={{ pl: defaultPl, fontWeight: 700, zIndex: 2 }}
               color="secondary.contrastText"
             >
-              Canal de Denúncias{' '}
+              Canal de Denúncias
             </Typography>
             <Typography
               color="secondary.contrastText"

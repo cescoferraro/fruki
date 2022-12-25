@@ -6,7 +6,6 @@ description: Paverama receberá investimento de R$ 150 milhões
 image: /assets/screen-shot-2022-07-10-at-17.23.17.png
 author: Jhu
 about: ""
-tags:
-  - LANCAMENTO
+url: "https://cescoferraro.com"
 ---
 d﻿fsdfs

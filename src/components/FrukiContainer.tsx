@@ -52,20 +52,46 @@ export const GridContainer = ({
 export const GridItem = ({
   children,
   sx,
-  height = { xs: 400, sm: 400, md: 800 },
+  height = { xs: 400, sm: 400, md: 720 },
+  padding = 'left',
 }: {
   height?: ResponsiveStyleValue<number>
   sx?: SxProps
   children?: React.ReactNode
+  padding?: 'only-left' | 'left' | 'right' | 'only-right' | 'none'
 }) => {
+  const paddings = {
+    [padding.includes('left') ? 'pl' : 'pr']:
+      padding === 'none' || padding === 'only-right'
+        ? {}
+        : {
+            xs: 2,
+            sm: 2,
+            md: 8,
+            lg: 22,
+          },
+    [padding.includes('left') ? 'pr' : 'pl']:
+      padding === 'none' || padding === 'only-left'
+        ? {}
+        : {
+            xs: 2,
+            sm: 2,
+            md: 8,
+            lg: 13,
+          },
+  }
   return (
     <Box
       sx={{
         flexBasis: '50%',
         position: 'relative',
         height: height,
-        maxHeight: height,
         minHeight: height,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        py: 2,
+        ...paddings,
         ...sx,
       }}
     >

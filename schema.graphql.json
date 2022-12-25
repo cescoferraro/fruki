@@ -13909,23 +13909,19 @@
             "deprecationReason": null
           },
           {
-            "name": "tags",
+            "name": "title",
             "description": null,
             "args": [],
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "title",
+            "name": "url",
             "description": null,
             "args": [],
             "type": {
@@ -14130,7 +14126,7 @@
             "deprecationReason": null
           },
           {
-            "name": "tags",
+            "name": "title",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -14142,7 +14138,7 @@
             "deprecationReason": null
           },
           {
-            "name": "title",
+            "name": "url",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -14346,7 +14342,7 @@
             "deprecationReason": null
           },
           {
-            "name": "tags",
+            "name": "title",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -14358,7 +14354,7 @@
             "deprecationReason": null
           },
           {
-            "name": "title",
+            "name": "url",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -14562,7 +14558,7 @@
             "deprecationReason": null
           },
           {
-            "name": "tags",
+            "name": "title",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -14574,7 +14570,7 @@
             "deprecationReason": null
           },
           {
-            "name": "title",
+            "name": "url",
             "description": null,
             "type": {
               "kind": "ENUM",

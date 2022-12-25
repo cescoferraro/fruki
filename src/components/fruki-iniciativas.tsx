@@ -18,7 +18,7 @@ export const FrukiIniciativas = ({
           {title || 'Nossas Iniciativas'}
         </Typography>
       </Box>
-      <FrukiSlider translate={230}>
+      <FrukiSlider translate={-230}>
         {initiatives
           .map((e) => e.node.frontmatter)
           .map((p, idx) => (

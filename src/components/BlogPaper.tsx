@@ -1,5 +1,4 @@
 import { Box, Paper, Typography, useTheme } from '@mui/material'
-import { NextIcon } from 'components/NextIcon'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 
@@ -16,7 +15,10 @@ export function BlogPaper({
       sx={{
         maxHeight: 384,
         height: 384,
-        width: 272,
+        width: 'calc( 100% - 16px )',
+        // boxShadow: 'none',
+        boxShadow: `${theme.shadows[4]}`,
+        m: 1,
         minWidth: 272,
         background: theme.palette.grey['50'],
         flexBasis: '20%',

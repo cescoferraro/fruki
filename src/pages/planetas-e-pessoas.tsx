@@ -21,10 +21,7 @@ function FrukiStats() {
   const isBig = useIsBigScreen()
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
-  })
+  const { ref, inView } = useInView({ threshold: 0 })
   useEffect(() => {
     let interval: NodeJS.Timer
     if (inView) {
@@ -97,7 +94,6 @@ const SustentabilidadePage: React.FC<
       <FrukiAppBar />
       <FrukiContainer>
         <FrukiFuture
-          height={{ xs: 800, sx: 600, md: 1000 }}
           title={'Gentileza com o planeta'}
           text={
             <>
@@ -139,7 +135,7 @@ const SustentabilidadePage: React.FC<
             Conheça os últimos prêmios conquistados pela Fruki Bebidas.{' '}
           </Typography>
         </Box>
-        <FrukiSlider translate={250 / 2}>
+        <FrukiSlider translate={-250 / 2}>
           {data.certificates.edges
             .map((e) => e.node.frontmatter)
             .map((p, idx) => (

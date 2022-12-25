@@ -8,7 +8,6 @@ description: Com o objetivo de entrar no movimento do Outubro Rosa, a nova
 image: /assets/img_3041-9796740.jpg
 author: Jhu
 about: ""
-tags:
-  - LANCAMENTO
+url: "https://google.com"
 ---
 a﻿isaiuhs

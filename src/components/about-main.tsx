@@ -52,7 +52,9 @@ export function AboutMain() {
         },
       }}
       right={{
-        element: !isBig && <SvgThing />,
+        element: !isBig && (
+          <SvgThing style={{ position: 'absolute', bottom: 0 }} />
+        ),
         sx: {
           backgroundImage: `url(${image4})`,
           backgroundSize: 'cover',

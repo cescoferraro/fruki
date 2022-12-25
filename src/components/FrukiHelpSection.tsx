@@ -30,53 +30,51 @@ export function FrukiHelpSection() {
             pl: 15,
           }}
         >
-          <Box>
-            <Typography display="flex" variant="h1" color="secondary">
-              Quer falar com a gente?
-            </Typography>
-            <Typography
-              display="flex"
-              variant="bodyRegular"
-              color="primary.main"
-              sx={{ pt: 3 }}
-            >
-              É só nos chamar no seu canal preferido que estamos prontos para
-              atender você.
-            </Typography>
+          <Typography display="flex" variant="h1" color="secondary">
+            Quer falar com a gente?
+          </Typography>
+          <Typography
+            display="flex"
+            variant="bodyRegular"
+            color="primary.main"
+            sx={{ pt: 3 }}
+          >
+            É só nos chamar no seu canal preferido que estamos prontos para
+            atender você.
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              mt: 2,
+            }}
+          >
+            <Box>
+              <Button variant="outlined" color="secondary" sx={{ mt: 2 }}>
+                Mandar mensagem
+              </Button>
+            </Box>
+            <Box>
+              <Button variant="outlined" color="secondary" sx={{ mt: 2 }}>
+                Ligar agora
+              </Button>
+            </Box>
+            <Box>
+              <Button variant="outlined" color="secondary" sx={{ mt: 2 }}>
+                Conversar no chat online
+              </Button>
+            </Box>
             <Box
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                mt: 2,
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
-              <Box>
-                <Button variant="outlined" color="secondary" sx={{ mt: 2 }}>
-                  Mandar mensagem
-                </Button>
-              </Box>
-              <Box>
-                <Button variant="outlined" color="secondary" sx={{ mt: 2 }}>
-                  Ligar agora{' '}
-                </Button>
-              </Box>
-              <Box>
-                <Button variant="outlined" color="secondary" sx={{ mt: 2 }}>
-                  Conversar no chat online{' '}
-                </Button>
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Button variant="text" color="secondary" sx={{ mt: 4 }}>
-                  Ver as dúvidas frequentes{' '}
-                </Button>
-              </Box>
+              <Button variant="text" color="secondary" sx={{ mt: 4 }}>
+                Ver as dúvidas frequentes
+              </Button>
             </Box>
           </Box>
         </Box>

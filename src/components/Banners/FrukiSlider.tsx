@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from '@mui/icons-material'
-import { Container, styled } from '@mui/material'
+import { Container } from '@mui/material'
 import { Arrow } from 'components/Banners/Arrow'
 import React from 'react'
 import {
@@ -18,8 +18,8 @@ export const FrukiSlider = ({
   return (
     <Container
       sx={{
-        transform: `translateY( -${translate || 0}px)`,
-        marginBottom: -(translate || 0) / 8,
+        transform: `translateY( ${translate || 0}px)`,
+        marginBottom: (translate || 0) / 8,
         px: '0px !important',
       }}
     >

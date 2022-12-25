@@ -31,7 +31,6 @@ export const pageQuery = graphql`
         path
         title
         image
-        tags
         author
         about
       }

@@ -12,7 +12,11 @@ import { FrukiAppBarLink } from './FrukiAppBarLink'
 import { FrukiLogo } from './frukiLogo'
 import { FrukiModal } from './FrukiModal'
 
-function NewComponent(props: {
+function NewComponent({
+  background,
+  onClick,
+  onClick1,
+}: {
   background?: string
   onClick: () => string
   onClick1: () => void
@@ -21,7 +25,7 @@ function NewComponent(props: {
 }): JSX.Element {
   const theme = useTheme()
   const sx = {
-    color: props.background ? 'white' : 'unset',
+    color: background ? 'white' : 'unset',
     textDecorationColor: 'transparent',
     ':hover': {
       color: theme.palette.secondary.main,
@@ -30,7 +34,7 @@ function NewComponent(props: {
   return (
     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box sx={{ flexGrow: 1, display: 'flex' }}>
-        <FrukiLogo background={props.background} />
+        <FrukiLogo background={background} />
         <Box
           sx={{
             flexGrow: 1,
@@ -53,26 +57,17 @@ function NewComponent(props: {
       </Box>
       <Box display={{ width: 'max-content' }}>
         <Button
-          sx={{
-            color: props.background ? 'white' : 'unset',
-            display: {
-              xs: 'none',
-              sm: 'none',
-              md: 'none',
-              lg: 'unset',
-            },
-          }}
-          onClick={props.onClick}
+          sx={{ color: background ? 'white' : 'unset' }}
+          onClick={onClick}
           startIcon={<CloseIcon color="secondary" />}
         >
           Onde encontrar
         </Button>
         <Button
-          onClick={props.onClick1}
+          onClick={onClick1}
           sx={{
             whiteSpace: 'nowrap',
             minWidth: 'auto',
-
             borderRadius: 20,
             textTransform: 'none',
           }}

@@ -17,7 +17,7 @@ export const LocationsSlider = ({
           Nossas Instalações
         </Typography>
       </Box>
-      <FrukiSlider translate={272}>
+      <FrukiSlider translate={-272}>
         {locations.map((p, idx) => (
           <SliderCard
             key={p?.title}

@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import { BrandsComponent } from 'components/brandsComponent'
 import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiBlogSection } from 'components/FrukiBlogSection'
@@ -32,7 +33,7 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
             <>
               O nosso compromisso com as questões socioambientais se refletem em
               ações de verdade.
-              <br />
+              <Box sx={{ minHeight: 20 }} />
               Para isso, transformamos nossa maneira de pensar o futuro das
               pessoas e do planeta.
             </>
@@ -41,6 +42,7 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
         />
         <FrukiBlogSection posts={allPosts} />
         <FrukiContact />
+
         <FrukiWorkForce />
         <FrukiFooter brands={allBrands} />
       </FrukiContainer>

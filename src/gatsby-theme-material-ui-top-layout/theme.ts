@@ -18,6 +18,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 300,
+          whiteSpace: 'nowrap',
+          minWidth: 'auto',
         },
         sizeLarge: {
           height: 48,

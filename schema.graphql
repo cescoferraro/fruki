@@ -1470,8 +1470,8 @@ type MdxFrontmatter {
   question: String
   tag: [String]
   tag_name: String
-  tags: [String]
   title: String
+  url: String
 }
 
 input MdxFrontmatterFieldSelector {
@@ -1490,8 +1490,8 @@ input MdxFrontmatterFieldSelector {
   question: FieldSelectorEnum
   tag: FieldSelectorEnum
   tag_name: FieldSelectorEnum
-  tags: FieldSelectorEnum
   title: FieldSelectorEnum
+  url: FieldSelectorEnum
 }
 
 input MdxFrontmatterFilterInput {
@@ -1510,8 +1510,8 @@ input MdxFrontmatterFilterInput {
   question: StringQueryOperatorInput
   tag: StringQueryOperatorInput
   tag_name: StringQueryOperatorInput
-  tags: StringQueryOperatorInput
   title: StringQueryOperatorInput
+  url: StringQueryOperatorInput
 }
 
 input MdxFrontmatterSortInput {
@@ -1530,8 +1530,8 @@ input MdxFrontmatterSortInput {
   question: SortOrderEnum
   tag: SortOrderEnum
   tag_name: SortOrderEnum
-  tags: SortOrderEnum
   title: SortOrderEnum
+  url: SortOrderEnum
 }
 
 type MdxGroupConnection {
