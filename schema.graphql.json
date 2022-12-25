@@ -17642,11 +17642,11 @@
                 "deprecationReason": null
               },
               {
-                "name": "graphqlTypegen",
+                "name": "default",
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "BooleanQueryOperatorInput",
+                  "name": "SiteDefaultFilterInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -17678,18 +17678,6 @@
                 "deprecationReason": null
               },
               {
-                "name": "jsxRuntime",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
                 "name": "parent",
                 "description": null,
                 "type": {
@@ -17702,47 +17690,11 @@
                 "deprecationReason": null
               },
               {
-                "name": "pathPrefix",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "polyfill",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "BooleanQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
                 "name": "siteMetadata",
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "SiteSiteMetadataFilterInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "trailingSlash",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -18207,12 +18159,12 @@
             "deprecationReason": null
           },
           {
-            "name": "graphqlTypegen",
+            "name": "default",
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
+              "kind": "OBJECT",
+              "name": "SiteDefault",
               "ofType": null
             },
             "isDeprecated": false,
@@ -18251,18 +18203,6 @@
             "deprecationReason": null
           },
           {
-            "name": "jsxRuntime",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "parent",
             "description": null,
             "args": [],
@@ -18275,48 +18215,12 @@
             "deprecationReason": null
           },
           {
-            "name": "pathPrefix",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "polyfill",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "siteMetadata",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
               "name": "SiteSiteMetadata",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "trailingSlash",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -19634,6 +19538,294 @@
       },
       {
         "kind": "OBJECT",
+        "name": "SiteDefault",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": [
+          {
+            "name": "graphqlTypegen",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteMetadata",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "SiteDefaultSiteMetadata",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SiteDefaultFieldSelector",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "graphqlTypegen",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "FieldSelectorEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteMetadata",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SiteDefaultSiteMetadataFieldSelector",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SiteDefaultFilterInput",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "graphqlTypegen",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BooleanQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteMetadata",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SiteDefaultSiteMetadataFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "SiteDefaultSiteMetadata",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": [
+          {
+            "name": "siteUrl",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "title",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SiteDefaultSiteMetadataFieldSelector",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "siteUrl",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "FieldSelectorEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "FieldSelectorEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SiteDefaultSiteMetadataFilterInput",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "siteUrl",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SiteDefaultSiteMetadataSortInput",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "siteUrl",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "SortOrderEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "title",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "SortOrderEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "SiteDefaultSortInput",
+        "description": null,
+        "specifiedByURL": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "graphqlTypegen",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "SortOrderEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteMetadata",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "SiteDefaultSiteMetadataSortInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
         "name": "SiteEdge",
         "description": null,
         "specifiedByURL": null,
@@ -19716,11 +19908,11 @@
             "deprecationReason": null
           },
           {
-            "name": "graphqlTypegen",
+            "name": "default",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "SiteDefaultFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -19764,47 +19956,11 @@
             "deprecationReason": null
           },
           {
-            "name": "jsxRuntime",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "parent",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "NodeFieldSelector",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "pathPrefix",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "polyfill",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
               "ofType": null
             },
             "defaultValue": null,
@@ -19829,18 +19985,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "SiteSiteMetadataFieldSelector",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "trailingSlash",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
               "ofType": null
             },
             "defaultValue": null,
@@ -19884,11 +20028,11 @@
             "deprecationReason": null
           },
           {
-            "name": "graphqlTypegen",
+            "name": "default",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "BooleanQueryOperatorInput",
+              "name": "SiteDefaultFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -19920,18 +20064,6 @@
             "deprecationReason": null
           },
           {
-            "name": "jsxRuntime",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "parent",
             "description": null,
             "type": {
@@ -19944,47 +20076,11 @@
             "deprecationReason": null
           },
           {
-            "name": "pathPrefix",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "polyfill",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "BooleanQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "siteMetadata",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "SiteSiteMetadataFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "trailingSlash",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -22824,18 +22920,6 @@
             "deprecationReason": null
           },
           {
-            "name": "siteUrl",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "title",
             "description": null,
             "args": [],
@@ -22862,18 +22946,6 @@
         "inputFields": [
           {
             "name": "description",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "siteUrl",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -22921,18 +22993,6 @@
             "deprecationReason": null
           },
           {
-            "name": "siteUrl",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "title",
             "description": null,
             "type": {
@@ -22958,18 +23018,6 @@
         "inputFields": [
           {
             "name": "description",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "siteUrl",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -23029,11 +23077,11 @@
             "deprecationReason": null
           },
           {
-            "name": "graphqlTypegen",
+            "name": "default",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "SiteDefaultSortInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -23077,47 +23125,11 @@
             "deprecationReason": null
           },
           {
-            "name": "jsxRuntime",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "parent",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "NodeSortInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "pathPrefix",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "polyfill",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
               "ofType": null
             },
             "defaultValue": null,
@@ -23142,18 +23154,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "SiteSiteMetadataSortInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "trailingSlash",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
               "ofType": null
             },
             "defaultValue": null,

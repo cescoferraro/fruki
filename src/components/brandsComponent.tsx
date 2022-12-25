@@ -45,10 +45,10 @@ export function BrandsComponent(props: { brands: any[] }) {
               sm: 6,
               md: 10,
             },
-            borderTopLeftRadius: 120,
-            borderBottomRightRadius: 120,
+            borderTopLeftRadius: { xs: 70, sm: 120 },
+            borderBottomRightRadius: { xs: 70, sm: 120 },
             transform: {
-              xs: 'translateY(170px)',
+              xs: 'translateY(250px)',
               sm: 'translateY(250px)',
               md: 'translateY(0px)',
             },

@@ -57,7 +57,15 @@ function NewComponent({
       </Box>
       <Box display={{ width: 'max-content' }}>
         <Button
-          sx={{ color: background ? 'white' : 'unset' }}
+          sx={{
+            color: background ? 'white' : 'unset',
+            display: {
+              xs: 'none',
+              sm: 'none',
+              md: 'none',
+              lg: 'unset',
+            },
+          }}
           onClick={onClick}
           startIcon={<CloseIcon color="secondary" />}
         >
@@ -68,6 +76,7 @@ function NewComponent({
           sx={{
             whiteSpace: 'nowrap',
             minWidth: 'auto',
+
             borderRadius: 20,
             textTransform: 'none',
           }}

@@ -1,21 +1,101 @@
 import { Box, Button, Typography, useTheme } from '@mui/material'
+import image15 from 'assets/home/img_15.png'
 import image9 from 'assets/home/img_hey.png'
 import { center } from 'components/center'
 import { GridContainer, GridItem } from 'components/FrukiContainer'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import * as React from 'react'
 import { SVGProps, useState } from 'react'
-import Carousel from 'react-material-ui-carousel'
 
 interface IProps {
   home: GatsbyTypes.HomeFragmentFragment | null
+}
+
+function MobileGrid(props: { left: number }) {
+  let height = 350
+  return (
+    <GridItem
+      padding="none"
+      sx={{
+        position: 'relative',
+        flexBasis: `${props.left}%`,
+        py: 0,
+        justifyContent: 'flex-end',
+        height,
+        minHeight: height,
+        maxHeight: height,
+      }}
+    >
+      <img
+        src={image15}
+        alt=""
+        style={{
+          zIndex: 2,
+          height: 410,
+          position: 'absolute',
+          top: 0,
+          width: '100%',
+        }}
+      />
+    </GridItem>
+  )
+}
+function DesktopGrid(props: { left: number }) {
+  return (
+    <GridItem
+      padding="none"
+      sx={{
+        position: 'relative',
+        flexBasis: `${props.left}%`,
+        py: 0,
+        maxWidth: '60vw',
+        justifyContent: 'flex-end',
+      }}
+    >
+      <svg
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 179,
+          zIndex: 1,
+          stroke: 'transparent',
+          strokeWidth: 0,
+        }}
+        width={150}
+        height={150}
+        viewBox="0 0 150 150"
+        fill="none"
+      >
+        <rect width={150} height={150} fill="#5F99AF" />
+      </svg>
+      <svg
+        style={{
+          stroke: 'transparent',
+          strokeWidth: 0,
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          zIndex: 1,
+        }}
+        width="179"
+        height="720"
+        viewBox="0 0 179 720"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 179C0 80.141 80.141 0 179 0V720H0V179Z" fill="#5F99AF" />
+      </svg>
+
+      <img src={image9} alt="" style={{ height: '680px', zIndex: 2 }} />
+    </GridItem>
+  )
 }
 
 function NewComponent() {
   const borderTopLeftRadius = { xs: 240, sm: 240, md: 400 }
   const isBig = useIsBigScreen()
   const theme = useTheme()
-  const left = 60
+  const left = 55
   return (
     <GridContainer
       sx={{
@@ -27,64 +107,7 @@ function NewComponent() {
         },
       }}
     >
-      <GridItem
-        padding="none"
-        sx={{
-          position: 'relative',
-          flexBasis: `${left}%`,
-          py: 0,
-          maxWidth: '60vw',
-          // backgroundImage: `url(${image9})`,
-          // backgroundSize: 'cover',
-          // backgroundPosition: 'right',
-          // borderWidth: 2,
-          // borderTopLeftRadius: borderTopLeftRadius,
-          // borderTopRightRadius: borderTopLeftRadius,
-          // borderBottomRightRadius: borderTopLeftRadius,
-          // display: 'flex',
-          // p: '0px !important',
-          // pr: '0px !important',
-          // pl: '0px !important',
-          // pt: '0px !important',
-          // pb: '0px !important',
-        }}
-      >
-        <svg
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            right: 179,
-            zIndex: 1,
-            stroke: 'transparent',
-            strokeWidth: 0,
-          }}
-          width={150}
-          height={150}
-          viewBox="0 0 150 150"
-          fill="none"
-        >
-          <rect width={150} height={150} fill="#5F99AF" />
-        </svg>
-        <svg
-          style={{
-            stroke: 'transparent',
-            strokeWidth: 0,
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            zIndex: 1,
-          }}
-          width="179"
-          height="720"
-          viewBox="0 0 179 720"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 179C0 80.141 80.141 0 179 0V720H0V179Z" fill="#5F99AF" />
-        </svg>
-
-        <img src={image9} alt="" style={{ height: '100%', zIndex: 2 }} />
-      </GridItem>
+      {isBig ? <DesktopGrid left={left} /> : <MobileGrid left={left} />}
       <GridItem
         padding="none"
         sx={{
@@ -127,7 +150,14 @@ function NewComponent() {
             Quero ser Cliente
           </Button>
         </Box>
-        <SVGComponent style={{ position: 'absolute', bottom: 0, right: 0 }} />
+        <SVGComponent
+          style={{
+            display: isBig ? 'block' : 'none',
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+          }}
+        />
       </GridItem>
     </GridContainer>
   )
