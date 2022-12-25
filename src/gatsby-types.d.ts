@@ -1500,6 +1500,7 @@ type MdxFrontmatter = {
   readonly answer: Maybe<Scalars['String']>;
   readonly author: Maybe<Scalars['String']>;
   readonly brand: Maybe<Scalars['String']>;
+  readonly caption: Maybe<Scalars['String']>;
   readonly color: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
   readonly description: Maybe<Scalars['String']>;
@@ -1527,6 +1528,7 @@ type MdxFrontmatterFieldSelector = {
   readonly answer: InputMaybe<FieldSelectorEnum>;
   readonly author: InputMaybe<FieldSelectorEnum>;
   readonly brand: InputMaybe<FieldSelectorEnum>;
+  readonly caption: InputMaybe<FieldSelectorEnum>;
   readonly color: InputMaybe<FieldSelectorEnum>;
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
@@ -1546,6 +1548,7 @@ type MdxFrontmatterFilterInput = {
   readonly answer: InputMaybe<StringQueryOperatorInput>;
   readonly author: InputMaybe<StringQueryOperatorInput>;
   readonly brand: InputMaybe<StringQueryOperatorInput>;
+  readonly caption: InputMaybe<StringQueryOperatorInput>;
   readonly color: InputMaybe<StringQueryOperatorInput>;
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
@@ -1565,6 +1568,7 @@ type MdxFrontmatterSortInput = {
   readonly answer: InputMaybe<SortOrderEnum>;
   readonly author: InputMaybe<SortOrderEnum>;
   readonly brand: InputMaybe<SortOrderEnum>;
+  readonly caption: InputMaybe<SortOrderEnum>;
   readonly color: InputMaybe<SortOrderEnum>;
   readonly date: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
@@ -2806,6 +2810,8 @@ type CertificatesFragmentFragment = { readonly edges: ReadonlyArray<{ readonly n
 
 type CertificatesFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null };
 
+type PrivacyQueryFragmentFragment = { readonly privacy: { readonly nodes: ReadonlyArray<{ readonly body: string | null, readonly frontmatter: { readonly title: string | null } | null }> } };
+
 type BlogPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2862,10 +2868,10 @@ type PostBySlugPageQueryQueryVariables = Exact<{
 
 type PostBySlugPageQueryQuery = { readonly post: { readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null, readonly image: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly author: string | null, readonly about: string | null } | null } | null };
 
-type PrivacyPageQueryVariables = Exact<{ [key: string]: never; }>;
+type PrivacyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PrivacyPageQuery = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null } | null } }> } };
+type PrivacyQueryQuery = { readonly privacy: { readonly nodes: ReadonlyArray<{ readonly body: string | null, readonly frontmatter: { readonly title: string | null } | null }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null } | null } }> } };
 
 type ProductByBrandPageQueryQueryVariables = Exact<{
   productName: InputMaybe<Scalars['String']>;

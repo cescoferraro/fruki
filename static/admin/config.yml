@@ -135,3 +135,10 @@ collections:
           - { label: Name, name: name, widget: string }
           - { label: Title, name: title, widget: string }
           - { label: Caption, name: caption, widget: string }
+      - label: Privacidade
+        name: home
+        file: content/privacy.md
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { name: body, label: Conteúdo do privacy, widget: markdown }

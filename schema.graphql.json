@@ -13724,6 +13724,18 @@
             "deprecationReason": null
           },
           {
+            "name": "caption",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "color",
             "description": null,
             "args": [],
@@ -13986,6 +13998,18 @@
             "deprecationReason": null
           },
           {
+            "name": "caption",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "FieldSelectorEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "color",
             "description": null,
             "type": {
@@ -14190,6 +14214,18 @@
             "deprecationReason": null
           },
           {
+            "name": "caption",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "color",
             "description": null,
             "type": {
@@ -14383,6 +14419,18 @@
           },
           {
             "name": "brand",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "SortOrderEnum",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "caption",
             "description": null,
             "type": {
               "kind": "ENUM",

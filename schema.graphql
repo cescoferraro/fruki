@@ -1443,6 +1443,7 @@ type MdxFrontmatter {
   answer: String
   author: String
   brand: String
+  caption: String
   color: String
   date(
     """
@@ -1478,6 +1479,7 @@ input MdxFrontmatterFieldSelector {
   answer: FieldSelectorEnum
   author: FieldSelectorEnum
   brand: FieldSelectorEnum
+  caption: FieldSelectorEnum
   color: FieldSelectorEnum
   date: FieldSelectorEnum
   description: FieldSelectorEnum
@@ -1497,6 +1499,7 @@ input MdxFrontmatterFilterInput {
   answer: StringQueryOperatorInput
   author: StringQueryOperatorInput
   brand: StringQueryOperatorInput
+  caption: StringQueryOperatorInput
   color: StringQueryOperatorInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
@@ -1516,6 +1519,7 @@ input MdxFrontmatterSortInput {
   answer: SortOrderEnum
   author: SortOrderEnum
   brand: SortOrderEnum
+  caption: SortOrderEnum
   color: SortOrderEnum
   date: SortOrderEnum
   description: SortOrderEnum
