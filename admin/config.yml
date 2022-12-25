@@ -48,7 +48,7 @@ collections:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: title, label: Título }
-      - { name: url, label: Url}
+      - { name: url, label: Url }
       - { name: description, label: Descrição, required: false }
       - name: "image"
         label: "Imagem de destaque"
@@ -56,14 +56,6 @@ collections:
       - { name: "body", label: "Conteúdo do blog post", widget: "markdown" }
       - { name: author, label: Autor do post, required: false }
       - { name: about, label: Sobre o autor, required: false }
-      - label: "Tags"
-        name: "tags"
-        widget: "relation"
-        collection: "tag"
-        multiple: true
-        searchFields: [ "tag_name" ]
-        valueField: "tag_name"
-        displayFields: [ "tag_name" ]
   - name: certificate
     label: Certificados
     folder: content/certificate
@@ -135,3 +127,10 @@ collections:
           - { label: Name, name: name, widget: string }
           - { label: Title, name: title, widget: string }
           - { label: Caption, name: caption, widget: string }
+      - label: Privacidade
+        name: home
+        file: content/privacy.md
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { name: body, label: Conteúdo do privacy, widget: markdown }
