@@ -60,10 +60,10 @@ function DesktopGrid(props: { left: number }) {
         <StaticImage
           src={`../../static/assets/home/img_15.png`}
           alt=""
-          aspectRatio={16 / 9}
           style={{
+            backgroundColor: 'transparent',
             zIndex: 2,
-            height: 410,
+            // height: 410,
             position: 'absolute',
             top: 0,
             width: '100%',
@@ -113,6 +113,9 @@ function DesktopGrid(props: { left: number }) {
             src={`../../static/assets/home/img_hey.png`}
             alt=""
             objectFit={'fill'}
+            onLoad={() => {
+              console.log('loade')
+            }}
             style={{
               height: '680px',
               zIndex: 2,

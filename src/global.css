@@ -16,3 +16,10 @@
 * {
     font-family: Mangueira, serif;
 }
+.gatsby-image-wrapper [data-placeholder-image] {
+    background-color: transparent !important;
+}
+.gatsby-image-wrapper [data-main-image] {
+    opacity: 1 !important;
+    /*transition: none;*/
+}

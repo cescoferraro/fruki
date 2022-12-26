@@ -36,7 +36,7 @@ export function FrukiFooter({ brands }: IProps) {
         container
         sx={{
           py: 8,
-          '& > div:nth-child(n+2):nth-last-child(n+2)': {
+          '& > div:nth-of-type(n+2):nth-last-of-type(n+2)': {
             pl: {
               md: 4,
             },
