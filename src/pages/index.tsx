@@ -25,25 +25,25 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
       <FrukiAppBar />
       <FrukiContainer>
         <FrukiMainGrid home={home} />
-        <FrukiHistory />
-        <BrandsComponent brands={allBrands} />
-        <FrukiFuture
-          title={`Um mundo mais gentil tem outro sabor`}
-          text={
-            <>
-              O nosso compromisso com as questões socioambientais se refletem em
-              ações de verdade.
-              <Box sx={{ minHeight: 20 }} />
-              Para isso, transformamos nossa maneira de pensar o futuro das
-              pessoas e do planeta.
-            </>
-          }
-          action={'Saiba mais'}
-        />
-        <FrukiBlogSection posts={allPosts} />
-        <FrukiContact />
+        {/*<FrukiHistory />*/}
+        {/*<BrandsComponent brands={allBrands} />*/}
+        {/*<FrukiFuture*/}
+        {/*  title={`Um mundo mais gentil tem outro sabor`}*/}
+        {/*  text={*/}
+        {/*    <>*/}
+        {/*      O nosso compromisso com as questões socioambientais se refletem em*/}
+        {/*      ações de verdade.*/}
+        {/*      <Box sx={{ minHeight: 20 }} />*/}
+        {/*      Para isso, transformamos nossa maneira de pensar o futuro das*/}
+        {/*      pessoas e do planeta.*/}
+        {/*    </>*/}
+        {/*  }*/}
+        {/*  action={'Saiba mais'}*/}
+        {/*/>*/}
+        {/*<FrukiBlogSection posts={allPosts} />*/}
+        {/*<FrukiContact />*/}
 
-        <FrukiWorkForce />
+        {/*<FrukiWorkForce />*/}
         <FrukiFooter brands={allBrands} />
       </FrukiContainer>
     </>

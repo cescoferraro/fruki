@@ -8,6 +8,7 @@ import { useIsBigScreen } from 'components/useIsBigScreen'
 import * as React from 'react'
 import { SVGProps } from 'react'
 import { Helmet } from 'react-helmet'
+import { StaticImage } from 'gatsby-plugin-image'
 
 interface IProps {
   home: GatsbyTypes.HomeFragmentFragment | null
@@ -29,42 +30,6 @@ const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-function MobileGrid(props: { left: number }) {
-  return (
-    <GridItem
-      padding="none"
-      sx={{
-        position: 'relative',
-        flexBasis: `${props.left}%`,
-        py: 0,
-        justifyContent: 'flex-end',
-        height: { xs: 300, sm: 300, md: 800 },
-        minHeight: { xs: 300, sm: 300, md: 800 },
-        maxHeight: { xs: 300, sm: 300, md: 800 },
-      }}
-    >
-      <SVGComponent
-        style={{
-          position: 'absolute',
-          left: 0,
-          bottom: -400,
-        }}
-      />
-      <img
-        src={image15}
-        alt=""
-        style={{
-          zIndex: 2,
-          height: 410,
-          position: 'absolute',
-          top: 0,
-          width: '100%',
-        }}
-      />
-    </GridItem>
-  )
-}
-
 function DesktopGrid(props: { left: number }) {
   const isBig = useIsBigScreen()
   return (
@@ -74,12 +39,12 @@ function DesktopGrid(props: { left: number }) {
         position: 'relative',
         flexBasis: `${props.left}%`,
         py: 0,
-        maxWidth: isBig ? '60vw' : '100vw',
+        // maxWidth: isBig ? '60vw' : '100vw',
         justifyContent: 'flex-end',
 
-        height: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
-        minHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
-        maxHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
+        // height: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
+        // minHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
+        // maxHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
       }}
     >
       {!isBig && (
@@ -92,8 +57,8 @@ function DesktopGrid(props: { left: number }) {
         />
       )}
       {!isBig && (
-        <img
-          src={image15}
+        <StaticImage
+          src={`../../static/assets/home/img_15.png`}
           alt=""
           style={{
             zIndex: 2,
@@ -143,7 +108,16 @@ function DesktopGrid(props: { left: number }) {
             />
           </svg>
 
-          <img src={image9} alt="" style={{ height: '680px', zIndex: 2 }} />
+          <StaticImage
+            src={`../../static/assets/home/img_hey.png`}
+            alt=""
+            id={'hey'}
+            style={{
+              height: '680px',
+              zIndex: 2,
+              objectFit: 'fill',
+            }}
+          />
         </>
       )}
     </GridItem>
@@ -169,7 +143,6 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
         <link rel="preload" as="image" href={image9} />
         <link rel="preload" as="image" href={image15} />
       </Helmet>
-      {/*{!isBig ? <MobileGrid left={left} /> : <DesktopGrid left={left} />}*/}
       <DesktopGrid left={left} />
       <GridItem
         padding="none"
