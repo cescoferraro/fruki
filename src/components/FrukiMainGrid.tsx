@@ -111,7 +111,7 @@ function DesktopGrid(props: { left: number }) {
           <StaticImage
             src={`../../static/assets/home/img_hey.png`}
             alt=""
-            id={'hey'}
+            objectFit={'fill'}
             style={{
               height: '680px',
               zIndex: 2,
