@@ -1,3 +1,4 @@
+name: Fruki Deploy
 on:
   push:
     branches: main
