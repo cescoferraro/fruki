@@ -43,7 +43,7 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
     mutationFn: (lead) => {
       return axios.post(`${host}/graphql`, {
         operationName: 'CreateLead',
-        query: `query CreateLead($name: String!, $cnpj: String!, $email: String!, $phone: String!) { createLead(name: $name, cnpj: $cnpj, email: $email, phone: $phone) { name cnpj email phone } } `,
+        query: `mutation CreateLead($name: String!, $cnpj: String!, $email: String!, $phone: String!) { createLead(name: $name, cnpj: $cnpj, email: $email, phone: $phone) { name cnpj email phone } } `,
         variables: lead,
       })
     },
