@@ -33,10 +33,7 @@ export function SliderCard({
         ml: 0.5,
         mb: 1,
         mr: 1,
-        borderTopRightRadius: 0,
-        borderTopLeftRadius: 0,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
+        borderRadius: 5,
       }}
       tabIndex={0}
       onClick={onClick}

@@ -4,6 +4,53 @@ import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
+import { SVGProps } from 'react'
+
+const DDDDSVGComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={210}
+    height={210}
+    viewBox="0 0 210 210"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M-138.188 175.117L251.58 564.885L262.161 554.304C342.958 473.506 341.541 342.236 260.075 260.771L-129.693 -128.997L-140.273 -118.417C-221.078 -38.5879 -220.142 93.163 -138.188 175.117Z"
+      fill="#034638"
+    />
+  </svg>
+)
+const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={336}
+    height={534}
+    viewBox="0 0 336 534"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M39.6224 237.599L503.316 701.293L701.293 503.316L237.599 39.6225C184.249 -13.7273 96.5082 -12.5314 41.6838 42.293C-12.5313 96.5081 -13.7274 184.249 39.6224 237.599Z"
+      fill="#41B02A"
+    />
+  </svg>
+)
+const CCCCC = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={322}
+    height={530}
+    viewBox="0 0 322 530"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M-138.188 175.117L251.58 564.885L262.161 554.304C342.958 473.506 341.541 342.236 260.075 260.771L-129.693 -128.997L-140.273 -118.417C-221.078 -38.5879 -220.142 93.163 -138.188 175.117Z"
+      fill="#034638"
+    />
+  </svg>
+)
 
 export function BrandsComponent(props: { brands: any[] }) {
   const theme = useTheme()
@@ -16,10 +63,37 @@ export function BrandsComponent(props: { brands: any[] }) {
           backgroundImage: `url(${img66})`,
           height: { xs: 400, sm: 400, md: 600 },
           backgroundSize: 'cover',
-          backgroundPositino: 'center',
+          backgroundPosition: 'center',
           display: 'flex',
+          flexBasis: '60%',
+          position: 'relative',
         }}
       >
+        <SVGComponent
+          style={{
+            display: !isBig ? 'none' : 'block',
+            position: 'absolute',
+            top: 20,
+            right: 0,
+          }}
+        />
+        <CCCCC
+          style={{
+            display: !isBig ? 'none' : 'block',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+          }}
+        />
+        <DDDDSVGComponent
+          style={{
+            display: isBig ? 'none' : 'block',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+          }}
+        />
+
         <Box
           sx={{
             flexBasis: {

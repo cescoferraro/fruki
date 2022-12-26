@@ -90,7 +90,7 @@ export const GridItem = ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        py: 2,
+        py: padding === 'none' ? 0 : 2,
         ...paddings,
         ...sx,
       }}

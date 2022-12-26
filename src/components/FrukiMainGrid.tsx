@@ -3,16 +3,34 @@ import image15 from 'assets/home/img_15.png'
 import image9 from 'assets/home/img_hey.png'
 import { center } from 'components/center'
 import { GridContainer, GridItem } from 'components/FrukiContainer'
+import { GreenArrowLeft } from 'components/GreenArrowLeft'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import * as React from 'react'
 import { SVGProps, useState } from 'react'
+import { Helmet } from 'react-helmet'
 
 interface IProps {
   home: GatsbyTypes.HomeFragmentFragment | null
 }
 
+const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={375}
+    height={596}
+    viewBox="0 0 375 596"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M-165 479.999C-165 214.903 49.9033 -0.000732422 315 -0.000732422H375V595.999H-165V479.999Z"
+      fill="#5F99AF"
+    />
+  </svg>
+)
+
 function MobileGrid(props: { left: number }) {
-  let height = 350
+  let height = { xs: 300, sm: 300, md: 800 }
   return (
     <GridItem
       padding="none"
@@ -26,6 +44,13 @@ function MobileGrid(props: { left: number }) {
         maxHeight: height,
       }}
     >
+      <SVGComponent
+        style={{
+          position: 'absolute',
+          left: 0,
+          bottom: -400,
+        }}
+      />
       <img
         src={image15}
         alt=""
@@ -40,6 +65,7 @@ function MobileGrid(props: { left: number }) {
     </GridItem>
   )
 }
+
 function DesktopGrid(props: { left: number }) {
   return (
     <GridItem
@@ -91,11 +117,12 @@ function DesktopGrid(props: { left: number }) {
   )
 }
 
-function NewComponent() {
-  const borderTopLeftRadius = { xs: 240, sm: 240, md: 400 }
+export const FrukiMainGrid: React.FC<IProps> = ({}) => {
   const isBig = useIsBigScreen()
   const theme = useTheme()
   const left = 55
+  let sm = 700
+  let xs = 750
   return (
     <GridContainer
       sx={{
@@ -107,11 +134,16 @@ function NewComponent() {
         },
       }}
     >
-      {isBig ? <DesktopGrid left={left} /> : <MobileGrid left={left} />}
+      <Helmet>
+        <link rel="preload" as="image" href={image9} />
+        <link rel="preload" as="image" href={image15} />
+      </Helmet>
+      {!isBig ? <MobileGrid left={left} /> : <DesktopGrid left={left} />}
       <GridItem
         padding="none"
         sx={{
           flexBasis: `${100 - left}%`,
+          justifyContent: 'center',
           background: '#5F99AF',
           px: {
             xs: 4,
@@ -119,19 +151,19 @@ function NewComponent() {
             md: 4,
             lg: 8,
           },
-          // pl: 4,
         }}
       >
         <Typography
           variant={isBig ? 'h1' : 'h5'}
-          sx={{ fontWeight: 700, zIndex: 2 }}
+          sx={{ fontWeight: 700, zIndex: 2, py: 2 }}
           color="primary.contrastText"
         >
-          Paixão por oferecer o melhor sabor
+          Paixão {!isBig && <br />}
+          por oferecer o melhor sabor
         </Typography>
         <Typography
           color="primary.contrastText"
-          sx={{ zIndex: 2 }}
+          sx={{ zIndex: 2, py: 2 }}
           fontWeight={700}
           variant="h6"
         >
@@ -150,7 +182,7 @@ function NewComponent() {
             Quero ser Cliente
           </Button>
         </Box>
-        <SVGComponent
+        <GreenArrowLeft
           style={{
             display: isBig ? 'block' : 'none',
             position: 'absolute',
@@ -160,62 +192,5 @@ function NewComponent() {
         />
       </GridItem>
     </GridContainer>
-  )
-}
-
-const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    width={185}
-    height={360}
-    viewBox="0 0 185 360"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <g clipPath="url(#clip0_1138_2051)">
-      <rect
-        x={258.862}
-        y={-74}
-        width={366.086}
-        height={366.086}
-        transform="rotate(45 258.862 -74)"
-        fill="#41B02A"
-      />
-    </g>
-    <defs>
-      <clipPath id="clip0_1138_2051">
-        <rect width={185} height={360} fill="white" />
-      </clipPath>
-    </defs>
-  </svg>
-)
-
-export const FrukiMainGrid: React.FC<IProps> = ({}) => {
-  const [visible, setVisible] = useState(false)
-  return (
-    <>
-      <Box
-        onMouseEnter={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
-      >
-        {/*<Carousel*/}
-        {/*  swipe={false}*/}
-        {/*  autoPlay={false}*/}
-        {/*  animation={undefined}*/}
-        {/*  duration={0}*/}
-        {/*  cycleNavigation={false}*/}
-        {/*  navButtonsAlwaysInvisible={false}*/}
-        {/*  navButtonsAlwaysVisible={visible}*/}
-        {/*  indicators={visible}*/}
-        {/*  indicatorIconButtonProps={{ style: { color: 'white', padding: '4px' } }}*/}
-        {/*  activeIndicatorIconButtonProps={{ style: { color: 'black' } }}*/}
-        {/*  indicatorContainerProps={{*/}
-        {/*    style: { marginTop: '-34px', position: 'absolute', zIndex: 2 },*/}
-        {/*  }}*/}
-        {/*>*/}
-        <NewComponent />
-        {/*</Carousel>*/}
-      </Box>
-    </>
   )
 }

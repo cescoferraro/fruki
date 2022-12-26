@@ -65,9 +65,14 @@ export function FrukiPourpose() {
           display: 'flex',
           gap: 4,
           justifyContent: 'space-between',
+          flexDirection: {
+            xs: 'column',
+            sm: 'column',
+            md: 'row',
+          },
         }}
       >
-        <Paper sx={{ borderRadius: 24 / 8, width: 392, p: 5 }}>
+        <Paper sx={{ borderRadius: 24 / 8, width: '100%', p: 5 }}>
           <Box sx={{ ...center, pb: 2 }}>
             <svg
               width="80"
@@ -94,7 +99,7 @@ export function FrukiPourpose() {
             </Typography>
           </Box>
         </Paper>
-        <Paper sx={{ borderRadius: 24 / 8, width: 392, p: 5 }}>
+        <Paper sx={{ borderRadius: 24 / 8, width: '100%', p: 5 }}>
           <Box sx={{ ...center, pb: 2 }}>
             <svg
               width="80"
@@ -119,7 +124,7 @@ export function FrukiPourpose() {
             </Typography>
           </Box>
         </Paper>
-        <Paper sx={{ borderRadius: 24 / 8, width: 392, p: 5 }}>
+        <Paper sx={{ borderRadius: 24 / 8, width: '100%', p: 5 }}>
           <Box sx={{ ...center, pb: 2 }}>
             <svg
               width="80"
