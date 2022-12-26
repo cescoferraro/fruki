@@ -69,7 +69,7 @@ export default function TopLayout({ children, theme }: any) {
             <title>Fruki</title>
             <link
               rel="preload"
-              href="/fonts/Fontspring-DEMO-mangueira-regular.otf"
+              href="/fonts/MangueiraAlt-Regular.otf"
               as="font"
               type="font/otf"
               crossOrigin="anonymous"
