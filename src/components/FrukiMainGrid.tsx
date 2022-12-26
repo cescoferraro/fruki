@@ -139,10 +139,6 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
         },
       }}
     >
-      <Helmet>
-        <link rel="preload" as="image" href={image9} />
-        <link rel="preload" as="image" href={image15} />
-      </Helmet>
       <DesktopGrid left={left} />
       <GridItem
         padding="none"
