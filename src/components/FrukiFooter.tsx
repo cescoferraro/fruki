@@ -94,17 +94,19 @@ export function FrukiFooter({ brands }: IProps) {
             Informações
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
-            <Link to={'/blog'}>Blog</Link>
+            {/*<Link to={'/blog'}>Blog</Link>*/}
             {/*<Link to={'/marcas'}>Nossas Marcas</Link>*/}
-            <Link>Seja um Parceiro</Link>
-            <Link>Sobre a Fruki</Link>
+            <Link to={'/partner'}>Seja um Parceiro</Link>
+            <Link to={'/sobre-nos'}>Sobre a Fruki</Link>
             {/*<Link>Onde Encontrar</Link>*/}
             <Link to={'https://vagasfruki.gupy.io/'}>Trabalhe Conosco</Link>
             {/*<Link>Patrocínio</Link>*/}
-            <Link>Dúvidas Frequentes</Link>
+            <Link to={'/faq'}>Dúvidas Frequentes</Link>
             {/*<Link>Notícias</Link>*/}
-            <Link>Política de Privacidade</Link>
-            <Link>Relatório de Sustentabilidade</Link>
+            <Link to={'/privacidade'}>Política de Privacidade</Link>
+            <Link to={'/planetas-e-pessoas'}>
+              Relatório de Sustentabilidade
+            </Link>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={3} sx={{ pt: 2 }}>
@@ -147,6 +149,7 @@ export function FrukiFooter({ brands }: IProps) {
                   navigate('https://www.linkedin.com/company/fruki-bebidas')
                 }
                 sx={{ backgroundColor: 'secondary.main' }}
+                aria-label="likedin-button"
               >
                 <LinkedinIcon />
               </IconButton>
@@ -155,6 +158,7 @@ export function FrukiFooter({ brands }: IProps) {
               <IconButton
                 onClick={() => navigate('https://facebook.com/FrukiBebidas')}
                 sx={{ backgroundColor: 'secondary.main' }}
+                aria-label="facebook-button"
               >
                 <FacebookIcon />
               </IconButton>
@@ -163,6 +167,7 @@ export function FrukiFooter({ brands }: IProps) {
               <IconButton
                 onClick={() => navigate('https://twitter.com/fruki_oficial')}
                 sx={{ backgroundColor: 'secondary.main' }}
+                aria-label="twitter-button"
               >
                 <TwitterIcon />
               </IconButton>

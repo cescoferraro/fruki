@@ -65,7 +65,7 @@ export default function TopLayout({ children, theme }: any) {
     <QueryClientProvider client={queryClient}>
       <ThemeTopLayout theme={theme}>
         <React.Fragment>
-          <Helmet>
+          <Helmet htmlAttributes={{ lang: 'pt-BR' }}>
             <title>Fruki</title>
             <link
               rel="preload"
@@ -75,6 +75,7 @@ export default function TopLayout({ children, theme }: any) {
               crossOrigin="anonymous"
               key="interFont"
             />
+            <meta name="description" content="This is the description tag" />
             <style />
           </Helmet>
           <Snackbar

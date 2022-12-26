@@ -60,6 +60,7 @@ function DesktopGrid(props: { left: number }) {
         <StaticImage
           src={`../../static/assets/home/img_15.png`}
           alt=""
+          aspectRatio={16 / 9}
           style={{
             zIndex: 2,
             height: 410,

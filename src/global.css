@@ -2,12 +2,14 @@
 @font-face {
     font-family: Mangueira;
     font-weight: 700;
+    font-display: swap;
     src: url("/fonts/MangueiraAlt-Bold.otf") format("opentype");
 }
 @font-face {
     font-family: Mangueira;
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: url("/fonts/MangueiraAlt-Regular.otf") format("opentype");
 }
 

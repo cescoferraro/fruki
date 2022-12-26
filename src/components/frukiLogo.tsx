@@ -9,7 +9,7 @@ export const FrukiLogo: React.FC<{
 }> = ({ background }) => {
   const isSmall = useMediaQuery(useTheme().breakpoints.down('sm'))
   return (
-    <Button onClick={() => navigate('/')}>
+    <Button aria-label="home-button" onClick={() => navigate('/')}>
       {isSmall ? (
         <SmallFrukiLogo background={background} />
       ) : (
