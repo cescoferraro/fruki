@@ -6,7 +6,7 @@ import { GridContainer, GridItem } from 'components/FrukiContainer'
 import { GreenArrowLeft } from 'components/GreenArrowLeft'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import * as React from 'react'
-import { SVGProps, useState } from 'react'
+import { SVGProps } from 'react'
 import { Helmet } from 'react-helmet'
 
 interface IProps {
@@ -30,7 +30,6 @@ const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
 )
 
 function MobileGrid(props: { left: number }) {
-  let height = { xs: 300, sm: 300, md: 800 }
   return (
     <GridItem
       padding="none"
@@ -39,9 +38,9 @@ function MobileGrid(props: { left: number }) {
         flexBasis: `${props.left}%`,
         py: 0,
         justifyContent: 'flex-end',
-        height,
-        minHeight: height,
-        maxHeight: height,
+        height: { xs: 300, sm: 300, md: 800 },
+        minHeight: { xs: 300, sm: 300, md: 800 },
+        maxHeight: { xs: 300, sm: 300, md: 800 },
       }}
     >
       <SVGComponent
@@ -67,6 +66,7 @@ function MobileGrid(props: { left: number }) {
 }
 
 function DesktopGrid(props: { left: number }) {
+  const isBig = useIsBigScreen()
   return (
     <GridItem
       padding="none"
@@ -74,45 +74,78 @@ function DesktopGrid(props: { left: number }) {
         position: 'relative',
         flexBasis: `${props.left}%`,
         py: 0,
-        maxWidth: '60vw',
+        maxWidth: isBig ? '60vw' : '100vw',
         justifyContent: 'flex-end',
+
+        height: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
+        minHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
+        maxHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
       }}
     >
-      <svg
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          right: 179,
-          zIndex: 1,
-          stroke: 'transparent',
-          strokeWidth: 0,
-        }}
-        width={150}
-        height={150}
-        viewBox="0 0 150 150"
-        fill="none"
-      >
-        <rect width={150} height={150} fill="#5F99AF" />
-      </svg>
-      <svg
-        style={{
-          stroke: 'transparent',
-          strokeWidth: 0,
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          zIndex: 1,
-        }}
-        width="179"
-        height="720"
-        viewBox="0 0 179 720"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M0 179C0 80.141 80.141 0 179 0V720H0V179Z" fill="#5F99AF" />
-      </svg>
+      {!isBig && (
+        <SVGComponent
+          style={{
+            position: 'absolute',
+            left: 0,
+            bottom: -400,
+          }}
+        />
+      )}
+      {!isBig && (
+        <img
+          src={image15}
+          alt=""
+          style={{
+            zIndex: 2,
+            height: 410,
+            position: 'absolute',
+            top: 0,
+            width: '100%',
+          }}
+        />
+      )}
+      {isBig && (
+        <>
+          <svg
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              right: 179,
+              zIndex: 1,
+              stroke: 'transparent',
+              strokeWidth: 0,
+            }}
+            width={150}
+            height={150}
+            viewBox="0 0 150 150"
+            fill="none"
+          >
+            <rect width={150} height={150} fill="#5F99AF" />
+          </svg>
+          <svg
+            style={{
+              stroke: 'transparent',
+              strokeWidth: 0,
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              zIndex: 1,
+            }}
+            width="179"
+            height="720"
+            viewBox="0 0 179 720"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 179C0 80.141 80.141 0 179 0V720H0V179Z"
+              fill="#5F99AF"
+            />
+          </svg>
 
-      <img src={image9} alt="" style={{ height: '680px', zIndex: 2 }} />
+          <img src={image9} alt="" style={{ height: '680px', zIndex: 2 }} />
+        </>
+      )}
     </GridItem>
   )
 }
@@ -121,8 +154,6 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
   const isBig = useIsBigScreen()
   const theme = useTheme()
   const left = 55
-  let sm = 700
-  let xs = 750
   return (
     <GridContainer
       sx={{
@@ -138,7 +169,8 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
         <link rel="preload" as="image" href={image9} />
         <link rel="preload" as="image" href={image15} />
       </Helmet>
-      {!isBig ? <MobileGrid left={left} /> : <DesktopGrid left={left} />}
+      {/*{!isBig ? <MobileGrid left={left} /> : <DesktopGrid left={left} />}*/}
+      <DesktopGrid left={left} />
       <GridItem
         padding="none"
         sx={{

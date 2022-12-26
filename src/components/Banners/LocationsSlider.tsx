@@ -1,10 +1,42 @@
 import { Box, Typography } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { SliderCard } from 'components/Banners/SliderCard'
+import { center } from 'components/center'
 import React from 'react'
 
 import './banners.css'
 
+import { SVGProps } from 'react'
+const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={486}
+    height={410}
+    viewBox="0 0 486 410"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M419.833 321.805L7.39585 734.242L-3.80022 723.046C-89.297 637.549 -87.7977 498.644 -1.59369 412.44L410.844 0.00292356L422.04 11.199C507.544 95.6707 506.554 235.084 419.833 321.805Z"
+      fill="#41B02A"
+    />
+  </svg>
+)
+const SSVGComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={174}
+    height={133}
+    viewBox="0 0 174 133"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M0 29C0 -67.0975 77.9025 -145 174 -145V-41C174 55.0975 96.0975 133 0 133V29Z"
+      fill="#034638"
+    />
+  </svg>
+)
 export const LocationsSlider = ({
   locations,
 }: {
@@ -12,10 +44,20 @@ export const LocationsSlider = ({
 }) => {
   return (
     <>
-      <Box sx={{ height: 430, background: '#5F99AF', pt: 7 }}>
-        <Typography color="primary.contrastText" align={'center'} variant="h2">
-          Nossas Instalações
-        </Typography>
+      <Box sx={{ height: 430, background: '#5F99AF', position: 'relative' }}>
+        <Box sx={{ ...center }}>
+          <Typography
+            color="primary.contrastText"
+            align={'center'}
+            variant="h2"
+            sx={{ mt: 6 }}
+          >
+            Nossas Instalações
+          </Typography>
+        </Box>
+
+        <SSVGComponent style={{ position: 'absolute', top: 0, right: 140 }} />
+        <SVGComponent style={{ position: 'absolute', left: 100, top: 20 }} />
       </Box>
       <FrukiSlider translate={-272}>
         {locations.map((p, idx) => (

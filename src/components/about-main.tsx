@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import AboutBAckground from 'assets/about/img.png'
-import image4 from 'assets/about/img_1.png'
+import image4 from 'assets/about/img_3.png'
 import { defaultPl } from 'components/defaultPl'
 import { NewGeneric } from 'components/newGeneric'
 import { SvgThing } from 'components/svgThing'
@@ -52,10 +52,8 @@ export function AboutMain() {
         },
       }}
       right={{
-        element: !isBig && (
-          <SvgThing style={{ position: 'absolute', bottom: 0 }} />
-        ),
         sx: {
+          minHeight: { xs: 700, sm: 600, md: 800 },
           backgroundImage: `url(${image4})`,
           backgroundSize: 'cover',
           borderBottomLeftRadius: {

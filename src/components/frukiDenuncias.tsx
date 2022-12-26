@@ -86,7 +86,7 @@ export function FrukiDenuncias() {
           </>
         ),
         sx: {
-          minHeight: { xs: 1000, sm: 700, md: 1000 },
+          minHeight: { xs: 900, sm: 700, md: 900 },
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-evenly',
@@ -96,6 +96,7 @@ export function FrukiDenuncias() {
       }}
       left={{
         sx: {
+          minHeight: { xs: 500, sm: 700, md: 900 },
           backgroundImage: `url(${image9})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',

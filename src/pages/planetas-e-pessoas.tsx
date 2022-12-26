@@ -1,19 +1,28 @@
 import { Box, Container, Typography, useTheme } from '@mui/material'
+import image6 from 'assets/home/img_6.png'
+import { FrukiQuestion } from 'components//Fruki-question'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { center } from 'components/center'
+import { EcoNumber } from 'components/Eco-number'
 import { FrukiIniciativas } from 'components/fruki-iniciativas'
 import { FrukiAppBar } from 'components/FrukiAppBar'
-import { FrukiContainer } from 'components/FrukiContainer'
+import {
+  FrukiContainer,
+  GridContainer,
+  GridItem,
+} from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
-import { FrukiFuture } from 'components/FrukiFuture'
+import {
+  BlueDesktopLeaf,
+  DarkgreenLeaf,
+  WhiteDesktopLeaf,
+} from 'components/FrukiFuture'
 import { FrukiRespect } from 'components/frukiRespect'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { graphql, navigate, PageProps } from 'gatsby'
-import { EcoNumber } from 'components/Eco-number'
-import { FrukiQuestion } from 'components//Fruki-question'
 import * as React from 'react'
-import { useEffect, useState } from 'react'
+import { SVGProps, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 function FrukiStats() {
@@ -84,19 +93,74 @@ function FrukiStats() {
     </Box>
   )
 }
+const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={163}
+    height={212}
+    viewBox="0 0 163 212"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M0 163C0 72.9776 72.9776 0 163 0V0V49C163 139.022 90.0224 212 0 212V212V163Z"
+      fill="white"
+    />
+  </svg>
+)
 
 const SustentabilidadePage: React.FC<
   PageProps<GatsbyTypes.PlanetasPessoasPageListQueryQuery>
 > = ({ data }) => {
   const theme = useTheme()
+
+  const { palette } = useTheme()
+  const background = palette.secondary.main
+  const height = { xs: 500, sm: 500, md: 875 }
+  const isBig = useIsBigScreen()
+  let md = 975
   return (
     <>
       <FrukiAppBar />
       <FrukiContainer>
-        <FrukiFuture
-          title={'Gentileza com o planeta'}
-          text={
-            <>
+        <GridContainer sx={{ background }}>
+          <GridItem
+            height={height}
+            sx={{
+              background,
+              pr: {
+                xs: 2,
+                sm: 2,
+                md: 4,
+                lg: 8,
+              },
+              pl: {
+                xs: 2,
+                sm: 2,
+                md: 4,
+                lg: 8,
+              },
+              minHeight: {
+                xs: 400,
+                sm: 400,
+                md: md,
+              },
+            }}
+          >
+            <Typography
+              variant={isBig ? 'h1' : 'h5'}
+              fontWeight={700}
+              sx={{ zIndex: 3 }}
+              color="secondary.contrastText"
+            >
+              Gentileza com o planeta
+            </Typography>
+            <Typography
+              sx={{ py: 2, zIndex: 3 }}
+              color="secondary.contrastText"
+              variant="body1"
+              fontSize={20}
+            >
               Nosso compromisso com o planeta está firmado desde o início, e ele
               se renova cada vez que você acredita e apoia. Ao longo dos anos,
               buscamos melhorar ainda mais nossa relação com o meio ambiente por
@@ -111,10 +175,47 @@ const SustentabilidadePage: React.FC<
               nosso dia a dia, mas ainda há muito a se fazer. Nossa meta é
               superar as exigências e contribuir 110% com o desenvolvimento
               sustentável.{' '}
-            </>
-          }
-          action={``}
-        />
+            </Typography>
+          </GridItem>
+          <GridItem
+            height={height}
+            sx={{
+              minHeight: {
+                xs: 400,
+                sm: 400,
+                md: md,
+              },
+              background,
+              backgroundImage: `url(${image6})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderWidth: 2,
+              borderBottomLeftRadius: {
+                xs: 240,
+                sm: 240,
+                md: 440,
+              },
+            }}
+          >
+            <WhiteDesktopLeaf
+              style={{
+                display: isBig ? 'block' : 'none',
+                position: 'absolute',
+                top: 105,
+                left: -50,
+              }}
+            />
+
+            <SVGComponent
+              style={{
+                display: isBig ? 'block' : 'none',
+                position: 'absolute',
+                bottom: -100,
+                right: 140,
+              }}
+            />
+          </GridItem>
+        </GridContainer>
         <FrukiStats />
         <FrukiRespect />
         <Box
@@ -151,7 +252,7 @@ const SustentabilidadePage: React.FC<
                   backgroundImage: `url(${p?.image})`,
                   backgroundPosition: 'center',
                   backgroundSize: 'cover',
-                  // m: 2,
+                  backgroundColor: p?.color || 'purple',
                   borderRadius: 250 / 2,
                 }}
                 onClick={() => navigate(p?.title || '')}
@@ -184,6 +285,7 @@ export const pageQuery = graphql`
     image
     name
     logo
+    color
   }
   fragment CertificatesFragment on MdxConnection {
     edges {

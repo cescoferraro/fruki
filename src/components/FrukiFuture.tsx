@@ -1,4 +1,5 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, SxProps, Typography, useTheme } from '@mui/material'
+import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import image6 from 'assets/home/img_6.png'
 import { GridContainer, GridItem } from 'components/FrukiContainer'
 import { useIsBigScreen } from 'components/useIsBigScreen'
@@ -6,7 +7,7 @@ import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 import { SVGProps } from 'react'
 
-const WhiteDesktopLeaf = (props: SVGProps<SVGSVGElement>) => (
+export const WhiteDesktopLeaf = (props: SVGProps<SVGSVGElement>) => (
   <svg width="134" height="175" viewBox="0 0 134 175" fill="none" {...props}>
     <path
       d="M0 120C0 53.7258 53.7258 0 120 0H134V55C134 121.274 80.2742 175 14 175H0V120Z"
@@ -14,7 +15,7 @@ const WhiteDesktopLeaf = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 )
-const WhiteMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
+export const WhiteMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={63}
     height={83}
@@ -30,7 +31,7 @@ const WhiteMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const DarkGreenMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
+export const DarkGreenMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={59}
     height={118}
@@ -50,9 +51,13 @@ export function FrukiFuture({
   title = 'Um futuro criado por todos nós ',
   text,
   action,
+  height,
+  leftSX,
 }: {
   title?: string
   text?: string | React.ReactNode
+  leftSX?: SxProps
+  height?: ResponsiveStyleValue<number>
   action: string
 }) {
   const isBig = useIsBigScreen()
@@ -60,7 +65,7 @@ export function FrukiFuture({
   const background = palette.secondary.main
   return (
     <GridContainer sx={{ background }}>
-      <GridItem sx={{ background }}>
+      <GridItem height={height} sx={{ background, ...leftSX }}>
         <Typography
           variant={isBig ? 'h1' : 'h5'}
           fontWeight={700}
@@ -100,6 +105,7 @@ export function FrukiFuture({
         />
       </GridItem>
       <GridItem
+        height={height}
         sx={{
           background,
           backgroundImage: `url(${image6})`,
@@ -161,7 +167,7 @@ export function FrukiFuture({
   )
 }
 
-const BlueDesktopLeaf = (props: SVGProps<SVGSVGElement>) => (
+export const BlueDesktopLeaf = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={159}
     height={261}
@@ -176,7 +182,7 @@ const BlueDesktopLeaf = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 )
-const BlueMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
+export const BlueMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={42}
     height={105}
@@ -191,7 +197,7 @@ const BlueMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 )
-const DarkgreenLeaf = (props: SVGProps<SVGSVGElement>) => (
+export const DarkgreenLeaf = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={156}
     height={316}
