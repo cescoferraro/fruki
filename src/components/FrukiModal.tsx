@@ -27,6 +27,7 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
     p: 3,
     borderRadius: 4,
     maxWidth: { xs: '90vw', sm: '70vw', md: '60vw', lg: '50vw', xl: '40vw' },
+    minWidth: { xs: '90vw', sm: '70vw', md: '60vw', lg: '50vw', xl: '40vw' },
   }
   const iconContainer = {
     display: { xs: 'none', sm: 'flex' },
@@ -49,7 +50,14 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
     },
   })
   return (
-    <Modal open={open} onClose={onClose} sx={{ ...center }}>
+    <Modal
+      open={open}
+      onClose={() => {
+        onClose()
+        mutation.reset()
+      }}
+      sx={{ ...center }}
+    >
       {mutation.isSuccess ? (
         <Paper sx={paper}>
           <Box sx={{ ...center, py: 4 }}>
@@ -79,7 +87,9 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
           </Box>
         </Paper>
       ) : mutation.isLoading ? (
-        <CircularProgress />
+        <Paper sx={paper}>
+          <CircularProgress />
+        </Paper>
       ) : (
         <Paper sx={paper}>
           <Typography align="center" color="secondary" variant="h4">
