@@ -10,6 +10,8 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: false,
   plugins: [
+    `gatsby-plugin-material-ui`,
+    // `gatsby-theme-material-ui`,
     `gatsby-plugin-layout`,
     {
       resolve: 'gatsby-plugin-netlify-cms',
