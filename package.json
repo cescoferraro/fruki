@@ -18,7 +18,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "deploy:ci": "gatsby build --prefix-paths && echo 'fruki.cescoferraro.com' > ./public/CNAME && gh-pages -d public -r https://$GH_TOKEN@github.com/cescoferraro/fruki.git",
+    "deploy:ci": "gatsby build --prefix-paths && echo 'fruki.bonaparte.ag' > ./public/CNAME && gh-pages -d public -r https://$GH_TOKEN@github.com/cescoferraro/fruki.git",
     "api-dev": "nodemon -w server/**/* --exec 'npm run api'",
     "api": "ts-node server/api.tsx",
     "both": "concurrently 'npm run api-dev' 'npm run client'",
