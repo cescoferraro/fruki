@@ -128,7 +128,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Caption, name: caption, widget: string }
       - label: Privacidade
-        name: home
+        name: privacy
         file: content/privacy.md
         fields:
           - { label: Name, name: name, widget: string }
