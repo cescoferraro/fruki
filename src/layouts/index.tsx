@@ -1,19 +1,18 @@
 import {
-  Link as MUILink,
-  CssBaseline,
-  Paper,
-  Snackbar,
-  Typography,
   Box,
   Button,
+  CssBaseline,
+  Link as MUILink,
+  Paper,
+  Snackbar,
+  ThemeProvider,
+  Typography,
 } from '@mui/material'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { center } from 'components/center'
-import { Link } from 'gatsby'
-// @ts-ignore
-import ThemeTopLayout from 'gatsby-theme-material-ui-top-layout/src/components/top-layout'
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
+import theme from './theme'
 import './global.css'
 
 function useLocalStorage<T>(key: string, initialValue: T) {
@@ -56,14 +55,15 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 }
 
 const queryClient = new QueryClient()
-export default function TopLayout({ children, theme }: any) {
+
+export default function ({ children }: { children: any }) {
   const [cookies, setCookies] = useLocalStorage<'denied' | 'accepted'>(
     'cookies-fruki',
     'denied'
   )
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeTopLayout theme={theme}>
+      <ThemeProvider theme={theme}>
         <React.Fragment>
           <Helmet htmlAttributes={{ lang: 'pt-BR' }}>
             <title>Fruki</title>
@@ -131,7 +131,7 @@ export default function TopLayout({ children, theme }: any) {
           <CssBaseline />
           {children}
         </React.Fragment>
-      </ThemeTopLayout>
+      </ThemeProvider>
     </QueryClientProvider>
   )
 }

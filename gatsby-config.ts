@@ -10,19 +10,11 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: false,
   plugins: [
-    `gatsby-plugin-material-ui`,
-    `gatsby-theme-material-ui`,
-
+    `gatsby-plugin-layout`,
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         options: { modulePath: `${__dirname}/src/cms.js` },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: '3e32e3223e23e23323e',
       },
     },
     'gatsby-plugin-image',
