@@ -1,7 +1,12 @@
 import { Box, SxProps, Typography, useTheme } from '@mui/material'
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
 import image6 from 'assets/home/img_6.png'
-import { GridContainer, GridItem } from 'components/FrukiContainer'
+import {
+  Desktop,
+  GridContainer,
+  GridItem,
+  Mobile,
+} from 'components/FrukiContainer'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
@@ -60,14 +65,14 @@ export function FrukiFuture({
   height?: ResponsiveStyleValue<number>
   action: string
 }) {
-  const isBig = useIsBigScreen()
+  // const isBig = useIsBigScreen()
   const { palette } = useTheme()
   const background = palette.secondary.main
   return (
     <GridContainer sx={{ background }}>
       <GridItem height={height} sx={{ background, ...leftSX }}>
         <Typography
-          variant={isBig ? 'h1' : 'h5'}
+          variant={'h1'}
           fontWeight={700}
           sx={{ zIndex: 3 }}
           color="secondary.contrastText"
@@ -95,14 +100,15 @@ export function FrukiFuture({
           </Box>
         )}
 
-        <DarkgreenLeaf
-          style={{
-            display: isBig ? 'block' : 'none',
-            position: 'absolute',
-            bottom: 200,
-            left: 0,
-          }}
-        />
+        <Desktop>
+          <DarkgreenLeaf
+            style={{
+              position: 'absolute',
+              bottom: 200,
+              left: 0,
+            }}
+          />
+        </Desktop>
       </GridItem>
       <GridItem
         height={height}
@@ -119,49 +125,48 @@ export function FrukiFuture({
           },
         }}
       >
-        <DarkGreenMobileLeaf
-          style={{
-            display: isBig ? 'none' : 'block',
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            // zIndex: -1,
-          }}
-        />
+        <Mobile>
+          <DarkGreenMobileLeaf
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              // zIndex: -1,
+            }}
+          />
+          <WhiteMobileLeaf
+            style={{
+              position: 'absolute',
+              top: 10,
+              right: 40,
+            }}
+          />
+          <BlueMobileLeaf
+            style={{
+              position: 'absolute',
+              bottom: -70,
+              right: 0,
+            }}
+          />
+        </Mobile>
 
-        <WhiteMobileLeaf
-          style={{
-            display: isBig ? 'none' : 'block',
-            position: 'absolute',
-            top: 10,
-            right: 40,
-          }}
-        />
-        <WhiteDesktopLeaf
-          style={{
-            display: isBig ? 'block' : 'none',
-            position: 'absolute',
-            top: 105,
-            left: -50,
-          }}
-        />
+        <Desktop>
+          <WhiteDesktopLeaf
+            style={{
+              position: 'absolute',
+              top: 105,
+              left: -50,
+            }}
+          />
 
-        <BlueMobileLeaf
-          style={{
-            display: isBig ? 'none' : 'block',
-            position: 'absolute',
-            bottom: -70,
-            right: 0,
-          }}
-        />
-        <BlueDesktopLeaf
-          style={{
-            display: isBig ? 'block' : 'none',
-            position: 'absolute',
-            bottom: 70,
-            right: 0,
-          }}
-        />
+          <BlueDesktopLeaf
+            style={{
+              position: 'absolute',
+              bottom: 70,
+              right: 0,
+            }}
+          />
+        </Desktop>
       </GridItem>
     </GridContainer>
   )

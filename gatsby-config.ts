@@ -10,7 +10,7 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: false,
   plugins: [
-    `gatsby-plugin-material-ui`,
+    // `gatsby-plugin-material-ui`,
     // `gatsby-theme-material-ui`,
     `gatsby-plugin-layout`,
     {
@@ -21,12 +21,12 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        icon: 'src/images/icon.png',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     icon: 'src/images/icon.png',
+    //   },
+    // },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -52,30 +52,41 @@ const config: GatsbyConfig = {
         extensions: ['.mdx', '.md'],
       },
     },
-    'gatsby-plugin-extract-schema',
+    // 'gatsby-plugin-extract-schema',
+    // {
+    //   resolve: 'gatsby-plugin-typegen',
+    //   options: {
+    //     outputPath: 'src/gatsby-types.d.ts',
+    //     emitSchema: {
+    //       'schema.graphql.json': true,
+    //       'schema.graphql': true,
+    //     },
+    //     emitPluginDocument: {
+    //       'schema.documents.graphql': true,
+    //     },
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: `gatsby-starter-default`,
+    //     short_name: `starter`,
+    //     start_url: `/`,
+    //     background_color: `#663399`,
+    //     theme_color: `#663399`,
+    //     display: `minimal-ui`,
+    //     icon: `src/logo.png`,
+    //   },
+    // },
     {
-      resolve: 'gatsby-plugin-typegen',
+      resolve: `gatsby-plugin-emotion`,
       options: {
-        outputPath: 'src/gatsby-types.d.ts',
-        emitSchema: {
-          'schema.graphql.json': true,
-          'schema.graphql': true,
-        },
-        emitPluginDocument: {
-          'schema.documents.graphql': true,
-        },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/logo.png`,
+        // Accepts the following options, all of which are defined by `@emotion/babel-plugin` plugin.
+        // The values for each key in this example are the defaults the plugin uses.
+        sourceMap: true,
+        autoLabel: 'dev-only',
+        labelFormat: `[local]`,
+        cssPropOptimization: true,
       },
     },
   ],

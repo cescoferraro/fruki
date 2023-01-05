@@ -10,7 +10,6 @@ import {
   Typography,
 } from '@mui/material'
 import Box from '@mui/material/Box/Box'
-import React from 'react'
 import { DeleteLeadMutation, GetDogsQuery } from './types/graphql'
 
 function NewComponent() {

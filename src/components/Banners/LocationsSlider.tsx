@@ -2,11 +2,11 @@ import { Box, Typography } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { SliderCard } from 'components/Banners/SliderCard'
 import { center } from 'components/center'
-import React from 'react'
+
+import { SVGProps } from 'react'
 
 import './banners.css'
 
-import { SVGProps } from 'react'
 const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={486}

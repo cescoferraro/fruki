@@ -8,13 +8,12 @@ import {
 } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { FrukiCheckIcon } from './FrukiCheckIcon'
-import { Lead } from '../components/useRevendedorFormik'
-import React from 'react'
 import { center } from '../components/center'
 import { FrukiForm } from '../components/FrukiForm'
 import { LoveIcon } from '../components/LoveIcon'
 import { MedalIcon } from '../components/MedalIcon'
+import { Lead } from '../components/useRevendedorFormik'
+import { FrukiCheckIcon } from './FrukiCheckIcon'
 
 interface IProps {
   onClose: () => void

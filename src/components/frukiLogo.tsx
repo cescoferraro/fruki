@@ -1,5 +1,6 @@
-import { Button, useMediaQuery, useTheme } from '@mui/material'
+import { Button } from '@mui/material'
 import { BigFrukiLogo } from 'components/BigFrukiLogo'
+import { Desktop, Mobile } from 'components/FrukiContainer'
 import { SmallFrukiLogo } from 'components/SmallFrukiLogo'
 import { navigate } from 'gatsby'
 import * as React from 'react'
@@ -7,14 +8,14 @@ import * as React from 'react'
 export const FrukiLogo: React.FC<{
   background?: string
 }> = ({ background }) => {
-  const isSmall = useMediaQuery(useTheme().breakpoints.down('sm'))
   return (
     <Button aria-label="home-button" onClick={() => navigate('/')}>
-      {isSmall ? (
+      <Mobile>
         <SmallFrukiLogo background={background} />
-      ) : (
+      </Mobile>
+      <Desktop>
         <BigFrukiLogo background={background} />
-      )}
+      </Desktop>
     </Button>
   )
 }

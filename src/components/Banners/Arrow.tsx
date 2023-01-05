@@ -1,6 +1,5 @@
 import { Box, IconButton, useTheme } from '@mui/material'
 import { center } from 'components/center'
-import React from 'react'
 
 export function Arrow({
   children,

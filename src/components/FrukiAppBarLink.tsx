@@ -1,6 +1,5 @@
 import { Box, LinkProps, Link } from '@mui/material'
 import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
-import React from 'react'
 
 interface IProps extends LinkProps {
   to?: string

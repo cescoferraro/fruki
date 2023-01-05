@@ -5,11 +5,11 @@ import {
   IconButton,
   styled,
   Typography,
-  useMediaQuery,
   useTheme,
 } from '@mui/material'
 import { center } from 'components/center'
 import { FrukiCNPJComponent, sx1 } from 'components/FrukiCNPJComponent'
+import { Desktop, Mobile } from 'components/FrukiContainer'
 import { SeloTop } from 'components/SeloTop'
 import { navigate } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
@@ -29,7 +29,6 @@ interface IProps {
 }
 
 export function FrukiFooter({ brands }: IProps) {
-  const isNotMobile = useMediaQuery(useTheme().breakpoints.up('sm'))
   return (
     <Container>
       <Grid
@@ -86,7 +85,9 @@ export function FrukiFooter({ brands }: IProps) {
                 Seg a Sex das 10h às 20h
               </Typography>
             </Box>
-            {isNotMobile && <FrukiCNPJComponent />}
+            <Desktop breakpoint="sm">
+              <FrukiCNPJComponent />
+            </Desktop>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3} lg={3} sx={{ pt: 2 }}>
@@ -178,7 +179,9 @@ export function FrukiFooter({ brands }: IProps) {
           </Box>
         </Grid>
       </Grid>
-      {!isNotMobile && <FrukiCNPJComponent />}
+      <Mobile breakpoint="sm">
+        <FrukiCNPJComponent />
+      </Mobile>
     </Container>
   )
 }

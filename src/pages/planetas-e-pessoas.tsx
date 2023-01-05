@@ -1,4 +1,4 @@
-import { Box, Container, Typography, useTheme } from '@mui/material'
+import { Box, Container, styled, Typography, useTheme } from '@mui/material'
 import image6 from 'assets/home/img_6.png'
 import { FrukiQuestion } from 'components//Fruki-question'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
@@ -27,7 +27,7 @@ import { useInView } from 'react-intersection-observer'
 
 function FrukiStats() {
   const theme = useTheme()
-  const isBig = useIsBigScreen()
+  // const isBig = useIsBigScreen()
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
   const { ref, inView } = useInView({ threshold: 0 })
@@ -79,20 +79,27 @@ function FrukiStats() {
         >
           A cada minuto que você está aqui, nós já reciclamos
         </Typography>
-        <Box
+        <Styled
           ref={ref}
           display="flex"
-          flexDirection={isBig ? 'row' : 'column'}
           justifyContent={'space-between'}
           sx={{ py: 4 }}
         >
           <EcoNumber label={'De resíduos industriais'} number={left} />
           <EcoNumber label={'De resíduos compensados'} number={right} />
-        </Box>
+        </Styled>
       </Container>
     </Box>
   )
 }
+const Styled = styled(Box)((theme) => ({
+  [theme.theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+  },
+  [theme.theme.breakpoints.up('md')]: {
+    flexDirection: 'row',
+  },
+}))
 const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={163}

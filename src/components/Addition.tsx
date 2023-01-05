@@ -1,14 +1,13 @@
-import { useMediaQuery, useTheme } from '@mui/material'
 import * as React from 'react'
+import { Desktop, Mobile } from './FrukiContainer'
 
-export function Addition() {
-  const isMd = useMediaQuery(useTheme().breakpoints.only('md'))
+function NewComponent({ style }: { style?: React.CSSProperties }) {
   return (
     <svg
       style={{
         position: 'absolute',
         bottom: 0,
-        left: isMd ? -80 : -40,
+        ...style,
       }}
       width="147"
       height="400"
@@ -21,5 +20,18 @@ export function Addition() {
         fill="#41B02A"
       />
     </svg>
+  )
+}
+
+export function Addition() {
+  return (
+    <>
+      <Desktop>
+        <NewComponent style={{ left: -80 }} />
+      </Desktop>
+      <Mobile>
+        <NewComponent style={{ left: -40 }} />
+      </Mobile>
+    </>
   )
 }

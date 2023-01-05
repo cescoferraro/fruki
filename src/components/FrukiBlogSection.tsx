@@ -1,13 +1,12 @@
 import { Box, Container, List, Typography } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { BlogPaper } from 'components/BlogPaper'
-import { useIsBigScreen } from 'components/useIsBigScreen'
+import { Desktop, Mobile } from 'components/FrukiContainer'
 import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 
 export function FrukiBlogSection({ posts }: { posts: Post[] }) {
-  const isBig = useIsBigScreen()
   return (
     <Box
       sx={{
@@ -49,7 +48,7 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
           Acompanhe as nossas últimas notícias.
         </Typography>
       </Box>
-      {isBig ? (
+      <Desktop>
         <Container>
           <FrukiSlider>
             {posts.map((post) => {
@@ -63,7 +62,8 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
             })}
           </FrukiSlider>
         </Container>
-      ) : (
+      </Desktop>
+      <Mobile>
         <Container>
           <List
             sx={{
@@ -85,7 +85,7 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
               })}
           </List>
         </Container>
-      )}
+      </Mobile>
       <Box
         sx={{
           py: 5,

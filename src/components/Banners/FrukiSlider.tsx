@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from '@mui/icons-material'
 import { Container } from '@mui/material'
 import { Arrow } from 'components/Banners/Arrow'
+import { useContext } from 'react'
 import React from 'react'
 import {
   Props,
@@ -26,7 +27,7 @@ export const FrukiSlider = ({
       <ScrollMenu
         scrollContainerClassName={'bannerContainer'}
         LeftArrow={() => {
-          const ctx = React.useContext(VisibilityContext)
+          const ctx = useContext(VisibilityContext)
           return (
             <Arrow
               disabled={ctx.isFirstItemVisible}
@@ -38,7 +39,7 @@ export const FrukiSlider = ({
         }}
         RightArrow={() => {
           const { isLastItemVisible, scrollNext } =
-            React.useContext(VisibilityContext)
+            useContext(VisibilityContext)
           return (
             <>
               <Arrow disabled={isLastItemVisible} onClick={() => scrollNext()}>

@@ -1,5 +1,13 @@
-import { Box, Container, SxProps } from '@mui/material'
+import {
+  Box,
+  BoxProps,
+  Breakpoint,
+  Container,
+  styled,
+  SxProps,
+} from '@mui/material'
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
+import { ReactElement } from 'react'
 import * as React from 'react'
 
 export const FrukiContainer = ({ children }: { children: React.ReactNode }) => {
@@ -83,6 +91,7 @@ export const GridItem = ({
   return (
     <Box
       sx={{
+        // background: theme.breakpoints.down('md') ? 'red' : 'blue',
         flexBasis: '50%',
         position: 'relative',
         height: height,
@@ -99,3 +108,26 @@ export const GridItem = ({
     </Box>
   )
 }
+export interface ShowerProps extends BoxProps {
+  breakpoint?: Breakpoint
+}
+export const Mobile = (props: ShowerProps): ReactElement => {
+  return <DisplayController mode={'mobile'} {...props} />
+}
+export const Desktop = (props: ShowerProps): ReactElement => {
+  return <DisplayController mode={'desktop'} {...props} />
+}
+
+export const DisplayController = styled(Box)<{
+  breakpoint?: Breakpoint
+  mode: 'mobile' | 'desktop'
+}>(({ theme, mode = 'desktop', breakpoint = 'md' }) => {
+  return {
+    [theme.breakpoints.down(breakpoint)]: {
+      display: mode === 'mobile' ? 'block' : 'none',
+    },
+    [theme.breakpoints.up(breakpoint)]: {
+      display: mode === 'desktop' ? 'block' : 'none',
+    },
+  }
+})

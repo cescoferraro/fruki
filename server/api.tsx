@@ -9,7 +9,6 @@ import { graphqlHTTP } from 'express-graphql'
 import expressStaticGzip from 'express-static-gzip'
 import { buildSchema, printSchema } from 'graphql'
 import path from 'path'
-import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { DataTypes, Sequelize } from 'sequelize'
 import { App } from './app'
@@ -86,6 +85,7 @@ export function Html({ content, state }: any) {
     </html>
   )
 }
+
 const apolloClient = new ApolloClient({
   ssrMode: true,
   link: new SchemaLink({ schema }),

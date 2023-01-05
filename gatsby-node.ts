@@ -197,7 +197,12 @@ export const onCreateNode = ({
 }
 
 // gatsby-node.js: copy code to clipboard
-export const onCreateWebpackConfig = ({ actions }: any) => {
+export const onCreateWebpackConfig = ({ stage, actions }: any) => {
+  if (stage === 'build-javascript') {
+    actions.setWebpackConfig({
+      devtool: false,
+    })
+  }
   actions.setWebpackConfig({
     resolve: {
       modules: [
