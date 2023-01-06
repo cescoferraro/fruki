@@ -1,5 +1,5 @@
 ---
-path: bella-vista
+path: bellavista
 date: 2022-11-16T22:57:37.612Z
 name: Bellavista
 description: sdfsdfyffgcfg
