@@ -27,15 +27,15 @@ A FRUKI utiliza os seus dados pessoais em razão de obrigação legal ou regulat
 
 O tratamento de seus dados pessoais poderá, por exemplo, atender às seguintes finalidades:
 
-• Responder, processar e nos comunicar com você sobre suas solicitações, dúvidas e comentários
+• Responder, processar e nos comunicar com você sobre suas solicitações, dúvidas e comentários;
 
-• Enviar atualizações de notícias, materiais promocionais e outras comunicações
+• Enviar atualizações de notícias, materiais promocionais e outras comunicações;
 
-• Operar, avaliar e melhorar nossos negócios (incluindo aprimorar e melhorar nossos serviços, gerenciar nossas comunicações, realizar análises de dados e executar outras funções internas)
+• Operar, avaliar e melhorar nossos negócios (incluindo aprimorar e melhorar nossos serviços, gerenciar nossas comunicações, realizar análises de dados e executar outras funções internas);
 
-• Proteger, identificar e prevenir fraudes e outras atividades ilegais, reclamações e outras responsabilidades
+• Proteger, identificar e prevenir fraudes e outras atividades ilegais, reclamações e outras responsabilidades;
 
-• Cumprir os requisitos legais aplicáveis, os padrões do setor e nossas próprias políticas e termos.
+• Cumprir os requisitos legais aplicáveis, os padrões do setor e nossas próprias políticas e termos;
 
 • Também podemos usar as informações de outras formas para as quais fornecemos aviso específico no momento da coleta.
 
@@ -43,25 +43,25 @@ O tratamento de seus dados pessoais poderá, por exemplo, atender às seguintes 
 
 A FRUKI garante ao titular de dados o exercício dos direitos previstos na lei aplicável, dentre eles:
 
-• A confirmação da existência de tratamento de seus dados pessoais
+• A confirmação da existência de tratamento de seus dados pessoais;
 
-• O acesso a esses dados
+• O acesso a esses dados;
 
-• A correção de dados incompletos, inexatos ou desatualizados
+• A correção de dados incompletos, inexatos ou desatualizados;
 
-• A anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD
+• A anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD;
 
-• A portabilidade de seus dados pessoais, mediante requisição expressa
+• A portabilidade de seus dados pessoais, mediante requisição expressa;
 
-• A eliminação de dados tratados com consentimento do autor, em observância aos prazos de guarda aplicáveis
+• A eliminação de dados tratados com consentimento do autor, em observância aos prazos de guarda aplicáveis;
 
-• A obtenção de informações sobre entidades públicas e privadas com os quais a FRUKI compartilhou seus dados
+• A obtenção de informações sobre entidades públicas e privadas com os quais a FRUKI compartilhou seus dados;
 
-• Informações sobre a possibilidade de não fornecer o consentimento e sobre as consequências da negativa
+• Informações sobre a possibilidade de não fornecer o consentimento e sobre as consequências da negativa;
 
-• Revogação do consentimento, nos termos da LGPD
+• Revogação do consentimento, nos termos da LGPD.
 
-Para exercer seus direitos, envie um e-mail para privacidade@fruki.com.br.
+Para exercer seus direitos, envie um e-mail para **privacidade@fruki.com.br**.
 
 **Compartilhamento de dados**
 
@@ -87,4 +87,4 @@ Esta Política de Privacidade pode ser atualizada periodicamente, hipótese em q
 
 **Como entrar em contato conosco**
 
-Em caso de dúvida ou comentário sobre esta Política de Privacidade, ou se desejar exercitar seus direitos e ter acesso a mais informações sobre o tratamento dos seus dados pessoais, envie e-mail para a nossa Encarregada: Luiza Eggers (privacidade@fruki.com.br).
+Em caso de dúvida ou comentário sobre esta Política de Privacidade, ou se desejar exercitar seus direitos e ter acesso a mais informações sobre o tratamento dos seus dados pessoais, envie e-mail para a nossa Encarregada: Luiza Eggers (**privacidade@fruki.com.br**).
