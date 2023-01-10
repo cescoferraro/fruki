@@ -1,5 +1,5 @@
 ---
-name: politica de privacidade
+name: POLÍTICA DE PRIVACIDADE E SEGURANÇA
 title: POLÍTICA DE PRIVACIDADE E SEGURANÇA
 caption: Home
 ---
