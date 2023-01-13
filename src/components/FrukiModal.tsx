@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
+import React from 'react'
 import axios from 'axios'
 import { center } from '../components/center'
 import { FrukiForm } from '../components/FrukiForm'

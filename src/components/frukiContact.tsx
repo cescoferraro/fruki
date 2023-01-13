@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material'
-import image9 from 'assets/home/img_9.png'
 import { GridContainer, GridItem } from 'components/FrukiContainer'
 import { useIsBigScreen } from 'components/useIsBigScreen'
+import { StaticImage } from 'gatsby-plugin-image'
 import { SVGProps } from 'react'
 import * as React from 'react'
 const SVGComponent = (props: SVGProps<SVGSVGElement>) => {
@@ -50,19 +50,17 @@ export function FrukiContact() {
         },
       }}
     >
-      <GridItem
-        sx={{
-          backgroundImage: `url(${image9})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          borderWidth: 2,
-          borderBottomRightRadius: {
-            xs: 240,
-            sm: 240,
-            md: 440,
-          },
-        }}
-      />
+      <GridItem padding="none">
+        <StaticImage
+          style={{
+            position: 'absolute',
+            top: 0,
+            borderBottomRightRadius: 300,
+          }}
+          alt="sdfk"
+          src="../../static/assets/home/img_9.png"
+        />
+      </GridItem>
       <GridItem padding={'right'} sx={{ zIndex: 3 }}>
         <SVGComponent
           style={{

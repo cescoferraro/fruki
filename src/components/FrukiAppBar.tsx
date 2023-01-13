@@ -44,7 +44,7 @@ function NewComponent({
           <FrukiAppBarLink sx={sx} to="/sobre-nos">
             Sobre nós
           </FrukiAppBarLink>
-          <FrukiAppBarLink sx={sx} to="/assets/portfolio-bebidas-2022.pdf">
+          <FrukiAppBarLink sx={sx} to="/marcas">
             Nossas Marcas
           </FrukiAppBarLink>
           <FrukiAppBarLink sx={sx} to="/planetas-e-pessoas">

@@ -1,31 +1,25 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import image14 from 'assets/home/img_14.png'
-import image7 from 'assets/home/img_7.png'
 import { BlueSvg } from 'components/blueSvg'
-import { GridContainer, GridItem } from 'components/FrukiContainer'
+import {
+  Desktop,
+  GridContainer,
+  GridItem,
+  Mobile,
+} from 'components/FrukiContainer'
 import { GreenSvg } from 'components/greenSvg'
-import { SeloTop } from 'components/SeloTop'
 import { SeloTopBig } from 'components/SeloTopBig'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 
-function MobileWorkForceRight(props: { big: boolean }) {
-  const isBig = useIsBigScreen()
-  return isBig ? (
-    <>
-      <Box
-        sx={{
-          flexGrow: 1,
-          flexBasis: !props.big ? '95%' : '40%',
-          backgroundImage: `url(${image7})`,
-          backgroundSize: 'cover',
-          height: '100%',
-          backgroundPosition: !props.big ? 'top' : 'center',
-          borderTopLeftRadius: 300,
-          marginLeft: '5%',
-          zIndex: 2,
-        }}
+function DesktopWorkForceRight() {
+  return (
+    <Desktop>
+      <StaticImage
+        style={{ width: '100%', height: '100%' }}
+        alt="sdfk"
+        src="../../static/assets/home/img_7.png"
       />
       <Box sx={{ flexBasis: '60%', height: '100%' }}>
         <BlueSvg />
@@ -38,8 +32,8 @@ function MobileWorkForceRight(props: { big: boolean }) {
         />
         <GreenSvg />
       </Box>
-    </>
-  ) : null
+    </Desktop>
+  )
 }
 
 export function FrukiWorkForce() {
@@ -49,9 +43,9 @@ export function FrukiWorkForce() {
   return (
     <GridContainer sx={{ background }}>
       <GridItem
-        padding="only-left"
+        padding="right"
         sx={{
-          flexBasis: '40%',
+          flexBasis: '50%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
@@ -85,38 +79,57 @@ export function FrukiWorkForce() {
           </Button>
         </Box>
       </GridItem>
-      <GridItem sx={{ flexBasis: '60%', py: 0, background }} padding="none">
+      <GridItem sx={{ flexBasis: '50%', py: 0, background }} padding="none">
         <Box height={40} />
-        <Box
-          sx={{
-            backgroundImage: !isBig ? `url(${image14})` : '',
-            backgroundSize: 'cover',
-            minHeight: isBig ? 'unset' : '550px',
-            ml: !isBig ? 2 : 0,
-            flexGrow: 1,
-            display: 'flex',
-            zIndex: 2,
-          }}
-        >
-          <SeloTop
-            id={'test'}
+        <Box sx={{ width: '100%', height: '100%' }}>
+          <Desktop sx={{ width: '30%', height: '100%' }}>
+            <StaticImage
+              style={{ width: '100%', height: '100%' }}
+              alt="sdfk"
+              src="../../static/assets/home/img_14.png"
+            />
+          </Desktop>
+          <Mobile sx={{ width: '95%' }}>
+            <StaticImage
+              style={{ width: '100%', zIndex: 100 }}
+              alt="sdfk"
+              src="../../static/assets/home/img_14.png"
+            />
+          </Mobile>
+        </Box>
+        {/*<Box*/}
+        {/*  sx={{*/}
+        {/*    backgroundImage: !isBig ? `url(${image14})` : '',*/}
+        {/*    backgroundSize: 'cover',*/}
+        {/*    minHeight: isBig ? 'unset' : '550px',*/}
+        {/*    ml: !isBig ? 2 : 0,*/}
+        {/*    flexGrow: 1,*/}
+        {/*    display: 'flex',*/}
+        {/*    zIndex: 2,*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <SeloTop*/}
+        {/*    id={'test'}*/}
+        {/*    style={{*/}
+        {/*      display: !isBig ? 'block' : 'none',*/}
+        {/*      position: 'absolute',*/}
+        {/*      top: 40,*/}
+        {/*      zIndex: 10,*/}
+        {/*    }}*/}
+        {/*  />*/}
+        <Desktop>
+          <DesktopWorkForceRight />
+        </Desktop>
+        {/*</Box>*/}
+        <Mobile>
+          <SVGComponent
             style={{
-              display: !isBig ? 'block' : 'none',
               position: 'absolute',
-              top: 40,
-              zIndex: 10,
+              bottom: 0,
+              zIndex: 0,
             }}
           />
-          <MobileWorkForceRight big={isBig} />
-        </Box>
-        <SVGComponent
-          style={{
-            display: isBig ? 'none' : 'block',
-            position: 'absolute',
-            bottom: 0,
-            zIndex: 0,
-          }}
-        />
+        </Mobile>
       </GridItem>
     </GridContainer>
   )

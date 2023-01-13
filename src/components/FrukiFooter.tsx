@@ -116,7 +116,7 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
             {brands.map((b) => (
-              <Link key={b.slug} to={'/assets/portfolio-bebidas-2022.pdf'}>
+              <Link key={b.slug} to={'/marcas'}>
                 {b.name}
               </Link>
             ))}

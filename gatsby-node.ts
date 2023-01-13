@@ -1,6 +1,7 @@
 import { CreateNodeArgs, CreatePagesArgs } from 'gatsby'
 import { createFilePath } from 'gatsby-source-filesystem'
 import path from 'path'
+const { fmImagesToRelative } = require('gatsby-remark-relative-images-v2')
 
 interface BlogPostPages {
   errors?: any
@@ -189,6 +190,7 @@ export const onCreateNode = ({
   getNode,
 }: CreateNodeArgs<any>) => {
   const { createNodeField } = actions
+  fmImagesToRelative(node)
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     console.log(value)

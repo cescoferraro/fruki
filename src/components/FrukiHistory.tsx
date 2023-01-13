@@ -1,10 +1,14 @@
 import { Box, Button, Typography } from '@mui/material'
-import image4 from 'assets/home/img_13.png'
-import image4Small from 'assets/home/img_4.png'
 import { Addition } from 'components/Addition'
-import { GridContainer, GridItem } from 'components/FrukiContainer'
+import {
+  Desktop,
+  GridContainer,
+  GridItem,
+  Mobile,
+} from 'components/FrukiContainer'
 import { SvgThing } from 'components/svgThing'
 import { useIsBigScreen } from 'components/useIsBigScreen'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 
 export function FrukiHistory() {
@@ -28,26 +32,49 @@ export function FrukiHistory() {
             Conheça nossa história
           </Button>
         </Box>
-        {isBig && <Addition />}
+        <Desktop>
+          <Addition />
+        </Desktop>
       </GridItem>
-      <GridItem
-        padding="none"
-        sx={{
-          backgroundImage: `url(${isBig ? image4 : image4Small})`,
-          backgroundSize: 'cover',
-          borderBottomLeftRadius: {
-            xs: 240,
-            sm: 240,
-            md: 440,
-          },
-          borderTopLeftRadius: {
-            xs: 0,
-            sm: 0,
-            md: 440,
-          },
-        }}
-      >
-        {!isBig && <SvgThing style={{ position: 'absolute', bottom: 0 }} />}
+      <GridItem padding="none" sx={{}}>
+        <Desktop sx={{ width: '100%', height: '100%' }}>
+          <StaticImage
+            src={`../../static/assets/home/img_13.png`}
+            alt=""
+            objectFit={'fill'}
+            onLoad={() => {
+              console.log('loade')
+            }}
+            style={{
+              height: '680px',
+              zIndex: 2,
+              objectFit: 'fill',
+              borderBottomLeftRadius: 240,
+              borderTopLeftRadius: 240,
+            }}
+          />
+        </Desktop>
+        <Mobile sx={{ width: '100%', height: '100%' }}>
+          <StaticImage
+            src={`../../static/assets/home/img_4.png`}
+            alt=""
+            objectFit={'fill'}
+            onLoad={() => {
+              console.log('loade')
+            }}
+            style={{
+              height: '680px',
+              zIndex: 2,
+              objectFit: 'fill',
+              backgroundSize: 'cover',
+              borderBottomLeftRadius: 240,
+              borderTopLeftRadius: 240,
+            }}
+          />
+        </Mobile>
+        <Mobile sx={{ zIndex: 10 }}>
+          <SvgThing style={{ position: 'absolute', bottom: 0 }} />
+        </Mobile>
       </GridItem>
     </GridContainer>
   )

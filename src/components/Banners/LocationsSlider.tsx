@@ -3,7 +3,7 @@ import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { SliderCard } from 'components/Banners/SliderCard'
 import { center } from 'components/center'
 
-import { SVGProps } from 'react'
+import React, { SVGProps } from 'react'
 
 import './banners.css'
 

@@ -1,26 +1,31 @@
+import { BrandPageComponent } from 'components/brandPageComponent'
+import { useBrandsMemo } from 'components/useBrandsMemo'
 import { graphql, PageProps } from 'gatsby'
-import { Button } from 'gatsby-theme-material-ui'
-import React from 'react'
+import React, { useMemo } from 'react'
 
-const BrandPage: React.FC<PageProps<GatsbyTypes.BrandPageQueryQuery>> = (
-  props
-): React.ReactElement => {
+const BrandPage: React.FC<PageProps<GatsbyTypes.BrandPageQueryQuery>> = ({
+  data: { brand, products, brands, ...props },
+}): React.ReactElement => {
+  console.log(props)
   return (
-    <React.Fragment>
-      <h2>{props.data.brand?.frontmatter?.name}</h2>
-      {props.data?.products?.nodes
-        .map((n) => ({
-          ...n.fields,
-          ...n.frontmatter,
-        }))
-        .map((s) => {
-          return (
-            <Button key={s.slug} to={s.slug || ''}>
-              {s.name}
-            </Button>
-          )
-        })}
-    </React.Fragment>
+    <BrandPageComponent
+      brands={useBrandsMemo(brands)}
+      brand={useMemo(
+        () => ({
+          ...(brand?.fields as GatsbyTypes.FieldsFragment),
+          ...(brand?.frontmatter as GatsbyTypes.BrandsFrontMatterFragment),
+        }),
+        [brand]
+      )}
+      products={useMemo(
+        () =>
+          products.nodes.map((a) => ({
+            ...(a?.fields as GatsbyTypes.FieldsFragment),
+            ...(a?.frontmatter as GatsbyTypes.ProductFrontMatterFragment),
+          })),
+        [products]
+      ).map((s) => s)}
+    />
   )
 }
 export default BrandPage
@@ -39,9 +44,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          path
-          name
-          brand
+          ...ProductFrontMatter
         }
       }
     }
@@ -52,11 +55,15 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        path
-        name
-        brand
+        ...BrandsFrontMatter
+      }
+    }
+    sdf: markdownRemark(frontmatter: { path: { eq: $brand } }) {
+      frontmatter {
+        background
       }
     }
     ...ProductsByBrandQueryFragment
+    ...BrandsFragmentQuery
   }
 `

@@ -1,20 +1,15 @@
-import { Box, Button, Theme, Typography, useTheme } from '@mui/material'
-import image15 from 'assets/home/img_15.png'
-import image9 from 'assets/home/img_hey.png'
+import { Box, Button, Typography, useTheme } from '@mui/material'
 import { center } from 'components/center'
 import {
   Desktop,
-  DisplayController,
   GridContainer,
   GridItem,
   Mobile,
 } from 'components/FrukiContainer'
 import { GreenArrowLeft } from 'components/GreenArrowLeft'
-import { useIsBigScreen } from 'components/useIsBigScreen'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps } from 'react'
-import { Helmet } from 'react-helmet'
-import { StaticImage } from 'gatsby-plugin-image'
 
 interface IProps {
   home: GatsbyTypes.HomeFragmentFragment | null
@@ -46,10 +41,6 @@ function DesktopGrid(props: { left: number }) {
         py: 0,
         // maxWidth: isBig ? '60vw' : '100vw',
         justifyContent: 'flex-end',
-
-        // height: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
-        // minHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
-        // maxHeight: !isBig ? { xs: 300, sm: 300, md: 800 } : undefined,
       }}
     >
       <Desktop>

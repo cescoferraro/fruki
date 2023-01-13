@@ -1,8 +1,9 @@
-import { Box, Container, Typography, useTheme } from '@mui/material'
-import img66 from 'assets/home/img_8.png'
+import { Box, ButtonBase, Container, Typography, useTheme } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { useIsBigScreen } from 'components/useIsBigScreen'
+import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps } from 'react'
 
@@ -60,15 +61,21 @@ export function BrandsComponent(props: { brands: any[] }) {
     <>
       <Box
         sx={{
-          backgroundImage: `url(${img66})`,
           height: { xs: 400, sm: 400, md: 600 },
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           display: 'flex',
           flexBasis: '60%',
           position: 'relative',
         }}
       >
+        <StaticImage
+          src={`../../static/assets/home/img_8.png`}
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+          }}
+        />
         <SVGComponent
           style={{
             display: !isBig ? 'none' : 'block',
@@ -149,27 +156,34 @@ export function BrandsComponent(props: { brands: any[] }) {
       <Container sx={{ py: 0 }}>
         <FrukiSlider translate={isBig ? -232 / 2 : 232 / 2}>
           {props.brands.map((s, index) => (
-            <Box
+            <ButtonBase
+              onClick={() => {
+                console.log(s)
+                void navigate(s?.slug)
+              }}
               key={s.slug}
-              sx={{
-                zIndex: 100,
-                background: 'white',
-                borderRadius: 100,
-                backgroundRepeat: 'no-repeat',
-                boxShadow: `${theme.shadows[4]}`,
-                ':hover': {
-                  backgroundPosition: 'center',
+            >
+              <Box
+                sx={{
+                  zIndex: 100,
+                  background: 'white',
+                  borderRadius: 100,
+                  backgroundRepeat: 'no-repeat',
+                  boxShadow: `${theme.shadows[4]}`,
+                  ':hover': {
+                    backgroundPosition: 'center',
+                    backgroundImage: `url(${s?.logo || ''})`,
+                    backgroundSize: 'contain',
+                  },
+                  m: index === 0 ? 2 : 2,
                   backgroundImage: `url(${s?.logo || ''})`,
                   backgroundSize: 'contain',
-                },
-                m: index === 0 ? 2 : 2,
-                backgroundImage: `url(${s?.logo || ''})`,
-                backgroundSize: 'contain',
-                backgroundPosition: 'center',
-                width: 200,
-                height: 200,
-              }}
-            ></Box>
+                  backgroundPosition: 'center',
+                  width: 200,
+                  height: 200,
+                }}
+              />
+            </ButtonBase>
           ))}
         </FrukiSlider>
         <Box
@@ -182,7 +196,7 @@ export function BrandsComponent(props: { brands: any[] }) {
           }}
         >
           <Button
-            to="/assets/portfolio-bebidas-2022.pdf"
+            to="/marcas"
             // @ts-ignore
             target="_blank"
             color="secondary"

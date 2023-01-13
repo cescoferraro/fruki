@@ -1,14 +1,13 @@
 import { Box, SxProps, Typography, useTheme } from '@mui/material'
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
-import image6 from 'assets/home/img_6.png'
 import {
   Desktop,
   GridContainer,
   GridItem,
   Mobile,
 } from 'components/FrukiContainer'
-import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps } from 'react'
 
@@ -114,9 +113,6 @@ export function FrukiFuture({
         height={height}
         sx={{
           background,
-          backgroundImage: `url(${image6})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           borderWidth: 2,
           borderBottomLeftRadius: {
             xs: 240,
@@ -125,6 +121,11 @@ export function FrukiFuture({
           },
         }}
       >
+        <StaticImage
+          style={{ width: '100%', zIndex: 100 }}
+          alt="sdfk"
+          src="../../static/assets/home/img_6.png"
+        />
         <Mobile>
           <DarkGreenMobileLeaf
             style={{

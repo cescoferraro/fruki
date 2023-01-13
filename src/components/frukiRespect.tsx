@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
-import image9 from 'assets/img_15.png'
 import { GridContainer, GridItem } from 'components/FrukiContainer'
 import { useIsBigScreen } from 'components/useIsBigScreen'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps } from 'react'
 const SVGComponent = (props: SVGProps<SVGSVGElement>) => (
@@ -37,9 +37,6 @@ export function FrukiRespect() {
     >
       <GridItem
         sx={{
-          backgroundImage: `url(${image9})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           borderWidth: 2,
           borderBottomRightRadius: {
             xs: 240,
@@ -51,6 +48,15 @@ export function FrukiRespect() {
           maxHeight: height,
         }}
       >
+        <StaticImage
+          src={'../../static/assets/img_15.png'}
+          alt={''}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+          }}
+        />
         <SVGComponent
           style={{ position: 'absolute', right: 0, bottom: isBig ? 100 : 0 }}
         />

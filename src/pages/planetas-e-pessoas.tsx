@@ -1,5 +1,4 @@
 import { Box, Container, styled, Typography, useTheme } from '@mui/material'
-import image6 from 'assets/home/img_6.png'
 import { FrukiQuestion } from 'components//Fruki-question'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { center } from 'components/center'
@@ -21,6 +20,7 @@ import { FrukiRespect } from 'components/frukiRespect'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { graphql, navigate, PageProps } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -193,8 +193,6 @@ const SustentabilidadePage: React.FC<
                 md: md,
               },
               background,
-              backgroundImage: `url(${image6})`,
-              backgroundSize: 'cover',
               backgroundPosition: 'center',
               borderWidth: 2,
               borderBottomLeftRadius: {
@@ -204,6 +202,15 @@ const SustentabilidadePage: React.FC<
               },
             }}
           >
+            <StaticImage
+              src={'../../static/assets/home/img_6.png'}
+              alt={''}
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+              }}
+            />
             <WhiteDesktopLeaf
               style={{
                 display: isBig ? 'block' : 'none',

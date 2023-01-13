@@ -7,6 +7,7 @@ import {
   SxProps,
 } from '@mui/material'
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
+import { StaticImage } from 'gatsby-plugin-image'
 import { ReactElement } from 'react'
 import * as React from 'react'
 
@@ -117,6 +118,20 @@ export const Mobile = (props: ShowerProps): ReactElement => {
 export const Desktop = (props: ShowerProps): ReactElement => {
   return <DisplayController mode={'desktop'} {...props} />
 }
+
+export const ImageController = styled(StaticImage)<{
+  breakpoint?: Breakpoint
+  mode: 'mobile' | 'desktop'
+}>(({ theme, mode = 'desktop', breakpoint = 'md' }) => {
+  return {
+    [theme.breakpoints.down(breakpoint)]: {
+      display: mode === 'mobile' ? 'block' : 'none',
+    },
+    [theme.breakpoints.up(breakpoint)]: {
+      display: mode === 'desktop' ? 'block' : 'none',
+    },
+  }
+})
 
 export const DisplayController = styled(Box)<{
   breakpoint?: Breakpoint

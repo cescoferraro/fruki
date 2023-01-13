@@ -34,7 +34,7 @@ directive @childOf(
   """
   A list of types this type is a child of. Usually these are the types handled by a transformer plugin.
   """
-  types: [String!]! = []
+  types: [String!]! = ["File"]
 ) on OBJECT
 
 """
@@ -201,6 +201,14 @@ type File implements Node {
   Returns the first child node of type ImageSharp or null if there are no children of given type on this node
   """
   childImageSharp: ImageSharp
+
+  """Returns all children nodes filtered by type MarkdownRemark"""
+  childrenMarkdownRemark: [MarkdownRemark]
+
+  """
+  Returns the first child node of type MarkdownRemark or null if there are no children of given type on this node
+  """
+  childMarkdownRemark: MarkdownRemark
 
   """Returns all children nodes filtered by type Mdx"""
   childrenMdx: [Mdx]
@@ -507,28 +515,6 @@ type SiteBuildMetadata implements Node {
   internal: Internal!
 }
 
-enum GatsbyImageFormat {
-  NO_CHANGE
-  AUTO
-  JPG
-  PNG
-  WEBP
-  AVIF
-}
-
-enum GatsbyImageLayout {
-  FIXED
-  FULL_WIDTH
-  CONSTRAINED
-}
-
-enum GatsbyImagePlaceholder {
-  DOMINANT_COLOR
-  TRACED_SVG
-  BLURRED
-  NONE
-}
-
 enum ImageFormat {
   NO_CHANGE
   AUTO
@@ -823,6 +809,127 @@ type ImageSharpResize {
   originalName: String
 }
 
+type MarkdownHeading {
+  id: String
+  value: String
+  depth: Int
+}
+
+enum MarkdownHeadingLevels {
+  h1
+  h2
+  h3
+  h4
+  h5
+  h6
+}
+
+enum MarkdownExcerptFormats {
+  PLAIN
+  HTML
+  MARKDOWN
+}
+
+type MarkdownWordCount {
+  paragraphs: Int
+  sentences: Int
+  words: Int
+}
+
+type MarkdownRemark implements Node {
+  id: ID!
+  frontmatter: MarkdownRemarkFrontmatter
+  excerpt(pruneLength: Int = 140, truncate: Boolean = false, format: MarkdownExcerptFormats = PLAIN): String
+  rawMarkdownBody: String
+  fileAbsolutePath: String
+  html: String
+  htmlAst: JSON
+  excerptAst(pruneLength: Int = 140, truncate: Boolean = false): JSON
+  headings(depth: MarkdownHeadingLevels): [MarkdownHeading]
+  timeToRead: Int
+  tableOfContents(absolute: Boolean = false, pathToSlugField: String = "", maxDepth: Int, heading: String): String
+  wordCount: MarkdownWordCount
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type MarkdownRemarkFrontmatter {
+  title: String
+  path: String
+  date(
+    """
+    Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    """
+    formatString: String
+
+    """Returns a string generated with Moment.js' `fromNow` function"""
+    fromNow: Boolean
+
+    """
+    Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    """
+    difference: String
+
+    """Configures the locale Moment.js will use to format the date."""
+    locale: String
+  ): Date
+  name: String
+  color: String
+  image: String
+  description: String
+  logo: String
+  background: String
+  question: String
+  author: String
+  about: String
+  url: String
+  brand: String
+  caption: String
+  year(
+    """
+    Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    """
+    formatString: String
+
+    """Returns a string generated with Moment.js' `fromNow` function"""
+    fromNow: Boolean
+
+    """
+    Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    """
+    difference: String
+
+    """Configures the locale Moment.js will use to format the date."""
+    locale: String
+  ): Date
+  answer: String
+  tag_name: String
+  tag: [String]
+}
+
+enum GatsbyImageFormat {
+  NO_CHANGE
+  AUTO
+  JPG
+  PNG
+  WEBP
+  AVIF
+}
+
+enum GatsbyImageLayout {
+  FIXED
+  FULL_WIDTH
+  CONSTRAINED
+}
+
+enum GatsbyImagePlaceholder {
+  DOMINANT_COLOR
+  TRACED_SVG
+  BLURRED
+  NONE
+}
+
 type Mdx implements Node {
   excerpt(pruneLength: Int = 140): String
   tableOfContents(maxDepth: Int): JSON
@@ -865,7 +972,25 @@ type MdxFrontmatter {
   about: String
   url: String
   logo: String
+  background: String
   tag_name: String
+  year(
+    """
+    Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    """
+    formatString: String
+
+    """Returns a string generated with Moment.js' `fromNow` function"""
+    fromNow: Boolean
+
+    """
+    Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    """
+    difference: String
+
+    """Configures the locale Moment.js will use to format the date."""
+    locale: String
+  ): Date
   tag: [String]
   brand: String
   caption: String
@@ -886,7 +1011,7 @@ type ContentYaml implements Node {
 }
 
 type Query {
-  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childrenImageSharp: ImageSharpFilterListInput, childImageSharp: ImageSharpFilterInput, childrenMdx: MdxFilterListInput, childMdx: MdxFilterInput, childrenContentYaml: ContentYamlFilterListInput, childContentYaml: ContentYamlFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
+  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childrenImageSharp: ImageSharpFilterListInput, childImageSharp: ImageSharpFilterInput, childrenMarkdownRemark: MarkdownRemarkFilterListInput, childMarkdownRemark: MarkdownRemarkFilterInput, childrenMdx: MdxFilterListInput, childMdx: MdxFilterInput, childrenContentYaml: ContentYamlFilterListInput, childContentYaml: ContentYamlFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
   allFile(filter: FileFilterInput, sort: [FileSortInput], skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: [DirectorySortInput], skip: Int, limit: Int): DirectoryConnection!
@@ -902,6 +1027,8 @@ type Query {
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: [SiteBuildMetadataSortInput], skip: Int, limit: Int): SiteBuildMetadataConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: GatsbyImageDataQueryOperatorInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: [ImageSharpSortInput], skip: Int, limit: Int): ImageSharpConnection!
+  markdownRemark(id: StringQueryOperatorInput, frontmatter: MarkdownRemarkFrontmatterFilterInput, excerpt: StringQueryOperatorInput, rawMarkdownBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, html: StringQueryOperatorInput, htmlAst: JSONQueryOperatorInput, excerptAst: JSONQueryOperatorInput, headings: MarkdownHeadingFilterListInput, timeToRead: IntQueryOperatorInput, tableOfContents: StringQueryOperatorInput, wordCount: MarkdownWordCountFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): MarkdownRemark
+  allMarkdownRemark(filter: MarkdownRemarkFilterInput, sort: [MarkdownRemarkSortInput], skip: Int, limit: Int): MarkdownRemarkConnection!
   mdx(excerpt: StringQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, body: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, fields: MdxFieldsFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
   allMdx(filter: MdxFilterInput, sort: [MdxSortInput], skip: Int, limit: Int): MdxConnection!
   contentYaml(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, name: StringQueryOperatorInput, title: StringQueryOperatorInput, caption: StringQueryOperatorInput): ContentYaml
@@ -1046,6 +1173,75 @@ input BooleanQueryOperatorInput {
   nin: [Boolean]
 }
 
+input MarkdownRemarkFilterListInput {
+  elemMatch: MarkdownRemarkFilterInput
+}
+
+input MarkdownRemarkFilterInput {
+  id: StringQueryOperatorInput
+  frontmatter: MarkdownRemarkFrontmatterFilterInput
+  excerpt: StringQueryOperatorInput
+  rawMarkdownBody: StringQueryOperatorInput
+  fileAbsolutePath: StringQueryOperatorInput
+  html: StringQueryOperatorInput
+  htmlAst: JSONQueryOperatorInput
+  excerptAst: JSONQueryOperatorInput
+  headings: MarkdownHeadingFilterListInput
+  timeToRead: IntQueryOperatorInput
+  tableOfContents: StringQueryOperatorInput
+  wordCount: MarkdownWordCountFilterInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+}
+
+input MarkdownRemarkFrontmatterFilterInput {
+  title: StringQueryOperatorInput
+  path: StringQueryOperatorInput
+  date: DateQueryOperatorInput
+  name: StringQueryOperatorInput
+  color: StringQueryOperatorInput
+  image: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  logo: StringQueryOperatorInput
+  background: StringQueryOperatorInput
+  question: StringQueryOperatorInput
+  author: StringQueryOperatorInput
+  about: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  brand: StringQueryOperatorInput
+  caption: StringQueryOperatorInput
+  year: DateQueryOperatorInput
+  answer: StringQueryOperatorInput
+  tag_name: StringQueryOperatorInput
+  tag: StringQueryOperatorInput
+}
+
+input JSONQueryOperatorInput {
+  eq: JSON
+  ne: JSON
+  in: [JSON]
+  nin: [JSON]
+  regex: JSON
+  glob: JSON
+}
+
+input MarkdownHeadingFilterListInput {
+  elemMatch: MarkdownHeadingFilterInput
+}
+
+input MarkdownHeadingFilterInput {
+  id: StringQueryOperatorInput
+  value: StringQueryOperatorInput
+  depth: IntQueryOperatorInput
+}
+
+input MarkdownWordCountFilterInput {
+  paragraphs: IntQueryOperatorInput
+  sentences: IntQueryOperatorInput
+  words: IntQueryOperatorInput
+}
+
 input MdxFilterListInput {
   elemMatch: MdxFilterInput
 }
@@ -1062,15 +1258,6 @@ input MdxFilterInput {
   internal: InternalFilterInput
 }
 
-input JSONQueryOperatorInput {
-  eq: JSON
-  ne: JSON
-  in: [JSON]
-  nin: [JSON]
-  regex: JSON
-  glob: JSON
-}
-
 input MdxFrontmatterFilterInput {
   date: DateQueryOperatorInput
   path: StringQueryOperatorInput
@@ -1085,7 +1272,9 @@ input MdxFrontmatterFilterInput {
   about: StringQueryOperatorInput
   url: StringQueryOperatorInput
   logo: StringQueryOperatorInput
+  background: StringQueryOperatorInput
   tag_name: StringQueryOperatorInput
+  year: DateQueryOperatorInput
   tag: StringQueryOperatorInput
   brand: StringQueryOperatorInput
   caption: StringQueryOperatorInput
@@ -1174,6 +1363,8 @@ input FileFieldSelector {
   publicURL: FieldSelectorEnum
   childrenImageSharp: ImageSharpFieldSelector
   childImageSharp: ImageSharpFieldSelector
+  childrenMarkdownRemark: MarkdownRemarkFieldSelector
+  childMarkdownRemark: MarkdownRemarkFieldSelector
   childrenMdx: MdxFieldSelector
   childMdx: MdxFieldSelector
   childrenContentYaml: ContentYamlFieldSelector
@@ -1262,6 +1453,58 @@ input InternalFieldSelector {
   contentFilePath: FieldSelectorEnum
 }
 
+input MarkdownRemarkFieldSelector {
+  id: FieldSelectorEnum
+  frontmatter: MarkdownRemarkFrontmatterFieldSelector
+  excerpt: FieldSelectorEnum
+  rawMarkdownBody: FieldSelectorEnum
+  fileAbsolutePath: FieldSelectorEnum
+  html: FieldSelectorEnum
+  htmlAst: FieldSelectorEnum
+  excerptAst: FieldSelectorEnum
+  headings: MarkdownHeadingFieldSelector
+  timeToRead: FieldSelectorEnum
+  tableOfContents: FieldSelectorEnum
+  wordCount: MarkdownWordCountFieldSelector
+  parent: NodeFieldSelector
+  children: NodeFieldSelector
+  internal: InternalFieldSelector
+}
+
+input MarkdownRemarkFrontmatterFieldSelector {
+  title: FieldSelectorEnum
+  path: FieldSelectorEnum
+  date: FieldSelectorEnum
+  name: FieldSelectorEnum
+  color: FieldSelectorEnum
+  image: FieldSelectorEnum
+  description: FieldSelectorEnum
+  logo: FieldSelectorEnum
+  background: FieldSelectorEnum
+  question: FieldSelectorEnum
+  author: FieldSelectorEnum
+  about: FieldSelectorEnum
+  url: FieldSelectorEnum
+  brand: FieldSelectorEnum
+  caption: FieldSelectorEnum
+  year: FieldSelectorEnum
+  answer: FieldSelectorEnum
+  tag_name: FieldSelectorEnum
+  tag: FieldSelectorEnum
+}
+
+input MarkdownHeadingFieldSelector {
+  id: FieldSelectorEnum
+  value: FieldSelectorEnum
+  depth: FieldSelectorEnum
+}
+
+input MarkdownWordCountFieldSelector {
+  paragraphs: FieldSelectorEnum
+  sentences: FieldSelectorEnum
+  words: FieldSelectorEnum
+}
+
 input MdxFieldSelector {
   excerpt: FieldSelectorEnum
   tableOfContents: FieldSelectorEnum
@@ -1288,7 +1531,9 @@ input MdxFrontmatterFieldSelector {
   about: FieldSelectorEnum
   url: FieldSelectorEnum
   logo: FieldSelectorEnum
+  background: FieldSelectorEnum
   tag_name: FieldSelectorEnum
+  year: FieldSelectorEnum
   tag: FieldSelectorEnum
   brand: FieldSelectorEnum
   caption: FieldSelectorEnum
@@ -1359,6 +1604,8 @@ input FileFilterInput {
   publicURL: StringQueryOperatorInput
   childrenImageSharp: ImageSharpFilterListInput
   childImageSharp: ImageSharpFilterInput
+  childrenMarkdownRemark: MarkdownRemarkFilterListInput
+  childMarkdownRemark: MarkdownRemarkFilterInput
   childrenMdx: MdxFilterListInput
   childMdx: MdxFilterInput
   childrenContentYaml: ContentYamlFilterListInput
@@ -1406,6 +1653,8 @@ input FileSortInput {
   publicURL: SortOrderEnum
   childrenImageSharp: ImageSharpSortInput
   childImageSharp: ImageSharpSortInput
+  childrenMarkdownRemark: MarkdownRemarkSortInput
+  childMarkdownRemark: MarkdownRemarkSortInput
   childrenMdx: MdxSortInput
   childMdx: MdxSortInput
   childrenContentYaml: ContentYamlSortInput
@@ -1495,6 +1744,58 @@ input InternalSortInput {
   contentFilePath: SortOrderEnum
 }
 
+input MarkdownRemarkSortInput {
+  id: SortOrderEnum
+  frontmatter: MarkdownRemarkFrontmatterSortInput
+  excerpt: SortOrderEnum
+  rawMarkdownBody: SortOrderEnum
+  fileAbsolutePath: SortOrderEnum
+  html: SortOrderEnum
+  htmlAst: SortOrderEnum
+  excerptAst: SortOrderEnum
+  headings: MarkdownHeadingSortInput
+  timeToRead: SortOrderEnum
+  tableOfContents: SortOrderEnum
+  wordCount: MarkdownWordCountSortInput
+  parent: NodeSortInput
+  children: NodeSortInput
+  internal: InternalSortInput
+}
+
+input MarkdownRemarkFrontmatterSortInput {
+  title: SortOrderEnum
+  path: SortOrderEnum
+  date: SortOrderEnum
+  name: SortOrderEnum
+  color: SortOrderEnum
+  image: SortOrderEnum
+  description: SortOrderEnum
+  logo: SortOrderEnum
+  background: SortOrderEnum
+  question: SortOrderEnum
+  author: SortOrderEnum
+  about: SortOrderEnum
+  url: SortOrderEnum
+  brand: SortOrderEnum
+  caption: SortOrderEnum
+  year: SortOrderEnum
+  answer: SortOrderEnum
+  tag_name: SortOrderEnum
+  tag: SortOrderEnum
+}
+
+input MarkdownHeadingSortInput {
+  id: SortOrderEnum
+  value: SortOrderEnum
+  depth: SortOrderEnum
+}
+
+input MarkdownWordCountSortInput {
+  paragraphs: SortOrderEnum
+  sentences: SortOrderEnum
+  words: SortOrderEnum
+}
+
 input MdxSortInput {
   excerpt: SortOrderEnum
   tableOfContents: SortOrderEnum
@@ -1521,7 +1822,9 @@ input MdxFrontmatterSortInput {
   about: SortOrderEnum
   url: SortOrderEnum
   logo: SortOrderEnum
+  background: SortOrderEnum
   tag_name: SortOrderEnum
+  year: SortOrderEnum
   tag: SortOrderEnum
   brand: SortOrderEnum
   caption: SortOrderEnum
@@ -2091,6 +2394,38 @@ type ImageSharpGroupConnection {
   min(field: ImageSharpFieldSelector!): Float
   sum(field: ImageSharpFieldSelector!): Float
   group(skip: Int, limit: Int, field: ImageSharpFieldSelector!): [ImageSharpGroupConnection!]!
+  field: String!
+  fieldValue: String
+}
+
+type MarkdownRemarkConnection {
+  totalCount: Int!
+  edges: [MarkdownRemarkEdge!]!
+  nodes: [MarkdownRemark!]!
+  pageInfo: PageInfo!
+  distinct(field: MarkdownRemarkFieldSelector!): [String!]!
+  max(field: MarkdownRemarkFieldSelector!): Float
+  min(field: MarkdownRemarkFieldSelector!): Float
+  sum(field: MarkdownRemarkFieldSelector!): Float
+  group(skip: Int, limit: Int, field: MarkdownRemarkFieldSelector!): [MarkdownRemarkGroupConnection!]!
+}
+
+type MarkdownRemarkEdge {
+  next: MarkdownRemark
+  node: MarkdownRemark!
+  previous: MarkdownRemark
+}
+
+type MarkdownRemarkGroupConnection {
+  totalCount: Int!
+  edges: [MarkdownRemarkEdge!]!
+  nodes: [MarkdownRemark!]!
+  pageInfo: PageInfo!
+  distinct(field: MarkdownRemarkFieldSelector!): [String!]!
+  max(field: MarkdownRemarkFieldSelector!): Float
+  min(field: MarkdownRemarkFieldSelector!): Float
+  sum(field: MarkdownRemarkFieldSelector!): Float
+  group(skip: Int, limit: Int, field: MarkdownRemarkFieldSelector!): [MarkdownRemarkGroupConnection!]!
   field: String!
   fieldValue: String
 }
