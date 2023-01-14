@@ -15,9 +15,8 @@ collections:
       - { name: date, label: Data, widget: date }
       - { name: name, label: Nome }
       - { name: description, label: Descrição, required: false }
-      - name: "logo"
-        label: "Logo da Marca"
-        widget: "image"
+      - { name: logo, label: Logo da Marca, widget: image }
+      - { name: background, label: Background da Marca, widget: image }
       - { name: color , label: Color, required: true, widget: color }
   - name: produto
     label: Produto
