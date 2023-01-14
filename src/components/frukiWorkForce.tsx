@@ -54,7 +54,7 @@ export function FrukiWorkForce() {
         }}
       >
         <Typography
-          variant={isBig ? 'h1' : 'h5'}
+          variant={isBig ? 'h2' : 'h5'}
           sx={{ fontWeight: 700 }}
           color="secondary.contrastText"
         >
@@ -70,10 +70,10 @@ export function FrukiWorkForce() {
         </Typography>
         <Box>
           <Button
-            to="https://vagasfruki.gupy.io/"
             variant="contained"
             color="secondary"
             size="large"
+            onClick={() => window.open('https://vagasfruki.gupy.io/')}
           >
             Ver Oportunidades{' '}
           </Button>

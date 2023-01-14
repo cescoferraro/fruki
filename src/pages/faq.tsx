@@ -169,7 +169,7 @@ const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
             />
           </Box>
         </Container>
-        <FrukiContact />
+        <FrukiContact showButton={false} />
 
         <FrukiFooter brands={useBrandsMemo(data?.brands)} />
       </FrukiContainer>

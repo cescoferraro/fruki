@@ -1,4 +1,5 @@
 import { Typography, useTheme } from '@mui/material'
+import React from 'react'
 import {
   Desktop,
   GridContainer,
@@ -64,7 +65,7 @@ export function FrukiWorkForceHistory() {
         }}
       >
         <Typography
-          variant={isBig ? 'h1' : 'h5'}
+          variant={isBig ? 'h2' : 'h5'}
           sx={{ fontWeight: 700 }}
           color="secondary.contrastText"
         >
@@ -74,17 +75,20 @@ export function FrukiWorkForceHistory() {
           color="secondary.contrastText"
           variant="body1"
           component={'p'}
-          fontSize={20}
+          fontSize={18}
         >
           Em 1924, quando entrou oficialmente em funcionamento a fábrica de
           Bebidas Kirst & Cia, em Arroio do Meio, Emílio Kirst não poderia
           imaginar o tamanho do legado que deixaria às gerações seguintes da
           família. Naquele ano, o bisavô da atual geração sob o comando da Fruki
           obteve conhecimento técnico para criar uma cervejaria. A pequena
-          fábrica cervejeira produzia apenas 200 garrafas por dia. Hoje, nosso
-          parque industrial possui capacidade de 420 milhões de litros/ano com
-          um amplo portfólio de bebidas. Já são quase 100 anos de história em
-          que construímos relações de confiança com clientes e consumidores.{' '}
+          fábrica cervejeira produzia apenas 200 garrafas por dia.
+          <br />
+          <br />
+          Hoje, nosso parque industrial possui capacidade de 420 milhões de
+          litros/ano com um amplo portfólio de bebidas. Já são quase 100 anos de
+          história em que construímos relações de confiança com clientes e
+          consumidores.{' '}
         </Typography>
         <Desktop>
           <svg

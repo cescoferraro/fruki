@@ -6,6 +6,7 @@ import {
   GridItem,
   Mobile,
 } from 'components/FrukiContainer'
+import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
@@ -64,14 +65,14 @@ export function FrukiFuture({
   height?: ResponsiveStyleValue<number>
   action: string
 }) {
-  // const isBig = useIsBigScreen()
+  const isBig = useIsBigScreen()
   const { palette } = useTheme()
   const background = palette.secondary.main
   return (
     <GridContainer sx={{ background }}>
       <GridItem height={height} sx={{ background, ...leftSX }}>
         <Typography
-          variant={'h1'}
+          variant={isBig ? 'h2' : 'h5'}
           fontWeight={700}
           sx={{ zIndex: 3 }}
           color="secondary.contrastText"
@@ -79,17 +80,16 @@ export function FrukiFuture({
           {title}
         </Typography>
         <Typography
+          fontSize={isBig ? 18 : 16}
           sx={{ py: 2, zIndex: 3 }}
           color="secondary.contrastText"
-          variant="body1"
-          fontSize={20}
         >
           {text}
         </Typography>
         {action && (
           <Box>
             <Button
-              to="/planetas-e-pessoas"
+              to="/planeta-e-pessoas"
               variant="contained"
               color="primary"
               size="large"

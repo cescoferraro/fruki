@@ -37,7 +37,7 @@ const DesktopSVGComponent = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 )
-export function FrukiContact() {
+export function FrukiContact({ showButton = true }: { showButton?: boolean }) {
   const isBig = useIsBigScreen()
   return (
     <GridContainer
@@ -79,19 +79,19 @@ export function FrukiContact() {
           }}
         />
         <Typography
-          variant={isBig ? 'h1' : 'h5'}
+          variant={isBig ? 'h3' : 'h5'}
           sx={{ fontWeight: 700, zIndex: 2 }}
           color="secondary.contrastText"
         >
-          Precisa de ajuda?
+          Quer falar com a gente?{' '}
         </Typography>
         <Typography
           color="secondary.contrastText"
           variant="body1"
-          fontSize={20}
+          fontSize={isBig ? 18 : 16}
         >
-          Se você está com alguma dúvida, estamos aqui para ajudar! Escolha seu
-          canal preferido para podermos atender você da melhor forma.{' '}
+          É só nos chamar no seu canal preferido que estamos prontos para
+          atender você:
         </Typography>
         <Box sx={{ '& > div:nth-of-type(n + 2)': { mt: 2 } }}>
           <Box>
@@ -120,6 +120,11 @@ export function FrukiContact() {
                 ':hover': { background: 'white' },
               }}
               size="large"
+              onClick={() => {
+                const host = 'https://api.whatsapp.com/send'
+                const encodedText = encodeURIComponent('Olá Fruki')
+                window.location.href = `${host}?phone=08007039910&text=${encodedText}`
+              }}
             >
               Mandar mensagem
             </Button>
@@ -149,67 +154,42 @@ export function FrukiContact() {
               variant="outlined"
               color="primary"
               size="large"
+              onClick={() => {
+                window.open('tel:08007039910')
+              }}
             >
               Ligar agora
             </Button>
           </Box>
-          <Box>
+
+          {showButton && (
             <Button
+              variant="text"
               startIcon={
                 <svg
                   width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
+                  height="24"
+                  viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
-                    d="M4.5 9.24854C4.5 7.72975 5.73122 6.49854 7.25 6.49854H16.75C18.2688 6.49854 19.5 7.72975 19.5 9.24854V15.2485C19.5 16.7673 18.2688 17.9985 16.75 17.9985H12.7515C12.4487 17.9985 12.1562 18.1084 11.9283 18.3078L8.49388 21.313C8.27241 21.5068 7.95807 21.5531 7.69009 21.4315C7.4221 21.3099 7.25 21.0428 7.25 20.7485V18.6235C7.25 18.2784 6.97018 17.9985 6.625 17.9985C5.4514 17.9985 4.5 17.0471 4.5 15.8735V9.24854ZM7.5 10.7485C7.5 10.3343 7.83579 9.99854 8.25 9.99854H14.25C14.6642 9.99854 15 10.3343 15 10.7485C15 11.1627 14.6642 11.4985 14.25 11.4985H8.25C7.83579 11.4985 7.5 11.1627 7.5 10.7485ZM7.5 13.7485C7.5 13.3343 7.83579 12.9985 8.25 12.9985H11.25C11.6642 12.9985 12 13.3343 12 13.7485C12 14.1627 11.6642 14.4985 11.25 14.4985H8.25C7.83579 14.4985 7.5 14.1627 7.5 13.7485Z"
-                    fill="#41B02A"
+                    d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM12 15C12.4142 15 12.75 15.3358 12.75 15.75V15.76C12.75 16.1742 12.4142 16.51 12 16.51C11.5858 16.51 11.25 16.1742 11.25 15.76V15.75C11.25 15.3358 11.5858 15 12 15ZM12.5853 7.55765C12.0033 7.44189 11.4001 7.5013 10.8519 7.72836C10.3038 7.95543 9.83524 8.33994 9.50559 8.83329C9.17595 9.32664 9 9.90666 9 10.5C9 10.9142 9.33579 11.25 9.75 11.25C10.1642 11.25 10.5 10.9142 10.5 10.5C10.5 10.2033 10.588 9.91332 10.7528 9.66665C10.9176 9.41997 11.1519 9.22771 11.426 9.11418C11.7001 9.00065 12.0017 8.97095 12.2926 9.02882C12.5836 9.0867 12.8509 9.22956 13.0607 9.43934C13.2704 9.64912 13.4133 9.91639 13.4712 10.2074C13.5291 10.4983 13.4993 10.7999 13.3858 11.074C13.2723 11.3481 13.08 11.5824 12.8334 11.7472C12.5867 11.912 12.2967 12 12 12C11.8011 12 11.6103 12.079 11.4697 12.2197C11.329 12.3603 11.25 12.5511 11.25 12.75L11.25 13.25C11.25 13.6642 11.5858 14 12 14C12.3596 14 12.6602 13.7469 12.7331 13.409C13.064 13.3257 13.38 13.186 13.6667 12.9944C14.1601 12.6648 14.5446 12.1962 14.7716 11.6481C14.9987 11.0999 15.0581 10.4967 14.9424 9.91473C14.8266 9.33279 14.5409 8.79824 14.1213 8.37868C13.7018 7.95912 13.1672 7.6734 12.5853 7.55765Z"
+                    fill="white"
                   />
                 </svg>
               }
-              sx={{
-                whiteSpace: 'nowrap',
-                minWidth: 'auto',
-                background: 'white',
-                ':hover': { background: 'white' },
-              }}
-              variant="outlined"
-              color="primary"
-              size="large"
+              sx={() => ({
+                mt: 4,
+                color: 'white',
+              })}
+              href="/faq"
             >
-              Conversar no chat online
+              Ver as dúvidas frequentes
             </Button>
-          </Box>
-
-          <Button
-            variant="text"
-            startIcon={
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM12 15C12.4142 15 12.75 15.3358 12.75 15.75V15.76C12.75 16.1742 12.4142 16.51 12 16.51C11.5858 16.51 11.25 16.1742 11.25 15.76V15.75C11.25 15.3358 11.5858 15 12 15ZM12.5853 7.55765C12.0033 7.44189 11.4001 7.5013 10.8519 7.72836C10.3038 7.95543 9.83524 8.33994 9.50559 8.83329C9.17595 9.32664 9 9.90666 9 10.5C9 10.9142 9.33579 11.25 9.75 11.25C10.1642 11.25 10.5 10.9142 10.5 10.5C10.5 10.2033 10.588 9.91332 10.7528 9.66665C10.9176 9.41997 11.1519 9.22771 11.426 9.11418C11.7001 9.00065 12.0017 8.97095 12.2926 9.02882C12.5836 9.0867 12.8509 9.22956 13.0607 9.43934C13.2704 9.64912 13.4133 9.91639 13.4712 10.2074C13.5291 10.4983 13.4993 10.7999 13.3858 11.074C13.2723 11.3481 13.08 11.5824 12.8334 11.7472C12.5867 11.912 12.2967 12 12 12C11.8011 12 11.6103 12.079 11.4697 12.2197C11.329 12.3603 11.25 12.5511 11.25 12.75L11.25 13.25C11.25 13.6642 11.5858 14 12 14C12.3596 14 12.6602 13.7469 12.7331 13.409C13.064 13.3257 13.38 13.186 13.6667 12.9944C14.1601 12.6648 14.5446 12.1962 14.7716 11.6481C14.9987 11.0999 15.0581 10.4967 14.9424 9.91473C14.8266 9.33279 14.5409 8.79824 14.1213 8.37868C13.7018 7.95912 13.1672 7.6734 12.5853 7.55765Z"
-                  fill="white"
-                />
-              </svg>
-            }
-            sx={() => ({
-              mt: 4,
-              color: 'white',
-            })}
-          >
-            Ver as dúvidas frequentes
-          </Button>
+          )}
         </Box>
       </GridItem>
     </GridContainer>

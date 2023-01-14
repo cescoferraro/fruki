@@ -5,6 +5,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
+import React from 'react'
 import { InputProps as StandardInputProps } from '@mui/material/Input/Input'
 import { PatternFormat } from 'react-number-format'
 import { PatternFormatProps } from 'react-number-format/types/types'

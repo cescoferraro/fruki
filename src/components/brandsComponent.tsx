@@ -138,6 +138,7 @@ export function BrandsComponent(props: { brands: any[] }) {
           <Typography
             align="center"
             sx={{ mb: 3 }}
+            fontWeight={700}
             variant={isBig ? 'h4' : 'h5'}
             color="primary.contrastText"
           >
@@ -179,8 +180,8 @@ export function BrandsComponent(props: { brands: any[] }) {
                   backgroundImage: `url(${s?.logo || ''})`,
                   backgroundSize: 'contain',
                   backgroundPosition: 'center',
-                  width: 200,
-                  height: 200,
+                  width: isBig ? 200 : 128,
+                  height: isBig ? 200 : 128,
                 }}
               />
             </ButtonBase>
@@ -196,11 +197,13 @@ export function BrandsComponent(props: { brands: any[] }) {
           }}
         >
           <Button
-            to="/marcas"
-            // @ts-ignore
-            target="_blank"
             color="secondary"
             variant="contained"
+            onClick={() =>
+              // TODO: modal 18
+              window.open('/pdf/Portfolio_Digital_Fruki_Bebidas.pdf')
+            }
+            sx={{}}
           >
             Ver todas as marcas
           </Button>

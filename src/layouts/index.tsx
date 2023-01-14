@@ -10,6 +10,8 @@ import {
 } from '@mui/material'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { center } from 'components/center'
+import { useIsBigScreen } from 'components/useIsBigScreen'
+import { navigate } from 'gatsby'
 import React, { ReactNode, Suspense, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import theme from './theme'
@@ -79,6 +81,7 @@ export default function ({ children }: { children: any }) {
     'cookies-fruki',
     'denied'
   )
+  const isBig = useIsBigScreen()
   return (
     <SuspenseHelper>
       <QueryClientProvider client={queryClient}>
@@ -108,6 +111,7 @@ export default function ({ children }: { children: any }) {
                   p: 3,
                   borderRadius: 8,
                   minWidth: { sm: '90vw', md: '80vw', lg: '70vw' },
+                  border: '2px solid green',
                 }}
               >
                 <Box
@@ -116,21 +120,29 @@ export default function ({ children }: { children: any }) {
                   gap={3}
                 >
                   <Box>
-                    <Typography>
+                    <Typography sx={{ fontSize: 16 }}>
                       Nós usamos cookies para operacionalizar o site e melhorar
                       cada vez mais sua experiência de navegação. Para mais
                       informações acesse a {'  '}
                       <MUILink
                         color="secondary"
                         onClick={() => {
-                          window.location.href = '/assets/Fruki_LGPD.pdf'
+                          navigate('/privacidade')
+                        }}
+                        sx={{
+                          fontWeight: 700,
                         }}
                       >
                         Política de Cookies | Política de Privacidade
                       </MUILink>
                     </Typography>
                   </Box>
-                  <Box sx={{ ...center }}>
+                  <Box
+                    sx={{
+                      ...center,
+                      justifyContent: isBig ? 'center' : 'felx-start',
+                    }}
+                  >
                     <Button
                       sx={{
                         whiteSpace: 'nowrap',
@@ -155,3 +167,22 @@ export default function ({ children }: { children: any }) {
     </SuspenseHelper>
   )
 }
+// TODO GTM
+// <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGPP4E3416"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TGPP4E3416'); </script>
+
+// TODO Libras
+// <body> <!-- Inicio do corpo da página -->
+//
+// ... <!-- Conteúdo da página -->
+//
+// <div vw className="enabled">
+//   <div vw-access-button className="active"></div>
+//   <div vw-plugin-wrapper>
+//     <div className="vw-plugin-top-wrapper"></div>
+//   </div>
+// </div>
+// <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+// <script>
+//   new window.VLibras.Widget('https://vlibras.gov.br/app');
+// </script>
+// </body> <!-- Fim do corpo da página -->

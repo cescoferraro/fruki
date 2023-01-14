@@ -1,4 +1,5 @@
 import { Box, Paper, Typography, useTheme } from '@mui/material'
+import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 
@@ -10,17 +11,18 @@ export function BlogPaper({
   onClick: () => Promise<void>
 }) {
   const theme = useTheme()
+  const isBig = useIsBigScreen()
   return (
     <Paper
       sx={{
         maxHeight: 384,
-        height: 384,
+        height: isBig ? 384 : 332,
         width: 'calc( 100% - 16px )',
-        // boxShadow: 'none',
         boxShadow: `${theme.shadows[4]}`,
         m: 1,
         minWidth: 272,
         background: theme.palette.grey['50'],
+        borderRadius: 5,
         flexBasis: '20%',
         color: 'black',
         padding: 2,
@@ -115,6 +117,9 @@ export function BlogPaper({
               />
             </svg>
           }
+          sx={{
+            fontSize: isBig ? 18 : 16,
+          }}
           variant="text"
           onClick={onClick}
         >

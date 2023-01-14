@@ -26,6 +26,8 @@ export const FrukiModal: React.FC<IProps> = ({ onClose, open }) => {
   const paper = {
     p: 3,
     borderRadius: 4,
+    maxHeight: '90vh',
+    overflowY: 'scroll',
     maxWidth: { xs: '90vw', sm: '70vw', md: '60vw', lg: '50vw', xl: '40vw' },
     minWidth: { xs: '90vw', sm: '70vw', md: '60vw', lg: '50vw', xl: '40vw' },
   }

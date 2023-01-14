@@ -80,19 +80,21 @@ export function FrukiDenuncias() {
           color="secondary.contrastText"
           sx={{ pl: defaultPl, zIndex: 2 }}
           variant="body1"
-          fontSize={20}
+          fontSize={isBig ? 18 : 16}
         >
           Em observância ao plano de ações em conformidade, a Fruki Bebidas
           disponibiliza a todos os interessados (profissionais, clientes,
           prestadores, fornecedores, público em geral) um canal específico para
           o recebimento de denúncias de atos de não conformidade com o Código de
-          Conduta, políticas e regulamentos internos e, ainda, de legislações
-          municipais, estaduais ou federais. O canal de denúncias é mantido por
-          empresa terceirizada e, portanto, externo à estrutura da Fruki
-          Bebidas, o que visa reforçar as garantias de anonimato dos
-          denunciantes, se esses assim desejarem. As denúncias serão recebidas
-          através da WEP Compliance mediante acesso ao telefone 0800-222-1234
-          (das 8h às 11:30h e das 13:30 às 17:30h, em dias úteis) ou pelo site.
+          Ética, políticas e regulamentos internos e, ainda, de legislações
+          municipais, estaduais ou federais.
+          <br />O canal de denúncias é mantido por empresa terceirizada e,
+          portanto, externo à estrutura da Fruki Bebidas, o que visa reforçar as
+          garantias de anonimato dos denunciantes, se esses assim desejarem.
+          <br />
+          As denúncias serão recebidas através da WEP Compliance mediante acesso
+          ao telefone 0800-222-1234 (das 8h às 11:30h e das 13:30 às 17:30h, em
+          dias úteis) ou pelo site.
         </Typography>
         <Box sx={{ pl: defaultPl, '& > div:nth-of-type(n + 2)': { mt: 2 } }}>
           <Box>
@@ -104,6 +106,9 @@ export function FrukiDenuncias() {
                 minWidth: 'auto',
               }}
               size="large"
+              onClick={() =>
+                window.open('https://canaldedenuncias.wepcompliance.com.br/')
+              }
             >
               Fazer Denúncia
             </Button>

@@ -32,11 +32,12 @@ export function FrukiCNPJComponent() {
           {`CNPJ `}
         </Typography>
         <Typography
+          fontWeight={700}
           sx={{ ...sx1, ml: isSmall ? 1 : 0 }}
           variant="body1"
           color="primary"
         >
-          {`   87.315.099/0001-07`}
+          {`  87.315.099/0001-07`}
         </Typography>
       </Box>
     </Box>

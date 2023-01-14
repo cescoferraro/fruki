@@ -38,6 +38,9 @@ export const FrukiIniciativas = ({
             />
           ))}
       </FrukiSlider>
+      <br />
+      <br />
+      <br />
     </>
   )
 }

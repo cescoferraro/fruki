@@ -2,11 +2,12 @@ import { Box, Container, List, Typography } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { BlogPaper } from 'components/BlogPaper'
 import { Desktop, Mobile } from 'components/FrukiContainer'
+import { useIsBigScreen } from 'components/useIsBigScreen'
 import { navigate } from 'gatsby'
-import { Button } from 'gatsby-material-ui-components'
 import * as React from 'react'
 
 export function FrukiBlogSection({ posts }: { posts: Post[] }) {
+  const isBig = useIsBigScreen()
   return (
     <Box
       sx={{
@@ -33,18 +34,13 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
         <Typography
           color="secondary"
           variant="h5"
+          fontSize={isBig ? 48 : 32}
           fontWeight={700}
           align="center"
         >
           Novidades sobre a Fruki
         </Typography>
-        <Typography
-          sx={{ py: 2 }}
-          color="grey.600"
-          variant="h6"
-          fontSize={18}
-          align="center"
-        >
+        <Typography sx={{ py: 2 }} color="grey.600" variant="h6" align="center">
           Acompanhe as nossas últimas notícias.
         </Typography>
       </Box>
@@ -86,18 +82,6 @@ export function FrukiBlogSection({ posts }: { posts: Post[] }) {
           </List>
         </Container>
       </Mobile>
-      <Box
-        sx={{
-          py: 5,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Button to="/blog" color="secondary" variant="contained">
-          Ver todas as notícias{' '}
-        </Button>
-      </Box>
     </Box>
   )
 }

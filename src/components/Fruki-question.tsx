@@ -1,5 +1,6 @@
 import { Box, Button, Container, Typography, useTheme } from '@mui/material'
 import { center } from 'components/center'
+import { navigate } from 'gatsby'
 import * as React from 'react'
 
 export function FrukiQuestion() {
@@ -29,6 +30,20 @@ export function FrukiQuestion() {
             color="primary"
             variant="contained"
             size="large"
+            endIcon={
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.1894 10.75L7.71967 15.2197C7.42678 15.5126 7.42678 15.9874 7.71967 16.2803C8.01256 16.5732 8.48744 16.5732 8.78033 16.2803L13.25 11.8106L15.2197 13.7803C15.4342 13.9948 15.7568 14.059 16.037 13.9429C16.3173 13.8268 16.5 13.5533 16.5 13.25V8.25C16.5 8.13858 16.4757 8.03284 16.4321 7.93778C16.4024 7.87285 16.363 7.81128 16.3137 7.7553C16.2927 7.73139 16.2703 7.70882 16.2464 7.68775C16.1859 7.63419 16.1187 7.59209 16.0478 7.56145C15.9565 7.52191 15.8558 7.5 15.75 7.5H10.75C10.4467 7.5 10.1732 7.68273 10.0571 7.96299C9.94103 8.24324 10.0052 8.56583 10.2197 8.78033L12.1894 10.75Z"
+                  fill="#41B02A"
+                />
+              </svg>
+            }
             startIcon={
               <svg
                 width="24"
@@ -45,6 +60,9 @@ export function FrukiQuestion() {
                 />
               </svg>
             }
+            onClick={() => {
+              window.open('/pdf/Relatorio_Socio_Ambiental_Fruki_2021.pdf')
+            }}
           >
             Relatório de Sustentabilidade Socioambiental
           </Button>

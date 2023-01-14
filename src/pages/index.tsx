@@ -42,7 +42,7 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
         />
         <FrukiBlogSection posts={allPosts} />
         <FrukiContact />
-
+        {/*// TODO: deal with images*/}
         <FrukiWorkForce />
         <FrukiFooter brands={allBrands} />
       </FrukiContainer>

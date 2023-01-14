@@ -21,7 +21,7 @@ export function AboutMain() {
         }}
       >
         <Typography
-          variant={isBig ? 'h1' : 'h5'}
+          variant={isBig ? 'h2' : 'h5'}
           sx={{ pl: defaultPl, fontWeight: 700 }}
           color="primary.contrastText"
         >

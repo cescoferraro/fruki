@@ -17,18 +17,23 @@ export function FrukiHistory() {
     <GridContainer>
       <GridItem>
         <Typography
-          variant={isBig ? 'h1' : 'h5'}
+          variant={isBig ? 'h2' : 'h5'}
           sx={{ fontWeight: 700 }}
           color="secondary"
         >
           Temos muita história pra contar
         </Typography>
-        <Typography variant="body1" fontSize={20}>
+        <Typography fontSize={isBig ? 20 : 18} variant="body1">
           A inauguração da primeira fábrica ao lançamento dos últimos produtos,
           saiba tudo sobre nosso propósito e nossa história.
         </Typography>
         <Box sx={{}}>
-          <Button variant="contained" color="secondary" size="large">
+          <Button
+            sx={{ fontSize: 18 }}
+            variant="contained"
+            color="secondary"
+            size="large"
+          >
             Conheça nossa história
           </Button>
         </Box>

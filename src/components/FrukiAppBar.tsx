@@ -1,4 +1,4 @@
-import CloseIcon from '@mui/icons-material/LocationOn'
+import LocationOn from '@mui/icons-material/LocationOn'
 import {
   AppBar,
   Box,
@@ -7,6 +7,7 @@ import {
   useScrollTrigger,
   useTheme,
 } from '@mui/material'
+import { useIsBigScreen } from 'components/useIsBigScreen'
 import React, { useState } from 'react'
 import { FrukiAppBarLink } from './FrukiAppBarLink'
 import { FrukiLogo } from './frukiLogo'
@@ -18,7 +19,7 @@ function NewComponent({
   onClick1,
 }: {
   background?: string
-  onClick: () => string
+  onClick: () => void
   onClick1: () => void
   open: boolean
   onClose: () => void
@@ -31,6 +32,8 @@ function NewComponent({
       color: theme.palette.secondary.main,
     },
   }
+
+  const isBig = useIsBigScreen()
   return (
     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box sx={{ flexGrow: 1, display: 'flex' }}>
@@ -47,8 +50,8 @@ function NewComponent({
           <FrukiAppBarLink sx={sx} to="/marcas">
             Nossas Marcas
           </FrukiAppBarLink>
-          <FrukiAppBarLink sx={sx} to="/planetas-e-pessoas">
-            Planetas e Pessoas
+          <FrukiAppBarLink sx={sx} to="/planeta-e-pessoas">
+            Planeta e Pessoas
           </FrukiAppBarLink>
           <FrukiAppBarLink sx={sx} to="/denuncias">
             Canal de Denúncias
@@ -65,9 +68,10 @@ function NewComponent({
               md: 'none',
               lg: 'unset',
             },
+            fontSize: 16,
           }}
           onClick={onClick}
-          startIcon={<CloseIcon color="secondary" />}
+          startIcon={<LocationOn color="secondary" />}
         >
           Onde encontrar
         </Button>
@@ -79,12 +83,13 @@ function NewComponent({
 
             borderRadius: 20,
             textTransform: 'none',
+            fontWeight: 700,
           }}
           size="medium"
           variant="contained"
           color="secondary"
         >
-          Quero ser Cliente
+          {isBig ? 'Quero ser Cliente' : 'Seja Cliente'}
         </Button>
       </Box>
     </Toolbar>
@@ -111,7 +116,9 @@ export function FrukiAppBar() {
       >
         <NewComponent
           background={background}
-          onClick={() => (window.location.href = '/admin')}
+          onClick={() => {
+            window.location.href = 'https://fruki.pertinhodemim.com/'
+          }}
           onClick1={() => setOpen((st) => !st)}
           open={open}
           onClose={onClose}

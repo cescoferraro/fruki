@@ -5,7 +5,6 @@ import {
   IconButton,
   styled,
   Typography,
-  useTheme,
 } from '@mui/material'
 import { center } from 'components/center'
 import { FrukiCNPJComponent, sx1 } from 'components/FrukiCNPJComponent'
@@ -18,7 +17,6 @@ import { FacebookIcon } from './FacebookIcon'
 import { FrukiLogo } from './frukiLogo'
 import { InstagramIcon } from './InstagramIcon'
 import { LinkedinIcon } from './LinkedinIcon'
-import { TwitterIcon } from './TwitterIcon'
 
 export const Link = styled(GatsbyLink)`
   padding-top: 8px;
@@ -59,7 +57,12 @@ export function FrukiFooter({ brands }: IProps) {
               >
                 Telefone
               </Typography>
-              <Typography sx={sx1} variant="bodyRegular" color="secondary">
+              <Typography
+                fontWeight={700}
+                sx={sx1}
+                variant="bodyRegular"
+                color="secondary"
+              >
                 0800.703.9910
               </Typography>
               <Typography
@@ -70,7 +73,12 @@ export function FrukiFooter({ brands }: IProps) {
               >
                 Atendimento E-mail
               </Typography>
-              <Typography sx={sx1} variant="bodyRegular" color="secondary">
+              <Typography
+                fontWeight={700}
+                sx={sx1}
+                variant="bodyRegular"
+                color="secondary"
+              >
                 contato@fruki.com.br
               </Typography>
               <Typography
@@ -81,7 +89,12 @@ export function FrukiFooter({ brands }: IProps) {
               >
                 Horário de Atendimento
               </Typography>
-              <Typography sx={sx1} variant="bodyRegular" color="secondary">
+              <Typography
+                fontWeight={700}
+                sx={sx1}
+                variant="bodyRegular"
+                color="secondary"
+              >
                 Seg a Sex das 10h às 20h
               </Typography>
             </Box>
@@ -97,15 +110,30 @@ export function FrukiFooter({ brands }: IProps) {
           <Box sx={{ ...sx1, pt: 2 }}>
             {/*<Link to={'/blog'}>Blog</Link>*/}
             {/*<Link to={'/marcas'}>Nossas Marcas</Link>*/}
-            <Link to={'/partner'}>Seja um Parceiro</Link>
+            <Link
+              onClick={() => {
+                // TODO: abrir modal de interesse
+              }}
+            >
+              Seja Cliente
+            </Link>
             <Link to={'/sobre-nos'}>Sobre a Fruki</Link>
-            {/*<Link>Onde Encontrar</Link>*/}
             <Link to={'https://vagasfruki.gupy.io/'}>Trabalhe Conosco</Link>
-            {/*<Link>Patrocínio</Link>*/}
             <Link to={'/faq'}>Dúvidas Frequentes</Link>
             {/*<Link>Notícias</Link>*/}
             <Link to={'/privacidade'}>Política de Privacidade</Link>
-            <Link to={'/planetas-e-pessoas'}>
+            <Link
+              onClick={() => {
+                window.open('https://fruki.pertinhodemim.com/')
+              }}
+            >
+              Onde encontrar
+            </Link>
+            <Link
+              onClick={() => {
+                window.open('/pdf/Relatorio_Socio_Ambiental_Fruki_2021.pdf')
+              }}
+            >
               Relatório de Sustentabilidade
             </Link>
           </Box>
@@ -116,7 +144,13 @@ export function FrukiFooter({ brands }: IProps) {
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
             {brands.map((b) => (
-              <Link key={b.slug} to={'/marcas'}>
+              <Link
+                key={b.slug}
+                onClick={() =>
+                  // TODO: modal 18
+                  window.open('/pdf/Portfolio_Digital_Fruki_Bebidas.pdf')
+                }
+              >
                 {b.name}
               </Link>
             ))}
@@ -162,15 +196,6 @@ export function FrukiFooter({ brands }: IProps) {
                 aria-label="facebook-button"
               >
                 <FacebookIcon />
-              </IconButton>
-            </Box>
-            <Box sx={{}}>
-              <IconButton
-                onClick={() => navigate('https://twitter.com/fruki_oficial')}
-                sx={{ backgroundColor: 'secondary.main' }}
-                aria-label="twitter-button"
-              >
-                <TwitterIcon />
               </IconButton>
             </Box>
           </Box>
