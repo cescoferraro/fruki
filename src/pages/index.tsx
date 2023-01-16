@@ -11,9 +11,12 @@ import { useBrandsMemo } from 'components/useBrandsMemo'
 import { usePostMemo } from 'components/usePostMemo'
 import type { PageProps } from 'gatsby'
 import { graphql } from 'gatsby'
+import { Carousel } from 'react-responsive-carousel'
 import { BannerComp, Created } from '../components/bannerComp'
 import * as React from 'react'
 import { useMemo } from 'react'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import { Box } from '@mui/material'
 
 const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   data: { brands, home, posts, banners },
@@ -22,7 +25,7 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   const allBrands = useBrandsMemo(brands)
   const allPosts = usePostMemo(posts)
 
-  const bs = useMemo<Created>(
+  const bs = useMemo<Created[]>(
     () =>
       banners.edges.map((d) => ({
         ...(d.node.fields as GatsbyTypes.FieldsFragment),
@@ -34,10 +37,13 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   return (
     <>
       <VLibras />
-      <FrukiMainGrid home={home} />
-      {bs?.map((a: any) => {
-        return <BannerComp a={a} />
-      })}
+      <Box sx={{}}>
+        <Carousel axis={'horizontal'}>
+          {bs?.map((a: any) => {
+            return <BannerComp a={a} />
+          })}
+        </Carousel>
+      </Box>
       <FrukiHistory />
       <BrandsComponent brands={allBrands} />
       <FrukiFuture />
