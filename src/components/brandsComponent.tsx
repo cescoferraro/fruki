@@ -3,7 +3,12 @@ import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { navigate } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
-import { StaticImage } from 'gatsby-plugin-image'
+import {
+  GatsbyImage,
+  getImage,
+  IGatsbyImageData,
+  StaticImage,
+} from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps } from 'react'
 import { useBoletoForm } from '../layouts'
@@ -166,25 +171,32 @@ export function BrandsComponent(props: { brands: any[] }) {
               }}
               key={s.slug}
             >
-              <Box
-                sx={{
-                  zIndex: 100,
-                  background: 'white',
-                  borderRadius: 100,
-                  backgroundRepeat: 'no-repeat',
-                  boxShadow: `${theme.shadows[4]}`,
-                  ':hover': {
-                    backgroundPosition: 'center',
-                    backgroundImage: `url(${s?.logo || ''})`,
-                    backgroundSize: 'contain',
-                  },
-                  m: index === 0 ? 2 : 2,
-                  backgroundImage: `url(${s?.logo || ''})`,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'center',
+              {/*<Box*/}
+              {/*  sx={{*/}
+              {/*    background: 'white',*/}
+              {/*    backgroundRepeat: 'no-repeat',*/}
+              {/*    boxShadow: `${theme.shadows[4]}`,*/}
+              {/*    ':hover': {*/}
+              {/*      backgroundPosition: 'center',*/}
+              {/*      backgroundImage: `url(${s?.logo || ''})`,*/}
+              {/*      backgroundSize: 'contain',*/}
+              {/*    },*/}
+              {/*    m: index === 0 ? 2 : 2,*/}
+              {/*    backgroundImage: `url(${s?.logo || ''})`,*/}
+              {/*    backgroundSize: 'contain',*/}
+              {/*    backgroundPosition: 'center',*/}
+              {/*  }}*/}
+              {/*/>*/}
+
+              <GatsbyImage
+                style={{
                   width: isBig ? 200 : 128,
                   height: isBig ? 200 : 128,
+                  zIndex: 100,
+                  borderRadius: 100,
                 }}
+                alt={''}
+                image={getImage(s?.logo)!! as IGatsbyImageData}
               />
             </ButtonBase>
           ))}

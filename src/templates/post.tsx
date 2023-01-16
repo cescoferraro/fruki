@@ -30,7 +30,7 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
-        image
+        #        image
         author
         about
       }

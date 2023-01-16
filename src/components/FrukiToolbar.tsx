@@ -164,7 +164,7 @@ export function FrukiToolbar({
             Sobre nós
           </FrukiAppBarLink>
           <FrukiAppBarLink
-            sx={sx}
+            sx={{ ...sx, fontWeight: 400 }}
             onClick={() => {
               setState((st) => ({ ...st, isLegal: !st.isLegal }))
             }}

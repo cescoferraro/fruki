@@ -4,5 +4,5 @@ date: 2022-12-21T20:31:30.660Z
 title: Centro de Distribuição Pelotas
 endereco: Avenida Fernando Osório, 6041 Pelotas/RS - Brasil
 local: RS, Brasil
-image: /assets/pelotas-1-.png
+image: ../../static/assets/location/pelotas-1-.png
 ---

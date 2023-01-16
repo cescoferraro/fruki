@@ -1,4 +1,5 @@
 import type { GatsbyConfig } from 'gatsby'
+
 require('dotenv').config()
 
 const config: GatsbyConfig = {
@@ -8,43 +9,73 @@ const config: GatsbyConfig = {
   },
   graphqlTypegen: false,
   plugins: [
-    `gatsby-transformer-remark`,
-    `gatsby-plugin-layout`,
+    'gatsby-plugin-netlify-cms',
+    'gatsby-plugin-emotion',
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        options: { modulePath: `${__dirname}/src/cms.js` },
+        trackingId: '32434',
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: { path: `${__dirname}/static/assets`, name: `assets` },
-    },
-
-    `gatsby-plugin-layout`,
     'gatsby-plugin-sitemap',
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-image`,
-    `gatsby-transformer-yaml`,
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'static/assets/logo.png',
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: ['.mdx', '.md'],
+        extensions: [`.mdx`, `.md`],
       },
     },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-relative-images-v2`,
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: './content/',
+      },
+      __key: 'content',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'assets',
+        path: './static/assets/',
+      },
+      __key: 'assets',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './src/pages/',
+      },
+      __key: 'pages',
+    },
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-layout`,
+    `gatsby-transformer-yaml`,
     'gatsby-plugin-extract-schema',
     {
       resolve: 'gatsby-plugin-typegen',

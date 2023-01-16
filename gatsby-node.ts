@@ -118,7 +118,6 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
             path
             title
             description
-            image
           }
         }
       }

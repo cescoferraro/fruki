@@ -130,9 +130,17 @@ const AboutUsPage: React.FC<
 
 export default AboutUsPage
 export const pageQuery = graphql`
+  fragment Image on File {
+    childImageSharp {
+      gatsbyImageData
+    }
+  }
   fragment LocationFrontMatter on MdxFrontmatter {
     date(formatString: "MMMM DD, YYYY")
-    image
+    image {
+      id
+      ...Image
+    }
     title
     endereco
     local

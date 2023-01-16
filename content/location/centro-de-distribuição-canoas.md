@@ -4,7 +4,7 @@ date: 2022-12-20T16:31:30.662Z
 title: Centro de Distribuição Canoas
 endereco: Rua Antônio Frederico Ozanan, 3030 Canoas / RS - Brasil
 local: RS, Brasil
-image: /assets/cd-canoas-1-.jpg
+image: ../../static/assets/location/cd-canoas-1-.jpg
 tag:
   - LANCAMENTO
 ---

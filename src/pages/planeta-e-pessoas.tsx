@@ -1,7 +1,6 @@
 import { Box, Container, styled, Typography, useTheme } from '@mui/material'
 import { FrukiQuestion } from 'components//Fruki-question'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
-import { center } from 'components/center'
 import { EcoNumber } from 'components/Eco-number'
 import { FrukiIniciativas } from 'components/fruki-iniciativas'
 import {
@@ -14,10 +13,16 @@ import { WhiteDesktopLeaf } from 'components/FrukiFuture'
 import { FrukiRespect } from 'components/frukiRespect'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { useIsBigScreen } from 'components/useIsBigScreen'
-import { graphql, navigate, PageProps } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
+import { graphql, PageProps } from 'gatsby'
+import {
+  GatsbyImage,
+  getImage,
+  IGatsbyImageData,
+  ImageDataLike,
+  StaticImage,
+} from 'gatsby-plugin-image'
 import * as React from 'react'
-import { SVGProps, useEffect, useState } from 'react'
+import { ReactElement, SVGProps, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 function FrukiStats() {
@@ -249,35 +254,18 @@ const SustentabilidadePage: React.FC<
         <FrukiSlider translate={-250 / 2}>
           {data.certificates.edges
             .map((e) => e.node.frontmatter)
-            .map((p, idx) => (
-              <Box
-                key={`${p?.title}-${idx}`}
-                sx={{
-                  zIndex: 100,
-                  background: 'white',
-                  boxShadow: `none`,
-                  ':hover': {
-                    backgroundImage: `url(${p?.image})`,
-                  },
-                  backgroundImage: `url(${p?.image})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
-                  backgroundColor: p?.color || 'purple',
-                  borderRadius: 250 / 2,
-                }}
-                onClick={() => navigate(p?.title || '')}
-              >
-                <Box
-                  style={{
-                    width: 250,
-                    height: 250,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+            .filter((a) => a !== null)
+            .map((p, idx) =>
+              p !== null ? (
+                <GatsbyImage
+                  style={{ height: 240 }}
+                  alt={p?.name || ''}
+                  image={getImage(p.image as ImageDataLike) as IGatsbyImageData}
                 />
-              </Box>
-            ))}
+              ) : (
+                (null as unknown as ReactElement)
+              )
+            )}
         </FrukiSlider>
         <FrukiIniciativas initiatives={data?.initiatives.edges} />
         <FrukiQuestion />
@@ -292,9 +280,10 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     title
     description
-    image
+    image {
+      ...Image
+    }
     name
-    logo
     color
   }
   fragment CertificatesFragment on MdxConnection {
@@ -322,9 +311,10 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     title
     description
-    image
+    image {
+      ...Image
+    }
     name
-    logo
     path
   }
   fragment InitiativesFragment on MdxConnection {

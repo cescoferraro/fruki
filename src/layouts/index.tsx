@@ -1,4 +1,3 @@
-import VLibras from '@djpfs/react-vlibras'
 import {
   Box,
   Button,
@@ -12,6 +11,7 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { center } from 'components/center'
 import { FrukiAppBar } from 'components/FrukiAppBar'
+import { FrukiContainer } from 'components/FrukiContainer'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { navigate, PageProps } from 'gatsby'
 import React, {
@@ -170,7 +170,7 @@ export default function ({
                 state={state}
                 setState={setState}
               />
-              {children}
+              <FrukiContainer>{children}</FrukiContainer>
             </React.Fragment>
           </ThemeProvider>
         </QueryClientProvider>

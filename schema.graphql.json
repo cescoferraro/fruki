@@ -14453,8 +14453,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "File",
               "ofType": null
             },
             "isDeprecated": false,
@@ -14474,6 +14474,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "File",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "args": [],
             "type": {
@@ -14501,8 +14513,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "File",
               "ofType": null
             },
             "isDeprecated": false,
@@ -14513,8 +14525,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "File",
               "ofType": null
             },
             "isDeprecated": false,
@@ -14794,8 +14806,8 @@
             "name": "desktop",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -14816,6 +14828,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -14842,8 +14866,8 @@
             "name": "logo",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -14854,8 +14878,8 @@
             "name": "mobile",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -15083,7 +15107,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "FileFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -15104,6 +15128,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FileFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -15131,7 +15167,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "FileFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -15143,7 +15179,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "FileFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -15370,8 +15406,8 @@
             "name": "desktop",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -15392,6 +15428,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -15418,8 +15466,8 @@
             "name": "logo",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -15430,8 +15478,8 @@
             "name": "mobile",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -17273,8 +17321,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "File",
               "ofType": null
             },
             "isDeprecated": false,
@@ -17294,6 +17342,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "File",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "args": [],
             "type": {
@@ -17321,8 +17381,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "File",
               "ofType": null
             },
             "isDeprecated": false,
@@ -17333,8 +17393,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "File",
               "ofType": null
             },
             "isDeprecated": false,
@@ -17614,8 +17674,8 @@
             "name": "desktop",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -17636,6 +17696,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -17662,8 +17734,8 @@
             "name": "logo",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -17674,8 +17746,8 @@
             "name": "mobile",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "FieldSelectorEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileFieldSelector",
               "ofType": null
             },
             "defaultValue": null,
@@ -17903,7 +17975,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "FileFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -17924,6 +17996,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FileFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -17951,7 +18035,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "FileFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -17963,7 +18047,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "FileFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -18190,8 +18274,8 @@
             "name": "desktop",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -18212,6 +18296,18 @@
           },
           {
             "name": "image",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "link",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -18238,8 +18334,8 @@
             "name": "logo",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -18250,8 +18346,8 @@
             "name": "mobile",
             "description": null,
             "type": {
-              "kind": "ENUM",
-              "name": "SortOrderEnum",
+              "kind": "INPUT_OBJECT",
+              "name": "FileSortInput",
               "ofType": null
             },
             "defaultValue": null,

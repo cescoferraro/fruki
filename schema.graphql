@@ -1523,12 +1523,13 @@ type MarkdownRemarkFrontmatter {
     locale: String
   ): Date
   description: String
-  desktop: String
+  desktop: File
   endereco: String
-  image: String
+  image: File
+  link: String
   local: String
-  logo: String
-  mobile: String
+  logo: File
+  mobile: File
   name: String
   path: String
   question: String
@@ -1565,12 +1566,13 @@ input MarkdownRemarkFrontmatterFieldSelector {
   color: FieldSelectorEnum
   date: FieldSelectorEnum
   description: FieldSelectorEnum
-  desktop: FieldSelectorEnum
+  desktop: FileFieldSelector
   endereco: FieldSelectorEnum
-  image: FieldSelectorEnum
+  image: FileFieldSelector
+  link: FieldSelectorEnum
   local: FieldSelectorEnum
-  logo: FieldSelectorEnum
-  mobile: FieldSelectorEnum
+  logo: FileFieldSelector
+  mobile: FileFieldSelector
   name: FieldSelectorEnum
   path: FieldSelectorEnum
   question: FieldSelectorEnum
@@ -1591,12 +1593,13 @@ input MarkdownRemarkFrontmatterFilterInput {
   color: StringQueryOperatorInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
-  desktop: StringQueryOperatorInput
+  desktop: FileFilterInput
   endereco: StringQueryOperatorInput
-  image: StringQueryOperatorInput
+  image: FileFilterInput
+  link: StringQueryOperatorInput
   local: StringQueryOperatorInput
-  logo: StringQueryOperatorInput
-  mobile: StringQueryOperatorInput
+  logo: FileFilterInput
+  mobile: FileFilterInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   question: StringQueryOperatorInput
@@ -1617,12 +1620,13 @@ input MarkdownRemarkFrontmatterSortInput {
   color: SortOrderEnum
   date: SortOrderEnum
   description: SortOrderEnum
-  desktop: SortOrderEnum
+  desktop: FileSortInput
   endereco: SortOrderEnum
-  image: SortOrderEnum
+  image: FileSortInput
+  link: SortOrderEnum
   local: SortOrderEnum
-  logo: SortOrderEnum
-  mobile: SortOrderEnum
+  logo: FileSortInput
+  mobile: FileSortInput
   name: SortOrderEnum
   path: SortOrderEnum
   question: SortOrderEnum
@@ -1789,12 +1793,13 @@ type MdxFrontmatter {
     locale: String
   ): Date
   description: String
-  desktop: String
+  desktop: File
   endereco: String
-  image: String
+  image: File
+  link: String
   local: String
-  logo: String
-  mobile: String
+  logo: File
+  mobile: File
   name: String
   path: String
   question: String
@@ -1831,12 +1836,13 @@ input MdxFrontmatterFieldSelector {
   color: FieldSelectorEnum
   date: FieldSelectorEnum
   description: FieldSelectorEnum
-  desktop: FieldSelectorEnum
+  desktop: FileFieldSelector
   endereco: FieldSelectorEnum
-  image: FieldSelectorEnum
+  image: FileFieldSelector
+  link: FieldSelectorEnum
   local: FieldSelectorEnum
-  logo: FieldSelectorEnum
-  mobile: FieldSelectorEnum
+  logo: FileFieldSelector
+  mobile: FileFieldSelector
   name: FieldSelectorEnum
   path: FieldSelectorEnum
   question: FieldSelectorEnum
@@ -1857,12 +1863,13 @@ input MdxFrontmatterFilterInput {
   color: StringQueryOperatorInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
-  desktop: StringQueryOperatorInput
+  desktop: FileFilterInput
   endereco: StringQueryOperatorInput
-  image: StringQueryOperatorInput
+  image: FileFilterInput
+  link: StringQueryOperatorInput
   local: StringQueryOperatorInput
-  logo: StringQueryOperatorInput
-  mobile: StringQueryOperatorInput
+  logo: FileFilterInput
+  mobile: FileFilterInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   question: StringQueryOperatorInput
@@ -1883,12 +1890,13 @@ input MdxFrontmatterSortInput {
   color: SortOrderEnum
   date: SortOrderEnum
   description: SortOrderEnum
-  desktop: SortOrderEnum
+  desktop: FileSortInput
   endereco: SortOrderEnum
-  image: SortOrderEnum
+  image: FileSortInput
+  link: SortOrderEnum
   local: SortOrderEnum
-  logo: SortOrderEnum
-  mobile: SortOrderEnum
+  logo: FileSortInput
+  mobile: FileSortInput
   name: SortOrderEnum
   path: SortOrderEnum
   question: SortOrderEnum

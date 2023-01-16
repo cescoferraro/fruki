@@ -17,9 +17,8 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     title
     description
-    image
+    #    image
     name
-    logo
     url
   }
   fragment BlogsFragmentQuery on Query {

@@ -25,6 +25,9 @@ export const pageQuery = graphql`
   fragment ProductFrontMatter on MdxFrontmatter {
     name
     brand
+    image {
+      ...Image
+    }
   }
   query ProductByBrandPageQuery($productName: String, $brand: String) {
     brand: mdx(frontmatter: { path: { eq: $brand } }) {
@@ -32,7 +35,7 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        ...ProductFrontMatter
+        ...BrandsFrontMatter
       }
     }
     product: mdx(frontmatter: { path: { eq: $productName } }) {
@@ -40,9 +43,7 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        path
-        name
-        brand
+        ...ProductFrontMatter
       }
     }
   }

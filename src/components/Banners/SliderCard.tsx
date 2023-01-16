@@ -8,6 +8,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React, { MouseEventHandler } from 'react'
 
 interface IProps {
@@ -26,6 +27,7 @@ export function SliderCard({
   action = 'Ver mais',
   onClick,
 }: IProps): React.ReactElement {
+  console.log(image)
   return (
     <Card
       sx={{
@@ -38,7 +40,11 @@ export function SliderCard({
       tabIndex={0}
       onClick={onClick}
     >
-      <CardMedia image={image} sx={{ height: 240 }} />
+      <GatsbyImage
+        style={{ height: 240 }}
+        alt={''}
+        image={getImage(image)!! as IGatsbyImageData}
+      />
       <CardContent
         sx={{
           height: '271px',

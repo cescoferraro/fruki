@@ -50,7 +50,7 @@ export function FrukiRespect() {
         padding="none"
       >
         <StaticImage
-          src={'../../static/assets/img_15.png'}
+          src={'../../static/assets/planetas-e-pessoas/img_15.png'}
           alt={''}
           style={{
             position: 'absolute',

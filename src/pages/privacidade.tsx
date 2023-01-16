@@ -21,7 +21,7 @@ const PrivacyPage: React.FC<PageProps<GatsbyTypes.PrivacyQueryQuery>> = ({
           <StaticImage
             style={{ width: '100%', zIndex: 100 }}
             alt="sdfk"
-            src="../../static/assets/img_13.png"
+            src="../../static/assets/privacidade/img_13.png"
           />
           <Typography color="primary.contrastText" variant="h2" align="center">
             Política de Privacidade

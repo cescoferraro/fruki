@@ -17,10 +17,11 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     title
     description
-    image
     name
     background
-    logo
+    logo {
+      ...Image
+    }
   }
   fragment Fields on MdxFields {
     slug

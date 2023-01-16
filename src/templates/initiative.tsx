@@ -4,6 +4,7 @@ import { FrukiContainer } from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { graphql, PageProps } from 'gatsby'
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
@@ -13,15 +14,13 @@ const InitiativePage: React.FC<
   return (
     <>
       <FrukiContainer>
-        <Box
-          sx={{
+        <GatsbyImage
+          style={{
             background: initiative?.frontmatter?.color || 'white',
             height: 200,
-            backgroundImage: `url(${initiative?.frontmatter?.image || ''})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
           }}
+          alt={''}
+          image={getImage(initiative?.frontmatter?.image)!! as IGatsbyImageData}
         />
         <Container sx={{ py: 8 }}>
           <Typography variant="h5" align="center">
@@ -55,7 +54,9 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
-        image
+        #        image {
+        #          ...Image
+        #        }
         color
       }
     }

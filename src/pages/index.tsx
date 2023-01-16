@@ -1,22 +1,21 @@
 import VLibras from '@djpfs/react-vlibras'
+import { Box } from '@mui/material'
 import { BrandsComponent } from 'components/brandsComponent'
 import { FrukiBlogSection } from 'components/FrukiBlogSection'
 import { FrukiContact } from 'components/frukiContact'
 import { FrukiFooter } from 'components/FrukiFooter'
 import { FrukiFuture } from 'components/FrukiFuture'
 import { FrukiHistory } from 'components/FrukiHistory'
-import { FrukiMainGrid } from 'components/FrukiMainGrid'
 import { FrukiWorkForce } from 'components/frukiWorkForce'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { usePostMemo } from 'components/usePostMemo'
 import type { PageProps } from 'gatsby'
 import { graphql } from 'gatsby'
-import { Carousel } from 'react-responsive-carousel'
-import { BannerComp, Created } from '../components/bannerComp'
 import * as React from 'react'
 import { useMemo } from 'react'
+import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-import { Box } from '@mui/material'
+import { BannerComp, Created } from 'components/bannerComp'
 
 const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   data: { brands, home, posts, banners },
@@ -37,13 +36,11 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   return (
     <>
       <VLibras />
-      <Box sx={{}}>
-        <Carousel axis={'horizontal'}>
-          {bs?.map((a: any) => {
-            return <BannerComp a={a} />
-          })}
-        </Carousel>
-      </Box>
+      <Carousel showThumbs={false}>
+        {bs?.map((a) => (
+          <BannerComp key={a?.name} a={a} />
+        ))}
+      </Carousel>
       <FrukiHistory />
       <BrandsComponent brands={allBrands} />
       <FrukiFuture />
@@ -80,10 +77,18 @@ export const pageQuery = graphql`
 
   fragment BannerFrontMatter on MdxFrontmatter {
     date(formatString: "MMMM DD, YYYY")
-    title
+    name
     link
-    desktop
-    mobile
+    desktop {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    mobile {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
   }
 
   fragment BannerFragmentQuery on Query {

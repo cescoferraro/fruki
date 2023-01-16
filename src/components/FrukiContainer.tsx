@@ -15,14 +15,19 @@ export const FrukiContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <Container
       sx={{
-        padding: '0px !important',
+        padding: {
+          xs: '0px !important',
+          sm: '0px !important',
+          md: '0px !important',
+          lg: '0px !important',
+        },
         maxWidth: {
           xs: '100%',
           sm: '100%',
           md: '100%',
-          lg: '100%',
-          // xl: 1440,
-          xl: '100%',
+          lg: 1440,
+          xl: 1440,
+          // xl: '100%',
         },
         overflowX: 'hidden',
       }}

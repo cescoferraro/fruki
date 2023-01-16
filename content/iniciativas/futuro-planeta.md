@@ -3,7 +3,7 @@ path: /futuro-planeta
 date: 2022-12-20T23:19:04.301Z
 title: Futuro do Planeta Fruki
 description: Futuro do Planeta Fruki
-image: /assets/img_2.png
+image: ../../static/assets/iniciativas/img_2.png
 color: "#F88324"
 ---
 O respeito e o compromisso da FRUKI com as questões socioambientais se refletem em atitudes concretas, já integradas ao dia a dia da empresa, desde o recolhimento, armazenamento e utilização da água da chuva, até iniciativas de grande alcance social.\
