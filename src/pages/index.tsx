@@ -1,9 +1,7 @@
-import { Box, Typography } from '@mui/material'
+import VLibras from '@djpfs/react-vlibras'
 import { BrandsComponent } from 'components/brandsComponent'
-import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiBlogSection } from 'components/FrukiBlogSection'
 import { FrukiContact } from 'components/frukiContact'
-import { FrukiContainer } from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
 import { FrukiFuture } from 'components/FrukiFuture'
 import { FrukiHistory } from 'components/FrukiHistory'
@@ -13,39 +11,40 @@ import { useBrandsMemo } from 'components/useBrandsMemo'
 import { usePostMemo } from 'components/usePostMemo'
 import type { PageProps } from 'gatsby'
 import { graphql } from 'gatsby'
+import { BannerComp, Created } from '../components/bannerComp'
 import * as React from 'react'
+import { useMemo } from 'react'
 
 const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
-  data: { brands, home, posts },
+  data: { brands, home, posts, banners },
 }) => {
+  console.log(111, banners)
   const allBrands = useBrandsMemo(brands)
   const allPosts = usePostMemo(posts)
+
+  const bs = useMemo<Created>(
+    () =>
+      banners.edges.map((d) => ({
+        ...(d.node.fields as GatsbyTypes.FieldsFragment),
+        ...(d.node.frontmatter as GatsbyTypes.BannerFrontMatterFragment),
+      })),
+    [banners]
+  )
+  console.log(bs)
   return (
     <>
-      <FrukiAppBar />
-      <FrukiContainer>
-        <FrukiMainGrid home={home} />
-        <FrukiHistory />
-        <BrandsComponent brands={allBrands} />
-        <FrukiFuture
-          title={`Um mundo mais gentil tem outro sabor`}
-          text={
-            <>
-              O nosso compromisso com as questões socioambientais se refletem em
-              ações de verdade.
-              <Typography sx={{ minHeight: 20 }} />
-              Para isso, transformamos nossa maneira de pensar o futuro das
-              pessoas e do planeta.
-            </>
-          }
-          action={'Saiba mais'}
-        />
-        <FrukiBlogSection posts={allPosts} />
-        <FrukiContact />
-        {/*// TODO: deal with images*/}
-        <FrukiWorkForce />
-        <FrukiFooter brands={allBrands} />
-      </FrukiContainer>
+      <VLibras />
+      <FrukiMainGrid home={home} />
+      {bs?.map((a: any) => {
+        return <BannerComp a={a} />
+      })}
+      <FrukiHistory />
+      <BrandsComponent brands={allBrands} />
+      <FrukiFuture />
+      <FrukiBlogSection posts={allPosts} />
+      <FrukiContact />
+      <FrukiWorkForce />
+      <FrukiFooter brands={allBrands} />
     </>
   )
 }
@@ -72,10 +71,38 @@ export const pageQuery = graphql`
       ...HomeFragment
     }
   }
+
+  fragment BannerFrontMatter on MdxFrontmatter {
+    date(formatString: "MMMM DD, YYYY")
+    title
+    desktop
+    mobile
+  }
+
+  fragment BannerFragmentQuery on Query {
+    banners: allMdx(
+      filter: { internal: { contentFilePath: { regex: "/content/banner/" } } }
+      sort: [{ fields: { slug: ASC } }]
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            ...Fields
+          }
+          frontmatter {
+            ...BannerFrontMatter
+          }
+        }
+      }
+    }
+  }
+
   query HomeQuery {
     ...HomeQueryFragment
     ...SiteData
     ...BrandsFragmentQuery
     ...BlogsFragmentQuery
+    ...BannerFragmentQuery
   }
 `

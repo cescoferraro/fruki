@@ -1,13 +1,17 @@
 import * as cnpj from '@fnando/cnpj'
+import * as cpf from '@fnando/cpf'
 import { UseMutationResult } from '@tanstack/react-query'
 import { FormikProps, useFormik } from 'formik'
 import * as Yup from 'yup'
+import { TestContext } from 'yup'
 
 export interface Lead {
   phone: string
   name: string
-  cnpj: string
+  type: 'cpf' | 'cnpj'
+  document: string
   email: string
+  accept: boolean
 }
 
 const requiredMsg = 'Campo obrigatório'
@@ -19,12 +23,19 @@ export function useRevendedorFormik(
     validateOnBlur: false,
     validateOnChange: false,
     validationSchema: Yup.object().shape({
+      // accept: Yup.bool().oneOf([true]),
+      type: Yup.string().oneOf(['cpf', 'cnpj']),
       name: Yup.string().required(requiredMsg),
-      cnpj: Yup.string()
-        .test('cnpj', 'CNPJ Inválido', (value: any) => {
-          console.log(value)
-          return cnpj.isValid(value)
-        })
+      document: Yup.string()
+        .test(
+          'document',
+          'Documento Inválido',
+          (value?: string, ctx?: TestContext) => {
+            return ctx?.parent.type === 'cnpj'
+              ? cnpj.isValid(value || '')
+              : cpf.isValid(value || '')
+          }
+        )
         .required(requiredMsg),
       email: Yup.string().email().required(requiredMsg),
       phone: Yup.string().test(
@@ -35,7 +46,14 @@ export function useRevendedorFormik(
           stripMaskFromValue(value).length <= 11
       ),
     }),
-    initialValues: { cnpj: '', name: '', email: '', phone: '' },
+    initialValues: {
+      type: 'cnpj',
+      document: '',
+      name: '',
+      email: '',
+      phone: '',
+      accept: false,
+    },
     onSubmit: async (s) => {
       await mutation.mutate(s)
     },

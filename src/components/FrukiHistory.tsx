@@ -41,40 +41,36 @@ export function FrukiHistory() {
           <Addition />
         </Desktop>
       </GridItem>
-      <GridItem padding="none" sx={{}}>
-        <Desktop sx={{ width: '100%', height: '100%' }}>
+      <GridItem padding="none" flow sx={{ height: { xs: 400, sm: 400 } }}>
+        <Desktop>
           <StaticImage
-            src={`../../static/assets/home/img_13.png`}
-            alt=""
-            objectFit={'fill'}
-            onLoad={() => {
-              console.log('loade')
-            }}
             style={{
-              height: '680px',
-              zIndex: 2,
-              objectFit: 'fill',
-              borderBottomLeftRadius: 240,
-              borderTopLeftRadius: 240,
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              height: '100%',
+              maxHeight: '100%',
+              borderBottomLeftRadius: 300,
             }}
+            alt="sdfk"
+            src={`../../static/assets/home/img_13.png`}
           />
         </Desktop>
-        <Mobile sx={{ width: '100%', height: '100%' }}>
+        <Mobile>
           <StaticImage
-            src={`../../static/assets/home/img_4.png`}
-            alt=""
-            objectFit={'fill'}
-            onLoad={() => {
-              console.log('loade')
-            }}
+            objectFit={'cover'}
+            objectPosition={'top'}
             style={{
-              height: '680px',
-              zIndex: 2,
-              objectFit: 'fill',
-              backgroundSize: 'cover',
+              position: 'absolute',
+              top: 0,
+              objectFit: 'cover',
+              objectPosition: 'top',
               borderBottomLeftRadius: 240,
               borderTopLeftRadius: 240,
+              height: '100%',
             }}
+            alt="sdfk"
+            src={`../../static/assets/home/img_4.png`}
           />
         </Mobile>
         <Mobile sx={{ zIndex: 10 }}>

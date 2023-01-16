@@ -63,7 +63,9 @@ export const GridItem = ({
   sx,
   height = { xs: 400, sm: 400, md: 720 },
   padding = 'left',
+  flow = false,
 }: {
+  flow?: boolean
   height?: ResponsiveStyleValue<number>
   sx?: SxProps
   children?: React.ReactNode
@@ -97,6 +99,7 @@ export const GridItem = ({
         position: 'relative',
         height: height,
         minHeight: height,
+        maxHeight: flow ? height : undefined,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
@@ -133,6 +136,18 @@ export const ImageController = styled(StaticImage)<{
   }
 })
 
+export const DisplayOnly = styled(Box)<{
+  breakpoint?: Breakpoint
+}>(({ theme, breakpoint = 'md' }) => {
+  return {
+    [theme.breakpoints.not(breakpoint)]: {
+      display: 'none',
+    },
+    [theme.breakpoints.only(breakpoint)]: {
+      display: 'block',
+    },
+  }
+})
 export const DisplayController = styled(Box)<{
   breakpoint?: Breakpoint
   mode: 'mobile' | 'desktop'

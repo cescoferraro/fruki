@@ -6,7 +6,6 @@ import { graphql, PageProps } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { FrukiAppBar } from '../components/FrukiAppBar'
 
 const PrivacyPage: React.FC<PageProps<GatsbyTypes.PrivacyQueryQuery>> = ({
   data,
@@ -17,7 +16,6 @@ const PrivacyPage: React.FC<PageProps<GatsbyTypes.PrivacyQueryQuery>> = ({
 
   return (
     <>
-      <FrukiAppBar />
       <FrukiContainer>
         <Box>
           <StaticImage

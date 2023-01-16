@@ -7,6 +7,7 @@ import {
   Mobile,
 } from 'components/FrukiContainer'
 import { GreenSvg } from 'components/greenSvg'
+import { SeloTop } from 'components/SeloTop'
 import { SeloTopBig } from 'components/SeloTopBig'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { Button } from 'gatsby-material-ui-components'
@@ -16,11 +17,6 @@ import * as React from 'react'
 function DesktopWorkForceRight() {
   return (
     <Desktop>
-      <StaticImage
-        style={{ width: '100%', height: '100%' }}
-        alt="sdfk"
-        src="../../static/assets/home/img_7.png"
-      />
       <Box sx={{ flexBasis: '60%', height: '100%' }}>
         <BlueSvg />
         <SeloTopBig
@@ -79,48 +75,55 @@ export function FrukiWorkForce() {
           </Button>
         </Box>
       </GridItem>
-      <GridItem sx={{ flexBasis: '50%', py: 0, background }} padding="none">
+      <GridItem
+        sx={{ flexBasis: '50%', py: 0, background, display: 'flex' }}
+        padding="none"
+        height={{ xs: 600, sm: 600, md: 720 }}
+      >
         <Box height={40} />
-        <Box sx={{ width: '100%', height: '100%' }}>
-          <Desktop sx={{ width: '30%', height: '100%' }}>
+        <Box sx={{ width: '100%', flexGrow: 1 }}>
+          <Desktop sx={{ height: '100%' }}>
             <StaticImage
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '30%', height: '100%' }}
               alt="sdfk"
               src="../../static/assets/home/img_14.png"
             />
           </Desktop>
-          <Mobile sx={{ width: '95%' }}>
+          <Mobile
+            sx={{
+              width: '95%',
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              height: 'calc(100% - 40px)',
+            }}
+          >
             <StaticImage
-              style={{ width: '100%', zIndex: 100 }}
+              objectPosition={'top'}
+              objectFit={'cover'}
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                borderTopLeftRadius: 300,
+                height: '100%',
+                zIndex: 10,
+              }}
               alt="sdfk"
-              src="../../static/assets/home/img_14.png"
+              src="../../static/assets/home/img_7.png"
             />
+            <Mobile
+              sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 10000,
+              }}
+            >
+              <SeloTop style={{}} />
+            </Mobile>
           </Mobile>
         </Box>
-        {/*<Box*/}
-        {/*  sx={{*/}
-        {/*    backgroundImage: !isBig ? `url(${image14})` : '',*/}
-        {/*    backgroundSize: 'cover',*/}
-        {/*    minHeight: isBig ? 'unset' : '550px',*/}
-        {/*    ml: !isBig ? 2 : 0,*/}
-        {/*    flexGrow: 1,*/}
-        {/*    display: 'flex',*/}
-        {/*    zIndex: 2,*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <SeloTop*/}
-        {/*    id={'test'}*/}
-        {/*    style={{*/}
-        {/*      display: !isBig ? 'block' : 'none',*/}
-        {/*      position: 'absolute',*/}
-        {/*      top: 40,*/}
-        {/*      zIndex: 10,*/}
-        {/*    }}*/}
-        {/*  />*/}
-        <Desktop>
-          <DesktopWorkForceRight />
-        </Desktop>
-        {/*</Box>*/}
         <Mobile>
           <SVGComponent
             style={{
@@ -130,6 +133,7 @@ export function FrukiWorkForce() {
             }}
           />
         </Mobile>
+        <DesktopWorkForceRight />
       </GridItem>
     </GridContainer>
   )

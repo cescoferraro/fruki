@@ -1,7 +1,8 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { Add, Remove } from '@mui/icons-material'
 import {
   Box,
   Container,
+  IconButton,
   Pagination,
   TextField,
   Typography,
@@ -11,7 +12,6 @@ import Accordion from '@mui/material/Accordion'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import { center } from 'components/center'
-import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiContact } from 'components/frukiContact'
 import { FrukiContainer } from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
@@ -43,7 +43,6 @@ const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
   const count = Math.ceil(filteredFaqs?.length / number)
   return (
     <>
-      <FrukiAppBar />
       <FrukiContainer>
         <Box sx={{ ...center, background: '#034638', height: 350 }}>
           <Box
@@ -136,7 +135,23 @@ const FAQPage: React.FC<PageProps<GatsbyTypes.FAQPageListQueryQuery>> = ({
                   }}
                 >
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={
+                      <IconButton
+                        sx={(theme) => ({
+                          background: theme.palette.secondary.main,
+                          ':hover': {
+                            background: theme.palette.secondary.main,
+                            opacity: 0.8,
+                          },
+                        })}
+                      >
+                        {isExpanded ? (
+                          <Remove sx={{ color: 'white' }} />
+                        ) : (
+                          <Add sx={{ color: 'white' }} />
+                        )}
+                      </IconButton>
+                    }
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                     sx={{

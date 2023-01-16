@@ -1,4 +1,11 @@
-import { Box, Button } from '@mui/material'
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  MenuItem,
+} from '@mui/material'
 import React from 'react'
 import { UseMutationResult } from '@tanstack/react-query'
 import { center } from '../components/center'
@@ -16,8 +23,15 @@ interface IProps {
 export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
   const formik = useRevendedorFormik(mutation)
   const stripped = stripMaskFromValue(formik.values.phone)
-  const sx = { flexBasis: '50%', flexDirection: 'column' }
-  const container = { flexDirection: 'row', justifyContent: 'space-between' }
+  const sx = { flexBasis: '100%', flexDirection: 'column' }
+  const container = {
+    flexDirection: {
+      xs: 'column',
+      sm: 'column',
+      md: 'row',
+    },
+    justifyContent: 'space-between',
+  }
   return (
     <form onSubmit={formik.handleSubmit}>
       <Box sx={container} display="flex">
@@ -47,16 +61,36 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
         <Box width={20} />
         <Box sx={sx} display="flex">
           <FrukiTextField
-            value={formik.values.cnpj}
-            errorText={formik.errors.cnpj}
+            select
+            name="type"
+            value={formik.values.type}
+            errorText={formik.errors.type}
+            title="Tipo"
+            // mask={''}
+            // format={'##.###.###/####-##'}
+            placeholder="Tipo"
+            onBlur={() => formik.validateField('type')}
+            onChange={(event) => {
+              formik.setFieldValue('type', event.target.value)
+              formik.setFieldTouched('type', true, false)
+              formik.validateForm()
+            }}
+          >
+            <MenuItem value={'cpf'}>Cpf</MenuItem>
+            <MenuItem value={'cnpj'}>CnPJ</MenuItem>
+          </FrukiTextField>
+          <FrukiTextField
+            value={formik.values.document}
+            errorText={formik.errors.document}
             title="CNPJ"
             mask={''}
             format={'##.###.###/####-##'}
             placeholder="88.000.888/8080-88"
-            onChange={async (event) => {
-              formik.setFieldValue('cnpj', event.target.value)
-              formik.setFieldTouched('cnpj', true, false)
-              setTimeout(() => formik.validateField('cnpj'), 1000)
+            onBlur={() => formik.validateField('document')}
+            onChange={(event) => {
+              formik.setFieldValue('document', event.target.value)
+              formik.setFieldTouched('document', true, false)
+              setTimeout(() => formik.validateField('document'), 1000)
             }}
           />
           <FrukiTextField
@@ -72,6 +106,7 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
             mask={stripped.length === 10 ? '' : stripped.length < 10 ? '_' : ''}
             title="Celular"
             placeholder="(88) 98088-8088"
+            onBlur={() => formik.validateField('phone')}
             onChange={(event) => {
               formik.setFieldValue('phone', event.target.value)
               formik.validateField('phone')
@@ -79,6 +114,14 @@ export const FrukiForm: React.FC<IProps> = ({ mutation }) => {
           />
         </Box>
       </Box>
+      <FormGroup sx={{ pt: 3 }}>
+        <FormControlLabel
+          name="accept"
+          onChange={formik.handleChange}
+          control={<Checkbox checked={formik.values.accept} name="accept" />}
+          label="Li e entendi os termos da Política de Privacidade da Fruki Bebidas."
+        />
+      </FormGroup>
       <Box sx={{ ...center, py: 4 }}>
         <Button
           disabled={!(formik.isValid && formik.dirty)}

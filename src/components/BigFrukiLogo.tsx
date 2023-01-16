@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-export function BigFrukiLogo({ background }: { background?: string }) {
-  const color = background ? '#FFFFFF' : '#034638'
+export function BigFrukiLogo({ trigger }: { trigger?: boolean }) {
+  const color = trigger ? '#FFFFFF' : '#034638'
   return (
     <svg
       width="191"

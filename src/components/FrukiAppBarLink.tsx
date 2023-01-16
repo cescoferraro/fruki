@@ -25,7 +25,7 @@ export const FrukiAppBarLink = (props: IProps) => {
           minWidth: 'auto',
           ml: { md: 1.5, lg: 2 },
           textDecoration: 'none',
-          fontWeight: url.includes(props?.to || 'kdsjfn') ? 700 : 400,
+          fontWeight: url.includes(props?.to || '') ? 700 : 400,
           ...props.sx,
         }}
         to={props.to}

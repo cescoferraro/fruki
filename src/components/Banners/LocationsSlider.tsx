@@ -50,7 +50,7 @@ export const LocationsSlider = ({
             color="primary.contrastText"
             align={'center'}
             variant="h2"
-            sx={{ mt: 6 }}
+            sx={{ mt: 6, zIndex: 200 }}
           >
             Nossas Instalações
           </Typography>
@@ -66,27 +66,33 @@ export const LocationsSlider = ({
             itemId={p?.title || `${idx}`}
             title={p?.title || ''}
             description={
-              <Box sx={{ py: 2, display: 'flex', flexDirection: 'row' }}>
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M6.66699 13.3333C6.66699 20.3333 16.0003 28 16.0003 28C16.0003 28 25.3337 20.3333 25.3337 13.3333C25.3337 8.17867 21.155 4 16.0003 4C10.8457 4 6.66699 8.17867 6.66699 13.3333ZM12.0003 13.3333C12.0003 15.5427 13.791 17.3333 16.0003 17.3333C18.2097 17.3333 20.0003 15.5427 20.0003 13.3333C20.0003 11.124 18.2097 9.33333 16.0003 9.33333C13.791 9.33333 12.0003 11.124 12.0003 13.3333Z"
-                    fill="#5F99AF"
-                  />
-                </svg>
-                <Box sx={{ pl: 1 }}>
-                  <Typography color="primary.contrastText">
-                    {p?.description || ''}
-                  </Typography>
+              <>
+                <Box sx={{ py: 2, display: 'flex', flexDirection: 'row' }}>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M6.66699 13.3333C6.66699 20.3333 16.0003 28 16.0003 28C16.0003 28 25.3337 20.3333 25.3337 13.3333C25.3337 8.17867 21.155 4 16.0003 4C10.8457 4 6.66699 8.17867 6.66699 13.3333ZM12.0003 13.3333C12.0003 15.5427 13.791 17.3333 16.0003 17.3333C18.2097 17.3333 20.0003 15.5427 20.0003 13.3333C20.0003 11.124 18.2097 9.33333 16.0003 9.33333C13.791 9.33333 12.0003 11.124 12.0003 13.3333Z"
+                      fill="#5F99AF"
+                    />
+                  </svg>
+                  <Box sx={{ pl: 1 }}>
+                    <Typography color="primary.contrastText">
+                      {p?.endereco || ''}
+                    </Typography>
+                    <br />
+                    <Typography color="primary.contrastText">
+                      {p?.local || ''}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
+              </>
             }
             image={p?.image || ''}
             action={'Ver Localização'}

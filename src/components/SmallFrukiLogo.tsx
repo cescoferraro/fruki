@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-export function SmallFrukiLogo({ background }: { background?: string }) {
-  const color = background ? '#FFFFFF' : '#034638'
+export function SmallFrukiLogo({ trigger }: { trigger?: boolean }) {
+  const color = trigger ? '#FFFFFF' : '#034638'
   return (
     <svg
       width="147"

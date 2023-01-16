@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from '@mui/icons-material'
-import { Container } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import { Arrow } from 'components/Banners/Arrow'
 import { useContext } from 'react'
 import React from 'react'
@@ -17,11 +17,12 @@ export const FrukiSlider = ({
   children: Props['children']
 }) => {
   return (
-    <Container
+    <Box
       sx={{
         transform: `translateY( ${translate || 0}px)`,
         marginBottom: (translate || 0) / 8,
         px: '0px !important',
+        pr: '0 !important',
       }}
     >
       <ScrollMenu
@@ -51,6 +52,6 @@ export const FrukiSlider = ({
       >
         {children}
       </ScrollMenu>
-    </Container>
+    </Box>
   )
 }

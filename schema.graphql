@@ -1523,8 +1523,12 @@ type MarkdownRemarkFrontmatter {
     locale: String
   ): Date
   description: String
+  desktop: String
+  endereco: String
   image: String
+  local: String
   logo: String
+  mobile: String
   name: String
   path: String
   question: String
@@ -1561,8 +1565,12 @@ input MarkdownRemarkFrontmatterFieldSelector {
   color: FieldSelectorEnum
   date: FieldSelectorEnum
   description: FieldSelectorEnum
+  desktop: FieldSelectorEnum
+  endereco: FieldSelectorEnum
   image: FieldSelectorEnum
+  local: FieldSelectorEnum
   logo: FieldSelectorEnum
+  mobile: FieldSelectorEnum
   name: FieldSelectorEnum
   path: FieldSelectorEnum
   question: FieldSelectorEnum
@@ -1583,8 +1591,12 @@ input MarkdownRemarkFrontmatterFilterInput {
   color: StringQueryOperatorInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
+  desktop: StringQueryOperatorInput
+  endereco: StringQueryOperatorInput
   image: StringQueryOperatorInput
+  local: StringQueryOperatorInput
   logo: StringQueryOperatorInput
+  mobile: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   question: StringQueryOperatorInput
@@ -1605,8 +1617,12 @@ input MarkdownRemarkFrontmatterSortInput {
   color: SortOrderEnum
   date: SortOrderEnum
   description: SortOrderEnum
+  desktop: SortOrderEnum
+  endereco: SortOrderEnum
   image: SortOrderEnum
+  local: SortOrderEnum
   logo: SortOrderEnum
+  mobile: SortOrderEnum
   name: SortOrderEnum
   path: SortOrderEnum
   question: SortOrderEnum
@@ -1773,8 +1789,12 @@ type MdxFrontmatter {
     locale: String
   ): Date
   description: String
+  desktop: String
+  endereco: String
   image: String
+  local: String
   logo: String
+  mobile: String
   name: String
   path: String
   question: String
@@ -1811,8 +1831,12 @@ input MdxFrontmatterFieldSelector {
   color: FieldSelectorEnum
   date: FieldSelectorEnum
   description: FieldSelectorEnum
+  desktop: FieldSelectorEnum
+  endereco: FieldSelectorEnum
   image: FieldSelectorEnum
+  local: FieldSelectorEnum
   logo: FieldSelectorEnum
+  mobile: FieldSelectorEnum
   name: FieldSelectorEnum
   path: FieldSelectorEnum
   question: FieldSelectorEnum
@@ -1833,8 +1857,12 @@ input MdxFrontmatterFilterInput {
   color: StringQueryOperatorInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
+  desktop: StringQueryOperatorInput
+  endereco: StringQueryOperatorInput
   image: StringQueryOperatorInput
+  local: StringQueryOperatorInput
   logo: StringQueryOperatorInput
+  mobile: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   question: StringQueryOperatorInput
@@ -1855,8 +1883,12 @@ input MdxFrontmatterSortInput {
   color: SortOrderEnum
   date: SortOrderEnum
   description: SortOrderEnum
+  desktop: SortOrderEnum
+  endereco: SortOrderEnum
   image: SortOrderEnum
+  local: SortOrderEnum
   logo: SortOrderEnum
+  mobile: SortOrderEnum
   name: SortOrderEnum
   path: SortOrderEnum
   question: SortOrderEnum

@@ -1,4 +1,3 @@
-import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiContainer } from 'components/FrukiContainer'
 import { graphql, PageProps } from 'gatsby'
 import { Button } from 'gatsby-material-ui-components'
@@ -10,7 +9,6 @@ const ProdutoPage: React.FC<
   console.log(props)
   return (
     <>
-      <FrukiAppBar />
       <FrukiContainer>
         <h2>Produto {props.data.product?.frontmatter?.name}</h2>
         <Button to={props.data.brand?.fields?.slug || ''}>

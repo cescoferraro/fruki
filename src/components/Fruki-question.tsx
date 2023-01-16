@@ -2,9 +2,11 @@ import { Box, Button, Container, Typography, useTheme } from '@mui/material'
 import { center } from 'components/center'
 import { navigate } from 'gatsby'
 import * as React from 'react'
+import { useBoletoForm } from '../layouts'
 
 export function FrukiQuestion() {
   const theme = useTheme()
+  const [, setState] = useBoletoForm()
   return (
     <Box sx={{ backgroundColor: theme.palette.secondary.main }}>
       <Container sx={{ py: 8 }}>
@@ -61,7 +63,7 @@ export function FrukiQuestion() {
               </svg>
             }
             onClick={() => {
-              window.open('/pdf/Relatorio_Socio_Ambiental_Fruki_2021.pdf')
+              setState((st) => ({ ...st, isLegal: !st.isLegal }))
             }}
           >
             Relatório de Sustentabilidade Socioambiental

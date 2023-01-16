@@ -19,12 +19,8 @@ export const pageQuery = graphql`
     description
     image
     name
-    logo
     background
-
-    #      childImageSharp {
-    #        gatsbyImageData(width: 800)
-    #      }
+    logo
   }
   fragment Fields on MdxFields {
     slug
@@ -39,6 +35,13 @@ export const pageQuery = graphql`
         frontmatter {
           ...BrandsFrontMatter
         }
+      }
+    }
+  }
+  fragment BrandsFragmentFile on FileConnection {
+    edges {
+      node {
+        name
       }
     }
   }

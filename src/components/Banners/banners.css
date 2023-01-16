@@ -3,11 +3,29 @@
     justify-content: space-between;
     gap: 20px;
 }
+
 .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
     display: none;
 }
 
 .react-horizontal-scrolling-menu--scroll-container {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.react-horizontal-scrolling-menu--arrow-left {
+    background: transparent !important;
+    position: absolute;
+    width: 0;
+    left: 20px;
+    top: calc(50% - 20px);
+    z-index: 10000;
+}
+.react-horizontal-scrolling-menu--arrow-right {
+    background: transparent !important;
+    position: absolute;
+    width: 0;
+    right: 60px;
+    top: calc(50% - 20px);
+    z-index: 10000;
 }

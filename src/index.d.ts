@@ -14,3 +14,5 @@ interface Brand
 interface Post
   extends GatsbyTypes.BlogsFrontMatterFragment,
     GatsbyTypes.FieldsFragment {}
+export { BannerComp } from 'components/bannerComp'
+export { Created } from 'components/bannerComp'

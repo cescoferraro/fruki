@@ -8,6 +8,7 @@ const config: GatsbyConfig = {
   },
   graphqlTypegen: false,
   plugins: [
+    `gatsby-transformer-remark`,
     `gatsby-plugin-layout`,
     {
       resolve: 'gatsby-plugin-netlify-cms',
@@ -36,7 +37,6 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sitemap',
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
     `gatsby-transformer-yaml`,
     {

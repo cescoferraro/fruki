@@ -1574,8 +1574,12 @@ type MarkdownRemarkFrontmatter = {
   readonly color: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly desktop: Maybe<Scalars['String']>;
+  readonly endereco: Maybe<Scalars['String']>;
   readonly image: Maybe<Scalars['String']>;
+  readonly local: Maybe<Scalars['String']>;
   readonly logo: Maybe<Scalars['String']>;
+  readonly mobile: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
   readonly path: Maybe<Scalars['String']>;
   readonly question: Maybe<Scalars['String']>;
@@ -1612,8 +1616,12 @@ type MarkdownRemarkFrontmatterFieldSelector = {
   readonly color: InputMaybe<FieldSelectorEnum>;
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly desktop: InputMaybe<FieldSelectorEnum>;
+  readonly endereco: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<FieldSelectorEnum>;
+  readonly local: InputMaybe<FieldSelectorEnum>;
   readonly logo: InputMaybe<FieldSelectorEnum>;
+  readonly mobile: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly path: InputMaybe<FieldSelectorEnum>;
   readonly question: InputMaybe<FieldSelectorEnum>;
@@ -1634,8 +1642,12 @@ type MarkdownRemarkFrontmatterFilterInput = {
   readonly color: InputMaybe<StringQueryOperatorInput>;
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly desktop: InputMaybe<StringQueryOperatorInput>;
+  readonly endereco: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<StringQueryOperatorInput>;
+  readonly local: InputMaybe<StringQueryOperatorInput>;
   readonly logo: InputMaybe<StringQueryOperatorInput>;
+  readonly mobile: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
   readonly question: InputMaybe<StringQueryOperatorInput>;
@@ -1656,8 +1668,12 @@ type MarkdownRemarkFrontmatterSortInput = {
   readonly color: InputMaybe<SortOrderEnum>;
   readonly date: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly desktop: InputMaybe<SortOrderEnum>;
+  readonly endereco: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<SortOrderEnum>;
+  readonly local: InputMaybe<SortOrderEnum>;
   readonly logo: InputMaybe<SortOrderEnum>;
+  readonly mobile: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
   readonly path: InputMaybe<SortOrderEnum>;
   readonly question: InputMaybe<SortOrderEnum>;
@@ -1872,8 +1888,12 @@ type MdxFrontmatter = {
   readonly color: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly desktop: Maybe<Scalars['String']>;
+  readonly endereco: Maybe<Scalars['String']>;
   readonly image: Maybe<Scalars['String']>;
+  readonly local: Maybe<Scalars['String']>;
   readonly logo: Maybe<Scalars['String']>;
+  readonly mobile: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
   readonly path: Maybe<Scalars['String']>;
   readonly question: Maybe<Scalars['String']>;
@@ -1910,8 +1930,12 @@ type MdxFrontmatterFieldSelector = {
   readonly color: InputMaybe<FieldSelectorEnum>;
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly desktop: InputMaybe<FieldSelectorEnum>;
+  readonly endereco: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<FieldSelectorEnum>;
+  readonly local: InputMaybe<FieldSelectorEnum>;
   readonly logo: InputMaybe<FieldSelectorEnum>;
+  readonly mobile: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
   readonly path: InputMaybe<FieldSelectorEnum>;
   readonly question: InputMaybe<FieldSelectorEnum>;
@@ -1932,8 +1956,12 @@ type MdxFrontmatterFilterInput = {
   readonly color: InputMaybe<StringQueryOperatorInput>;
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly desktop: InputMaybe<StringQueryOperatorInput>;
+  readonly endereco: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<StringQueryOperatorInput>;
+  readonly local: InputMaybe<StringQueryOperatorInput>;
   readonly logo: InputMaybe<StringQueryOperatorInput>;
+  readonly mobile: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
   readonly path: InputMaybe<StringQueryOperatorInput>;
   readonly question: InputMaybe<StringQueryOperatorInput>;
@@ -1954,8 +1982,12 @@ type MdxFrontmatterSortInput = {
   readonly color: InputMaybe<SortOrderEnum>;
   readonly date: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly desktop: InputMaybe<SortOrderEnum>;
+  readonly endereco: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<SortOrderEnum>;
+  readonly local: InputMaybe<SortOrderEnum>;
   readonly logo: InputMaybe<SortOrderEnum>;
+  readonly mobile: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
   readonly path: InputMaybe<SortOrderEnum>;
   readonly question: InputMaybe<SortOrderEnum>;
@@ -3186,15 +3218,15 @@ type FieldsFragment = { readonly slug: string | null };
 
 type BlogsFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly url: string | null };
 
-type BrandsFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null };
+type BrandsFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null };
 
 type ProductsByBrandQueryFragmentFragment = { readonly products: { readonly nodes: ReadonlyArray<{ readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly name: string | null, readonly brand: string | null } | null }> } };
 
 type ProductFrontMatterFragment = { readonly name: string | null, readonly brand: string | null };
 
-type BrandsFragmentQueryFragment = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type BrandsFragmentQueryFragment = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
-type BrandsFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> };
+type BrandsFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> };
 
 type FAQFragmentQueryFragment = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> } };
 
@@ -3208,17 +3240,21 @@ type HomeFragmentFragment = { readonly title: string | null, readonly caption: s
 
 type SiteDataFragment = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null };
 
+type BannerFragmentQueryFragment = { readonly banners: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly desktop: string | null, readonly mobile: string | null } | null } }> } };
+
+type BannerFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly desktop: string | null, readonly mobile: string | null };
+
 type InitiativesFragmentQueryFragment = { readonly initiatives: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> } };
 
 type InitiativesFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> };
 
 type InitiativesFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null };
 
-type LocationFragmentQueryFragment = { readonly locations: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly description: string | null } | null } }> } };
+type LocationFragmentQueryFragment = { readonly locations: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly endereco: string | null, readonly local: string | null } | null } }> } };
 
-type LocationFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly description: string | null } | null } }> };
+type LocationFragmentFragment = { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly endereco: string | null, readonly local: string | null } | null } }> };
 
-type LocationFrontMatterFragment = { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly description: string | null };
+type LocationFrontMatterFragment = { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly endereco: string | null, readonly local: string | null };
 
 type CertificatesFragmentQueryFragment = { readonly certificates: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly color: string | null } | null } }> } };
 
@@ -3238,44 +3274,44 @@ type BrandPageQueryQueryVariables = Exact<{
 }>;
 
 
-type BrandPageQueryQuery = { readonly brand: { readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } | null, readonly sdf: { readonly frontmatter: { readonly background: string | null } | null } | null, readonly products: { readonly nodes: ReadonlyArray<{ readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly name: string | null, readonly brand: string | null } | null }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type BrandPageQueryQuery = { readonly brand: { readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } | null, readonly sdf: { readonly frontmatter: { readonly background: string | null } | null } | null, readonly products: { readonly nodes: ReadonlyArray<{ readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly name: string | null, readonly brand: string | null } | null }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type BrandsPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type BrandsPageListQueryQuery = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type BrandsPageListQueryQuery = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type DenunciasPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type DenunciasPageListQueryQuery = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type DenunciasPageListQueryQuery = { readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type FAQPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type FAQPageListQueryQuery = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type FAQPageListQueryQuery = { readonly faqs: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly question: string | null, readonly answer: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type HomeQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HomeQueryQuery = { readonly home: { readonly title: string | null, readonly caption: string | null } | null, readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> }, readonly posts: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly url: string | null } | null } }> } };
+type HomeQueryQuery = { readonly home: { readonly title: string | null, readonly caption: string | null } | null, readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> }, readonly posts: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly url: string | null } | null } }> }, readonly banners: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly desktop: string | null, readonly mobile: string | null } | null } }> } };
 
 type InitiativePageCescoQueryVariables = Exact<{
   brand: InputMaybe<Scalars['String']>;
 }>;
 
 
-type InitiativePageCescoQuery = { readonly initiatives: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> }, readonly initiative: { readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null, readonly image: string | null, readonly color: string | null } | null } | null };
+type InitiativePageCescoQuery = { readonly initiatives: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> }, readonly initiative: { readonly body: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly path: string | null, readonly title: string | null, readonly image: string | null, readonly color: string | null } | null } | null };
 
 type LocationPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type LocationPageListQueryQuery = { readonly locations: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly description: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type LocationPageListQueryQuery = { readonly locations: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly image: string | null, readonly title: string | null, readonly endereco: string | null, readonly local: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type PlanetasPessoasPageListQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PlanetasPessoasPageListQueryQuery = { readonly initiatives: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> }, readonly certificates: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly color: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type PlanetasPessoasPageListQueryQuery = { readonly initiatives: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> }, readonly certificates: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly color: string | null } | null } }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type PostBySlugPageQueryQueryVariables = Exact<{
   postPath: InputMaybe<Scalars['String']>;
@@ -3287,7 +3323,7 @@ type PostBySlugPageQueryQuery = { readonly post: { readonly fields: { readonly s
 type PrivacyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PrivacyQueryQuery = { readonly privacy: { readonly nodes: ReadonlyArray<{ readonly body: string | null, readonly frontmatter: { readonly title: string | null } | null }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly background: string | null } | null } }> } };
+type PrivacyQueryQuery = { readonly privacy: { readonly nodes: ReadonlyArray<{ readonly body: string | null, readonly frontmatter: { readonly title: string | null } | null }> }, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> } };
 
 type ProductByBrandPageQueryQueryVariables = Exact<{
   productName: InputMaybe<Scalars['String']>;

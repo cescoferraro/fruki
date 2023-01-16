@@ -1,4 +1,3 @@
-import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiContainer } from 'components/FrukiContainer'
 import { FrukiDenuncias } from 'components/frukiDenuncias'
 import { FrukiFooter } from 'components/FrukiFooter'
@@ -11,7 +10,6 @@ const DenunciasPage: React.FC<
 > = ({ data }) => {
   return (
     <>
-      <FrukiAppBar />
       <FrukiContainer>
         <FrukiDenuncias />
         <FrukiFooter brands={useBrandsMemo(data?.brands)} />

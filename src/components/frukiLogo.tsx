@@ -6,15 +6,15 @@ import { navigate } from 'gatsby'
 import * as React from 'react'
 
 export const FrukiLogo: React.FC<{
-  background?: string
-}> = ({ background }) => {
+  trigger?: boolean
+}> = ({ trigger }) => {
   return (
     <Button aria-label="home-button" onClick={() => navigate('/')}>
       <Mobile>
-        <SmallFrukiLogo background={background} />
+        <SmallFrukiLogo trigger={trigger} />
       </Mobile>
       <Desktop>
-        <BigFrukiLogo background={background} />
+        <BigFrukiLogo trigger={trigger} />
       </Desktop>
     </Button>
   )

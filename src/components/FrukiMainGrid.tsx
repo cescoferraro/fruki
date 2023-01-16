@@ -1,7 +1,17 @@
-import { Box, Button, Typography, useTheme } from '@mui/material'
+import {
+  Box,
+  Button,
+  experimental_sx,
+  styled,
+  TextFieldProps,
+  Typography,
+  TypographyProps,
+  useTheme,
+} from '@mui/material'
 import { center } from 'components/center'
 import {
   Desktop,
+  DisplayOnly,
   GridContainer,
   GridItem,
   Mobile,
@@ -99,22 +109,67 @@ function DesktopGrid(props: { left: number }) {
             bottom: -400,
           }}
         />
-        <StaticImage
-          src={`../../static/assets/home/img_15.png`}
-          alt=""
-          style={{
-            backgroundColor: 'transparent',
-            zIndex: 2,
-            // height: 410,
-            position: 'absolute',
-            top: 0,
-            width: '100%',
-          }}
-        />
+        <DisplayOnly breakpoint="sm">
+          <StaticImage
+            src={`../../static/assets/home/img_15.png`}
+            alt=""
+            style={{
+              backgroundColor: 'transparent',
+              zIndex: 2,
+              // height: 410,
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              width: '80%',
+            }}
+          />
+        </DisplayOnly>
+        <DisplayOnly breakpoint="xs">
+          <StaticImage
+            src={`../../static/assets/home/img_15.png`}
+            alt=""
+            style={{
+              backgroundColor: 'transparent',
+              zIndex: 2,
+              // height: 410,
+              position: 'absolute',
+              top: 0,
+              width: '100%',
+            }}
+          />
+        </DisplayOnly>
       </Mobile>
     </GridItem>
   )
 }
+const FrukiTitle = styled((props: TypographyProps) => {
+  const sx = { fontWeight: 700, zIndex: 2, py: 2, ...props.sx }
+  return (
+    <>
+      <Mobile>
+        <Typography
+          {...props}
+          sx={sx}
+          color="primary.contrastText"
+          variant="h5"
+        />
+      </Mobile>
+      <Desktop>
+        <Typography
+          {...props}
+          sx={sx}
+          color="primary.contrastText"
+          variant="h2"
+        />
+      </Desktop>
+    </>
+  )
+})<TypographyProps>((theme) =>
+  theme.theme.unstable_sx({
+    // background: 'red',
+    zIndex: 10,
+  })
+)
 
 export const FrukiMainGrid: React.FC<IProps> = ({}) => {
   // const isBig = useIsBigScreen()
@@ -146,13 +201,7 @@ export const FrukiMainGrid: React.FC<IProps> = ({}) => {
           },
         }}
       >
-        <Typography
-          variant={'h1'}
-          sx={{ fontWeight: 700, zIndex: 2, py: 2 }}
-          color="primary.contrastText"
-        >
-          Paixão por oferecer o melhor sabor
-        </Typography>
+        <FrukiTitle>Paixão por oferecer o melhor sabor</FrukiTitle>
         <Typography
           color="primary.contrastText"
           sx={{ zIndex: 2, py: 2 }}

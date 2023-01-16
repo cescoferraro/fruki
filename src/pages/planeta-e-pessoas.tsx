@@ -4,18 +4,13 @@ import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { center } from 'components/center'
 import { EcoNumber } from 'components/Eco-number'
 import { FrukiIniciativas } from 'components/fruki-iniciativas'
-import { FrukiAppBar } from 'components/FrukiAppBar'
 import {
   FrukiContainer,
   GridContainer,
   GridItem,
 } from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
-import {
-  BlueDesktopLeaf,
-  DarkgreenLeaf,
-  WhiteDesktopLeaf,
-} from 'components/FrukiFuture'
+import { WhiteDesktopLeaf } from 'components/FrukiFuture'
 import { FrukiRespect } from 'components/frukiRespect'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { useIsBigScreen } from 'components/useIsBigScreen'
@@ -128,7 +123,6 @@ const SustentabilidadePage: React.FC<
   let md = 975
   return (
     <>
-      <FrukiAppBar />
       <FrukiContainer>
         <GridContainer sx={{ background }}>
           <GridItem

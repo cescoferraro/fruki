@@ -13,6 +13,7 @@ import { SeloTop } from 'components/SeloTop'
 import { navigate } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby-theme-material-ui'
 import * as React from 'react'
+import { useBoletoForm } from '../layouts/index'
 import { FacebookIcon } from './FacebookIcon'
 import { FrukiLogo } from './frukiLogo'
 import { InstagramIcon } from './InstagramIcon'
@@ -27,6 +28,7 @@ interface IProps {
 }
 
 export function FrukiFooter({ brands }: IProps) {
+  const [, setState] = useBoletoForm()
   return (
     <Container>
       <Grid
@@ -108,19 +110,14 @@ export function FrukiFooter({ brands }: IProps) {
             Informações
           </Typography>
           <Box sx={{ ...sx1, pt: 2 }}>
-            {/*<Link to={'/blog'}>Blog</Link>*/}
-            {/*<Link to={'/marcas'}>Nossas Marcas</Link>*/}
             <Link
-              onClick={() => {
-                // TODO: abrir modal de interesse
-              }}
+              onClick={() => setState((st) => ({ ...st, boleto: !st.boleto }))}
             >
               Seja Cliente
             </Link>
             <Link to={'/sobre-nos'}>Sobre a Fruki</Link>
             <Link to={'https://vagasfruki.gupy.io/'}>Trabalhe Conosco</Link>
             <Link to={'/faq'}>Dúvidas Frequentes</Link>
-            {/*<Link>Notícias</Link>*/}
             <Link to={'/privacidade'}>Política de Privacidade</Link>
             <Link
               onClick={() => {
@@ -131,7 +128,7 @@ export function FrukiFooter({ brands }: IProps) {
             </Link>
             <Link
               onClick={() => {
-                window.open('/pdf/Relatorio_Socio_Ambiental_Fruki_2021.pdf')
+                setState((st) => ({ ...st, isLegal: !st.isLegal }))
               }}
             >
               Relatório de Sustentabilidade
@@ -147,8 +144,7 @@ export function FrukiFooter({ brands }: IProps) {
               <Link
                 key={b.slug}
                 onClick={() =>
-                  // TODO: modal 18
-                  window.open('/pdf/Portfolio_Digital_Fruki_Bebidas.pdf')
+                  setState((st) => ({ ...st, isLegal: !st.isLegal }))
                 }
               >
                 {b.name}

@@ -1,6 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
 import { FrukiIniciativas } from 'components/fruki-iniciativas'
-import { FrukiAppBar } from 'components/FrukiAppBar'
 import { FrukiContainer } from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
 import { useBrandsMemo } from 'components/useBrandsMemo'
@@ -13,7 +12,6 @@ const InitiativePage: React.FC<
 > = ({ data: { brands, initiative, initiatives } }): React.ReactElement => {
   return (
     <>
-      <FrukiAppBar />
       <FrukiContainer>
         <Box
           sx={{

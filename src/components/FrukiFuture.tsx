@@ -1,5 +1,4 @@
-import { Box, SxProps, Typography, useTheme } from '@mui/material'
-import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx/styleFunctionSx'
+import { Box, Typography, useTheme } from '@mui/material'
 import {
   Desktop,
   GridContainer,
@@ -52,52 +51,54 @@ export const DarkGreenMobileLeaf = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export function FrukiFuture({
-  title = 'Um futuro criado por todos nós ',
-  text,
-  action,
-  height,
-  leftSX,
-}: {
-  title?: string
-  text?: string | React.ReactNode
-  leftSX?: SxProps
-  height?: ResponsiveStyleValue<number>
-  action: string
-}) {
+export function FrukiFuture() {
+  //   title = 'Um futuro criado por todos nós ',
+  //   text,
+  //   action,
+  //   height,
+  //   leftSX,
+  // }: {
+  //   title?: string
+  //   text?: string | React.ReactNode
+  //   leftSX?: SxProps
+  //   height?: ResponsiveStyleValue<number>
+  //   action: string
   const isBig = useIsBigScreen()
   const { palette } = useTheme()
   const background = palette.secondary.main
   return (
     <GridContainer sx={{ background }}>
-      <GridItem height={height} sx={{ background, ...leftSX }}>
+      <GridItem sx={{ background }}>
         <Typography
           variant={isBig ? 'h2' : 'h5'}
           fontWeight={700}
           sx={{ zIndex: 3 }}
           color="secondary.contrastText"
         >
-          {title}
+          Um mundo mais gentil tem outro sabor
         </Typography>
         <Typography
           fontSize={isBig ? 18 : 16}
           sx={{ py: 2, zIndex: 3 }}
           color="secondary.contrastText"
         >
-          {text}
+          O nosso compromisso com as questões socioambientais se refletem em
+          ações de verdade.
+          <br />
+          <br />
+          Para isso, transformamos nossa maneira de pensar o futuro das pessoas
+          e do planeta.
         </Typography>
-        {action && (
-          <Box>
-            <Button
-              to="/planeta-e-pessoas"
-              variant="contained"
-              color="primary"
-              size="large"
-            >
-              {action}
-            </Button>
-          </Box>
-        )}
+        <Box>
+          <Button
+            to="/planeta-e-pessoas"
+            variant="contained"
+            color="primary"
+            size="large"
+          >
+            {'Saiba mais'}
+          </Button>
+        </Box>
 
         <Desktop>
           <DarkgreenLeaf
@@ -110,19 +111,24 @@ export function FrukiFuture({
         </Desktop>
       </GridItem>
       <GridItem
-        height={height}
+        padding="none"
+        flow={true}
         sx={{
+          display: 'flex',
+          justifyContent: 'flex-start',
           background,
           borderWidth: 2,
-          borderBottomLeftRadius: {
-            xs: 240,
-            sm: 240,
-            md: 440,
-          },
         }}
       >
         <StaticImage
-          style={{ width: '100%', zIndex: 100 }}
+          style={{
+            position: 'relative',
+            right: 0,
+            top: 0,
+            height: '100%',
+            maxHeight: '100%',
+            borderBottomLeftRadius: 300,
+          }}
           alt="sdfk"
           src="../../static/assets/home/img_6.png"
         />

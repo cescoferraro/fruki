@@ -1,4 +1,4 @@
-import { Box, ButtonBase, Container, Typography, useTheme } from '@mui/material'
+import { Box, ButtonBase, Typography, useTheme } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { navigate } from 'gatsby'
@@ -154,7 +154,7 @@ export function BrandsComponent(props: { brands: any[] }) {
           </Typography>
         </Box>
       </Box>
-      <Container sx={{ py: 0 }}>
+      <Box sx={{ py: 0, px: '0 !important', mx: '0 !important' }}>
         <FrukiSlider translate={isBig ? -232 / 2 : 232 / 2}>
           {props.brands.map((s, index) => (
             <ButtonBase
@@ -208,7 +208,7 @@ export function BrandsComponent(props: { brands: any[] }) {
             Ver todas as marcas
           </Button>
         </Box>
-      </Container>
+      </Box>
     </>
   )
 }

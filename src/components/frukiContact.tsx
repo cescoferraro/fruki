@@ -50,12 +50,13 @@ export function FrukiContact({ showButton = true }: { showButton?: boolean }) {
         },
       }}
     >
-      <GridItem padding="none">
+      <GridItem padding="none" flow sx={{ display: 'flex' }}>
         <StaticImage
           style={{
             position: 'absolute',
             top: 0,
             borderBottomRightRadius: 300,
+            height: '100%',
           }}
           alt="sdfk"
           src="../../static/assets/home/img_9.png"

@@ -1,21 +1,19 @@
+import { CheckCircleOutlined } from '@mui/icons-material'
+import Timeline from '@mui/lab/Timeline'
+import TimelineConnector from '@mui/lab/TimelineConnector'
+import TimelineContent from '@mui/lab/TimelineContent'
+import TimelineItem from '@mui/lab/TimelineItem'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import { Paper, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import { AboutMain } from 'components/about-main'
 import { LocationsSlider } from 'components/Banners/LocationsSlider'
 import { FrukiPourpose } from 'components/fruki-pourpose'
-import { FrukiContainer } from 'components/FrukiContainer'
 import { FrukiFooter } from 'components/FrukiFooter'
 import { FrukiWorkForceHistory } from 'components/frukiWorkForceHistory'
 import { useBrandsMemo } from 'components/useBrandsMemo'
 import { graphql, PageProps } from 'gatsby'
 import * as React from 'react'
-import { FrukiAppBar } from '../components/FrukiAppBar'
-import Timeline from '@mui/lab/Timeline'
-import TimelineItem from '@mui/lab/TimelineItem'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import TimelineConnector from '@mui/lab/TimelineConnector'
-import TimelineContent from '@mui/lab/TimelineContent'
-import { makeStyles } from '@mui/styles'
-import { Typography, Paper } from '@mui/material'
-import { CheckCircleOutlined } from '@mui/icons-material'
 
 const useStyles = makeStyles({
   timeline: {
@@ -119,16 +117,13 @@ const AboutUsPage: React.FC<
   const brands = useBrandsMemo(data.brands)
   return (
     <>
-      <FrukiAppBar />
-      <FrukiContainer>
-        <AboutMain />
+      <AboutMain />
 
-        <FrukiPourpose />
-        <FrukiWorkForceHistory />
-        <ColorsTimeline />
-        <LocationsSlider locations={locations} />
-        <FrukiFooter brands={brands} />
-      </FrukiContainer>
+      <FrukiPourpose />
+      <FrukiWorkForceHistory />
+      <ColorsTimeline />
+      <LocationsSlider locations={locations} />
+      <FrukiFooter brands={brands} />
     </>
   )
 }
@@ -139,7 +134,8 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     image
     title
-    description
+    endereco
+    local
   }
   fragment Fields on MdxFields {
     slug

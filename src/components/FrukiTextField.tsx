@@ -10,7 +10,7 @@ import { InputProps as StandardInputProps } from '@mui/material/Input/Input'
 import { PatternFormat } from 'react-number-format'
 import { PatternFormatProps } from 'react-number-format/types/types'
 
-interface Created extends StandardInputProps {
+type Created = TextFieldProps & {
   title: string
   value: string
   errorText?: string
@@ -30,6 +30,7 @@ export function FrukiTextField({
   onChange,
   mask,
   onBlur,
+  ...iprops
 }: Created) {
   const theme = useTheme()
   const props: PatternFormatProps<Partial<TextFieldProps>> = {
@@ -48,8 +49,9 @@ export function FrukiTextField({
     fullWidth: true,
     variant: 'outlined' as TextFieldProps['variant'],
     error: Boolean(errorText),
-    helperText: errorText || ' ',
+    helperText: errorText,
     onBlur,
+    ...iprops,
   }
   return (
     <Box sx={{ pt: 2 }}>
