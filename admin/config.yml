@@ -10,26 +10,26 @@ collections:
     label: Marca
     folder: content/marca
     create: true
+    public_folder: ../../static/assets/marca
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: name, label: Nome }
       - { name: description, label: Descrição, required: false }
-      - { name: logo, label: Logo da Marca, widget: image }
+      - { name: logo, label: Imagem de produto, widget: image, media_folder: ../../static/assets/marca }
       - { name: background, label: Background da Marca, widget: image }
       - { name: color , label: Color, required: true, widget: color }
   - name: produto
     label: Produto
     folder: content/produto
     create: true
+    public_folder: ../../static/assets/produto
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: name, label: Nome }
       - { name: description, label: Descrição, required: false }
-      - name: "image"
-        label: "Image do Producto"
-        widget: "image"
+      - { name: image, label: Imagem de produto, widget: image, media_folder: ../../static/assets/produto }
       - { name: color , label: Color, required: true, widget: color }
       - label: "Marca"
         name: "brand"
@@ -49,9 +49,6 @@ collections:
       - { name: title, label: Título }
       - { name: url, label: Url }
       - { name: description, label: Descrição, required: false }
-      - name: "image"
-        label: "Imagem de destaque"
-        widget: "image"
       - { name: "body", label: "Conteúdo do blog post", widget: "markdown" }
       - { name: author, label: Autor do post, required: false }
       - { name: about, label: Sobre o autor, required: false }
@@ -59,12 +56,13 @@ collections:
     label: Certificados
     folder: content/certificate
     create: true
+    public_folder: ../../static/assets/certificate
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: name, label: Nome }
       - { name: color , label: Color, required: true, widget: color }
-      - { name: image, label: Imagem de destaque, widget: image }
+      - { name: image, label: Imagem de destaque, widget: image, media_folder: ../../static/assets/certificate }
   - name: faq
     label: FAQS
     folder: content/faq
@@ -78,16 +76,18 @@ collections:
     label: Timeline
     folder: content/timeline
     create: true
+    public_folder: ../../static/assets/timeline
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: year, label: Ano }
       - { name: description, label: Descrição, required: false }
-      - { name: image, label: Imagem de destaque, widget: image }
+      - { name: image, label: Imagem de destaque, widget: image, media_folder: ../../static/assets/timeline }
   - name: initiative
     label: Initiatives
     folder: content/iniciativas
     create: true
+    public_folder: ../../static/assets/iniciativas
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
@@ -95,29 +95,19 @@ collections:
       - { name: description, label: Descrição, required: false }
       - { name: "body", label: "Conteúdo da Iniciativa", widget: "markdown" }
       - { name: color , label: Color, required: true, widget: color }
-      - { name: image, label: Imagem de destaque, widget: image }
-  - name: banner
-    label: Banner
-    folder: content/banner
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Data, widget: date }
-      - { name: title, label: Título }
-      - { name: description, label: Descrição, required: false }
-      - { name: desktop, label: Desktop image, widget: image }
-      - { name: mobile, label: Mobile image, widget: image }
+      - { name: image, label: Imagem de destaque, widget: image, media_folder: ../../static/assets/iniciativas }
   - name: location
     label: Locations
     folder: content/location
     create: true
+    public_folder: ../../static/assets/location
     fields:
       - { name: path, label: Path }
       - { name: date, label: Data, widget: date }
       - { name: title, label: Título }
       - { name: endereco, label: Endereço }
       - { name: local, label: Localização }
-      - { name: image, label: Imagem de destaque, widget: image }
+      - { name: image, label: Imagem de destaque, widget: image, media_folder: ../../static/assets/location }
   - name: tag
     label: Tag
     folder: content/tag
@@ -141,3 +131,16 @@ collections:
           - { label: Name, name: name, widget: string }
           - { label: Title, name: title, widget: string }
           - { name: body, label: Conteúdo do privacy, widget: markdown }
+  - name: banners
+    label: Banner
+    folder: content/banner
+    create: true
+    public_folder: ../../static/assets/banner
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Data, widget: date }
+      - { name: name, label: Nome }
+      - { name: link, label: Link }
+      - { name: description, label: Descrição, required: false }
+      - { name: desktop, label: Desktop, widget: image, media_folder: ../../static/assets/banner }
+      - { name: mobile, label: Mobile, widget: image, media_folder: ../../static/assets/banner }

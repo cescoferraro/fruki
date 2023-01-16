@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfruki=self.webpackChunkfruki||[]).push([[410],{8645:function(s,t,u){u.r(t);var e=u(3950),r=u(4149),a=u(917);t.default=s=>{const t=(0,r.i)(s.data.posts);return(0,a.tZ)(e.W,{posts:t})}}}]);
