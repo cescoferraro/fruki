@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material'
 import { FrukiSlider } from 'components/Banners/FrukiSlider'
 import { SliderCard } from 'components/Banners/SliderCard'
 import { center } from 'components/center'
+import { Desktop, Mobile } from 'components/FrukiContainer'
 
 import React, { SVGProps } from 'react'
 
@@ -50,16 +51,40 @@ export const LocationsSlider = ({
             color="primary.contrastText"
             align={'center'}
             variant="h2"
-            sx={{ mt: 6, zIndex: 200 }}
+            sx={{ my: 6, zIndex: 200 }}
           >
             Nossas Instalações
           </Typography>
         </Box>
 
-        <SSVGComponent style={{ position: 'absolute', top: 0, right: 140 }} />
-        <SVGComponent style={{ position: 'absolute', left: 100, top: 20 }} />
+        <Desktop>
+          <SSVGComponent style={{ position: 'absolute', top: 0, right: 140 }} />
+          <SVGComponent style={{ position: 'absolute', left: 100, top: 20 }} />
+        </Desktop>
+        <Mobile>
+          <svg
+            style={{ position: 'absolute', left: 0, bottom: 0 }}
+            width="258"
+            height="340"
+            viewBox="0 0 258 340"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clipPath="url(#clip0_1371_19921)">
+              <path
+                d="M196.607 297.294L-184.07 677.972L-194.404 667.638C-273.317 588.725 -271.933 460.516 -192.368 380.951L188.31 0.272792L198.644 10.6067C277.564 88.5737 276.65 217.252 196.607 297.294Z"
+                fill="#41B02A"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_1371_19921">
+                <rect width="258" height="340" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </Mobile>
       </Box>
-      <FrukiSlider translate={-272}>
+      <FrukiSlider translate={-222}>
         {locations.map((p, idx) => (
           <SliderCard
             key={p?.title}

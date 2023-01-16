@@ -13,9 +13,11 @@ import { CSSProperties } from 'react'
 function Iconzzeraas(props: { style?: CSSProperties }) {
   return (
     <svg
+      id="iconzeras"
       style={{
         position: 'absolute',
         right: 100,
+        zIndex: 10,
         ...props.style,
       }}
       width="264"
@@ -121,12 +123,22 @@ export function FrukiWorkForceHistory() {
           style={{
             width: '95%',
             height: '100%',
-            borderTopLeftRadius: 300,
+            borderTopRightRadius: 300,
             zIndex: 2,
           }}
         />
         <Mobile>
           <Iconzzeraas style={{ bottom: 100 }} />
+          <svg
+            style={{ position: 'absolute', bottom: 0, right: 0 }}
+            width="375"
+            height="307"
+            viewBox="0 0 375 307"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="375" height="307" fill="#5F99AF" />
+          </svg>
         </Mobile>
         <Desktop>
           <Iconzzeraas style={{ bottom: 200, zIndex: 2 }} />

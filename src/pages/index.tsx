@@ -81,6 +81,7 @@ export const pageQuery = graphql`
   fragment BannerFrontMatter on MdxFrontmatter {
     date(formatString: "MMMM DD, YYYY")
     title
+    link
     desktop
     mobile
   }

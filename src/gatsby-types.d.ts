@@ -1577,6 +1577,7 @@ type MarkdownRemarkFrontmatter = {
   readonly desktop: Maybe<Scalars['String']>;
   readonly endereco: Maybe<Scalars['String']>;
   readonly image: Maybe<Scalars['String']>;
+  readonly link: Maybe<Scalars['String']>;
   readonly local: Maybe<Scalars['String']>;
   readonly logo: Maybe<Scalars['String']>;
   readonly mobile: Maybe<Scalars['String']>;
@@ -1619,6 +1620,7 @@ type MarkdownRemarkFrontmatterFieldSelector = {
   readonly desktop: InputMaybe<FieldSelectorEnum>;
   readonly endereco: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<FieldSelectorEnum>;
+  readonly link: InputMaybe<FieldSelectorEnum>;
   readonly local: InputMaybe<FieldSelectorEnum>;
   readonly logo: InputMaybe<FieldSelectorEnum>;
   readonly mobile: InputMaybe<FieldSelectorEnum>;
@@ -1645,6 +1647,7 @@ type MarkdownRemarkFrontmatterFilterInput = {
   readonly desktop: InputMaybe<StringQueryOperatorInput>;
   readonly endereco: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<StringQueryOperatorInput>;
+  readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly local: InputMaybe<StringQueryOperatorInput>;
   readonly logo: InputMaybe<StringQueryOperatorInput>;
   readonly mobile: InputMaybe<StringQueryOperatorInput>;
@@ -1671,6 +1674,7 @@ type MarkdownRemarkFrontmatterSortInput = {
   readonly desktop: InputMaybe<SortOrderEnum>;
   readonly endereco: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<SortOrderEnum>;
+  readonly link: InputMaybe<SortOrderEnum>;
   readonly local: InputMaybe<SortOrderEnum>;
   readonly logo: InputMaybe<SortOrderEnum>;
   readonly mobile: InputMaybe<SortOrderEnum>;
@@ -1891,6 +1895,7 @@ type MdxFrontmatter = {
   readonly desktop: Maybe<Scalars['String']>;
   readonly endereco: Maybe<Scalars['String']>;
   readonly image: Maybe<Scalars['String']>;
+  readonly link: Maybe<Scalars['String']>;
   readonly local: Maybe<Scalars['String']>;
   readonly logo: Maybe<Scalars['String']>;
   readonly mobile: Maybe<Scalars['String']>;
@@ -1933,6 +1938,7 @@ type MdxFrontmatterFieldSelector = {
   readonly desktop: InputMaybe<FieldSelectorEnum>;
   readonly endereco: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<FieldSelectorEnum>;
+  readonly link: InputMaybe<FieldSelectorEnum>;
   readonly local: InputMaybe<FieldSelectorEnum>;
   readonly logo: InputMaybe<FieldSelectorEnum>;
   readonly mobile: InputMaybe<FieldSelectorEnum>;
@@ -1959,6 +1965,7 @@ type MdxFrontmatterFilterInput = {
   readonly desktop: InputMaybe<StringQueryOperatorInput>;
   readonly endereco: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<StringQueryOperatorInput>;
+  readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly local: InputMaybe<StringQueryOperatorInput>;
   readonly logo: InputMaybe<StringQueryOperatorInput>;
   readonly mobile: InputMaybe<StringQueryOperatorInput>;
@@ -1985,6 +1992,7 @@ type MdxFrontmatterSortInput = {
   readonly desktop: InputMaybe<SortOrderEnum>;
   readonly endereco: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<SortOrderEnum>;
+  readonly link: InputMaybe<SortOrderEnum>;
   readonly local: InputMaybe<SortOrderEnum>;
   readonly logo: InputMaybe<SortOrderEnum>;
   readonly mobile: InputMaybe<SortOrderEnum>;
@@ -3596,9 +3604,9 @@ type HomeFragmentFragment = { readonly title: string | null, readonly caption: s
 
 type SiteDataFragment = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null };
 
-type BannerFragmentQueryFragment = { readonly banners: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly desktop: string | null, readonly mobile: string | null } | null } }> } };
+type BannerFragmentQueryFragment = { readonly banners: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly link: string | null, readonly desktop: string | null, readonly mobile: string | null } | null } }> } };
 
-type BannerFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly desktop: string | null, readonly mobile: string | null };
+type BannerFrontMatterFragment = { readonly date: string | null, readonly title: string | null, readonly link: string | null, readonly desktop: string | null, readonly mobile: string | null };
 
 type InitiativesFragmentQueryFragment = { readonly initiatives: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly path: string | null } | null } }> } };
 
@@ -3650,7 +3658,7 @@ type FAQPageListQueryQuery = { readonly faqs: { readonly edges: ReadonlyArray<{ 
 type HomeQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type HomeQueryQuery = { readonly home: { readonly title: string | null, readonly caption: string | null } | null, readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> }, readonly posts: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly url: string | null } | null } }> }, readonly banners: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly desktop: string | null, readonly mobile: string | null } | null } }> } };
+type HomeQueryQuery = { readonly home: { readonly title: string | null, readonly caption: string | null } | null, readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly brands: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly background: string | null, readonly logo: string | null } | null } }> }, readonly posts: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly image: string | null, readonly name: string | null, readonly logo: string | null, readonly url: string | null } | null } }> }, readonly banners: { readonly edges: ReadonlyArray<{ readonly node: { readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly link: string | null, readonly desktop: string | null, readonly mobile: string | null } | null } }> } };
 
 type InitiativePageCescoQueryVariables = Exact<{
   brand: InputMaybe<Scalars['String']>;

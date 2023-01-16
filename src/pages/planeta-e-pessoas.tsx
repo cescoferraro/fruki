@@ -193,12 +193,8 @@ const SustentabilidadePage: React.FC<
               background,
               backgroundPosition: 'center',
               borderWidth: 2,
-              borderBottomLeftRadius: {
-                xs: 240,
-                sm: 240,
-                md: 440,
-              },
             }}
+            padding="none"
           >
             <StaticImage
               src={'../../static/assets/home/img_6.png'}
@@ -206,7 +202,9 @@ const SustentabilidadePage: React.FC<
               style={{
                 position: 'absolute',
                 width: '100%',
-                height: '100%',
+                top: 0,
+                height: '80%',
+                borderBottomLeftRadius: 300,
               }}
             />
             <WhiteDesktopLeaf
@@ -222,7 +220,7 @@ const SustentabilidadePage: React.FC<
               style={{
                 display: isBig ? 'block' : 'none',
                 position: 'absolute',
-                bottom: -100,
+                bottom: -50,
                 right: 140,
               }}
             />

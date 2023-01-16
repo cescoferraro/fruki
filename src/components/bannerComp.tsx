@@ -1,5 +1,6 @@
-import { Box } from '@mui/material'
+import { ButtonBase } from '@mui/material'
 import { Desktop, Mobile } from 'components/FrukiContainer'
+import { navigate } from 'gatsby'
 import React from 'react'
 
 type Created1 = GatsbyTypes.HomeQueryQuery['banners']['edges'][number]['node']
@@ -9,10 +10,14 @@ export function BannerComp(props: { a: Created }) {
   return (
     <>
       <Desktop breakpoint="sm">
-        <img src={props.a?.desktop || ''} />
+        <ButtonBase onClick={() => navigate(props.a?.link)}>
+          <img src={props.a?.desktop || ''} />
+        </ButtonBase>
       </Desktop>
       <Mobile breakpoint="sm">
-        <img src={props.a?.mobile || ''} />
+        <ButtonBase onClick={() => navigate(props.a?.link)}>
+          <img src={props.a?.mobile || ''} />
+        </ButtonBase>
       </Mobile>
     </>
   )

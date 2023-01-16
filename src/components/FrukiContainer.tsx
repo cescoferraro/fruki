@@ -79,7 +79,7 @@ export const GridItem = ({
             xs: 2,
             sm: 2,
             md: 8,
-            lg: 22,
+            lg: 18,
           },
     [padding.includes('left') ? 'pr' : 'pl']:
       padding === 'none' || padding === 'only-left'
@@ -88,7 +88,7 @@ export const GridItem = ({
             xs: 2,
             sm: 2,
             md: 8,
-            lg: 13,
+            lg: 10,
           },
   }
   return (

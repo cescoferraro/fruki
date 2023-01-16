@@ -63,7 +63,7 @@ export function FrukiQuestion() {
               </svg>
             }
             onClick={() => {
-              setState((st) => ({ ...st, isLegal: !st.isLegal }))
+              window.open('/pdf/Relatorio_Socio_Ambiental_Fruki_2021.pdf')
             }}
           >
             Relatório de Sustentabilidade Socioambiental

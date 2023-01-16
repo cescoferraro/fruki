@@ -6,6 +6,7 @@ import { Button } from 'gatsby-material-ui-components'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SVGProps } from 'react'
+import { useBoletoForm } from '../layouts'
 
 const DDDDSVGComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -57,6 +58,7 @@ export function BrandsComponent(props: { brands: any[] }) {
   const theme = useTheme()
   let margin = { xs: 0, sm: 0, md: 13 }
   const isBig = useIsBigScreen()
+  const [, setState] = useBoletoForm()
   return (
     <>
       <Box
@@ -199,10 +201,7 @@ export function BrandsComponent(props: { brands: any[] }) {
           <Button
             color="secondary"
             variant="contained"
-            onClick={() =>
-              // TODO: modal 18
-              window.open('/pdf/Portfolio_Digital_Fruki_Bebidas.pdf')
-            }
+            onClick={() => setState((st) => ({ ...st, isLegal: !st.isLegal }))}
             sx={{}}
           >
             Ver todas as marcas

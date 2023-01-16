@@ -7,6 +7,7 @@ import { SejaClient } from 'components/SejaClient'
 import { useIsBigScreen } from 'components/useIsBigScreen'
 import { PageProps } from 'gatsby'
 import React, { useState } from 'react'
+import { useBoletoForm } from '../layouts'
 
 export function FrukiToolbar({
   trigguer = false,
@@ -32,6 +33,7 @@ export function FrukiToolbar({
 
   const isBig = useIsBigScreen()
   const [sidebar, setSidebar] = useState(false)
+  const [, setState] = useBoletoForm()
   return (
     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
       <Drawer
@@ -77,8 +79,10 @@ export function FrukiToolbar({
                 fontSize: 18,
                 fontWeight: location.pathname === '/marcas' ? 700 : 400,
               }}
-              onClick={() => setSidebar((s) => !s)}
-              to="/marcas"
+              onClick={() => {
+                setSidebar((s) => !s)
+                setState((st) => ({ ...st, isLegal: !st.isLegal }))
+              }}
             >
               Nossas Marcas
             </FrukiAppBarLink>
@@ -159,7 +163,12 @@ export function FrukiToolbar({
           <FrukiAppBarLink sx={sx} to="/sobre-nos">
             Sobre nós
           </FrukiAppBarLink>
-          <FrukiAppBarLink sx={sx} to="/marcas">
+          <FrukiAppBarLink
+            sx={sx}
+            onClick={() => {
+              setState((st) => ({ ...st, isLegal: !st.isLegal }))
+            }}
+          >
             Nossas Marcas
           </FrukiAppBarLink>
           <FrukiAppBarLink sx={sx} to="/planeta-e-pessoas">
