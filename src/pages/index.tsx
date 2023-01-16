@@ -1,5 +1,5 @@
 import VLibras from '@djpfs/react-vlibras'
-import { Box } from '@mui/material'
+import { BannerComp, Created } from 'components/bannerComp'
 import { BrandsComponent } from 'components/brandsComponent'
 import { FrukiBlogSection } from 'components/FrukiBlogSection'
 import { FrukiContact } from 'components/frukiContact'
@@ -15,7 +15,6 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-import { BannerComp, Created } from 'components/bannerComp'
 
 const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   data: { brands, home, posts, banners },
@@ -35,7 +34,6 @@ const IndexPage: React.FC<PageProps<GatsbyTypes.HomeQueryQuery>> = ({
   console.log(bs)
   return (
     <>
-      <VLibras />
       <Carousel showThumbs={false}>
         {bs?.map((a) => (
           <BannerComp key={a?.name} a={a} />

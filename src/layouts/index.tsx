@@ -1,3 +1,4 @@
+import VLibras from '@djpfs/react-vlibras'
 import {
   Box,
   Button,
@@ -165,6 +166,7 @@ export default function ({
                 </Paper>
               </Snackbar>
               <CssBaseline />
+              <VLibras />
               <FrukiAppBar
                 location={location}
                 state={state}
